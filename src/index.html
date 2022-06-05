@@ -1,192 +1,463 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>F-Soccer</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="/css/styles.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="/css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/custom.css">
-    <!-- font family -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <!-- end font family -->
-    <link rel="stylesheet" href="/css/3dslider.css" />
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-    <script src="/js/3dslider.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Mukta" rel="stylesheet">
+
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Fast Soccer</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&display=swap">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+		integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/media-queries.css">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/img/logo.jpg">
 </head>
+
 <body>
-<nav class="navbar navbar-default no-margin">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header fixed-brand">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
- <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
- </button>
-     </div>
-     <!-- navbar-header-->
-     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-           <li class="active">
-              <button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
-              </button>
-           </li>
-        </ul>
-        <div class="container">
-            <div class="container">
-                <div class="header-top">
-                   <div class="row">
-                      <div class="col-md-6">
-                         <div class="full">
-                            <div class="logo">
-                               <a href="index.html"><img src="images/logo.jpg" alt="#" /></a>
-                            </div>
-                         </div>
-                      </div>
-                    <div class="col-md-6">
-                        <div class="right_top_section">
-                            <!-- button section -->
-                            <ul class="login">
-                                <li class="login-modal">
-                                    <a href="#" class="login"><i class="fa fa-user"></i>Đăng nhập</a>
-                                </li>
-                                <li>
-                                    <div class="register-modal">
-                                        <a href="#"><i class="fa fa-user"></i>Đăng ký</a>
-                                    </div>
-                                </li>
-                            </ul>
-                            <!-- end button section -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-     </div>
-     <!-- bs-example-navbar-collapse-1 -->
-  </nav>
-  <div id="wrapper">  
-     <!-- Sidebar -->
-     <div id="sidebar-wrapper">
-        <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
-           <li>
-              <a href="index.html"><span class="fa-stack fa-lg pull-left"></span> Trang chủ</a>
-           </li>
-           <li>
-              <a href="#"><span class="fa-stack fa-lg pull-left"></span>Đặt sân</a>
-           </li>
-           <li>
-              <a href="#"> <span class="fa-stack fa-lg pull-left"></span>Tin tức</a>
-           </li>
-           <li>
-              <a href="#"><span class="fa-stack fa-lg pull-left"></span>Về chúng tôi</a>
-           </li>
-           <li>
-              <a href="#"><span class="fa-stack fa-lg pull-left"></span>Thanh toán</a>
-           </li>
-           <li>
-              <a href="#"><span class="fa-stack fa-lg pull-left"></span>Liên hệ</a>
-           </li>
-           <!-- <li>
-             <a href="#"><span class="fa-stack fa-lg pull-left"></span>Shortcut</a>
-             <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>link1</a></li>
-                <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>link2</a></li>
-             </ul>
-          </li> -->
-        </ul>
-     </div>
-  </div>
 
-  <div class="slidep">
-    <!-- .slider>.slide*5{$} -->
-    <div class="slider" style="--total: 5">
-      <div id="slide-1" class="slide" style="--i:1" tabindex="0"><img src="/images/1.jpg">
-      </div>
-      <div id="slide-2" class="slide" style="--i:2" tabindex="0"><img src="/images/2.jpg">
-      </div>
-      <div id="slide-3" class="slide" style="--i:3" tabindex="0"><img src="/images/3.jpg">
-      </div>
-      <nav class="slide-nav">
-        <a href="#slide-1" tabindex="-1"><i class="far fa-dot-circle"></i></a>
-        <a href="#slide-2" tabindex="-1"><i class="far fa-dot-circle"></i></a>
-        <a href="#slide-3" tabindex="-1"><i class="far fa-dot-circle"></i></a>
-      </nav>
-    </div>
-  </div>
+	<!-- Wrapper -->
+	<div class="wrapper">
 
-<footer class="mainfooter" role="contentinfo">
-  <div class="footer-middle">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 col-sm-6">
-        <!--Column1-->
-        <div class="footer-pad">
-          <h4>Heading 1</h4>
-          <ul class="list-unstyled">
-            <li><a href="#"></a></li>
-            <li><a href="#">Payment Center</a></li>
-            <li><a href="#">Contact Directory</a></li>
-            <li><a href="#">Forms</a></li>
-            <li><a href="#">News and Updates</a></li>
-            <li><a href="#">FAQs</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <!--Column1-->
-        <div class="footer-pad">
-          <h4>Heading 2</h4>
-          <ul class="list-unstyled">
-            <li><a href="#">Website Tutorial</a></li>
-            <li><a href="#">Accessibility</a></li>
-            <li><a href="#">Disclaimer</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Webmaster</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <!--Column1-->
-        <div class="footer-pad">
-          <h4>Heading 3</h4>
-          <ul class="list-unstyled">
-            <li><a href="#">Parks and Recreation</a></li>
-            <li><a href="#">Public Works</a></li>
-            <li><a href="#">Police Department</a></li>
-            <li><a href="#">Fire</a></li>
-            <li><a href="#">Mayor and City Council</a></li>
-            <li>
-              <a href="#"></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    	<div class="col-md-3">
-    		<h4>Follow Us</h4>
-            <ul class="social-network social-circle">
-             <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook"></i></a></li>
-             <li><a href="#" class="icoYoutube" title="Linkedin"><i class="fab fa-youtube"></i></a></li>
-            </ul>				
+		<!-- Sidebar -->
+		<nav class="sidebar">
+
+			<!-- close sidebar menu -->
+			<div class="dismiss">
+				<i class="fas fa-align-left"></i>
+			</div>
+
+			<div class="logo">
+				<h3><a href="index.html"></a></h3>
+			</div>
+
+			<ul class="list-unstyled menu-elements">
+				<li class="active">
+					<a href="index.html"> Trang chủ</a>
+				</li>
+				<li>
+					<a href="pitch.html"> Đặt sân</a>
+				</li>
+				<li>
+					<a href="news.html"> Tin tức</a>
+				</li>
+				<li>
+					<a href="aboutus.html"> Về chúng tôi</a>
+				</li>
+				<li>
+					<a href="contact.html"> Liên hệ</a>
+				</li>
+				<!-- <li>
+						<a href="#otherSections" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
+							<i class="fas fa-sync"></i>Other sections
+						</a>
+						<ul class="collapse list-unstyled" id="otherSections">
+							<li>
+								<a class="scroll-link" href="#section-3">Our projects</a>
+							</li>
+							<li>
+								<a class="scroll-link" href="#section-4">We think that...</a>
+							</li>
+						</ul>
+					</li> -->
+			</ul>
+
+		</nav>
+		<!-- End sidebar -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content clearfix">
+					<!--Close button-->
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">×</span></button>
+					<div class="modal-body">
+						<h3 class="title">Đăng nhập</h3>
+						<p class="description"></p>
+						<div class="form-group">
+							<span class="input-icon"><i class="fa fa-user"></i></span>
+							<input type="username" class="form-control" placeholder="Tên đăng nhập">
+						</div>
+						<div class="form-group">
+							<span class="input-icon"><i class="fas fa-key"></i></span>
+							<input type="password" class="form-control" placeholder="Mật khẩu">
+						</div>
+						<!-- <div class="form-group checkbox">
+								<input type="checkbox">
+								   <label>Ghi nhớ</label>
+						   </div> -->
+
+						<!--remamber me-->
+						<a href="" class="forgot-pass">Quên mật khẩu?</a>
+						<!--Login Button-->
+						<button class="btn">Đăng nhập</button>
+
+						<!--Login Content-->
+					</div>
+				</div>
+			</div>
 		</div>
-    </div>
-	<div class="row">
-		<div class="col-md-12 copy">
-			<p class="text-center">&copy; Copyright 2022 - Company Name.  All rights reserved.</p>
+		<div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content clearfix">
+					<!--Close button-->
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">×</span></button>
+					<div class="modal-body">
+						<h3 class="title">Đăng ký</h3>
+						<p class="description"></p>
+						<div class="form-group">
+							<span class="input-icon"></span>
+							<input type="email" class="form-control" placeholder="Địa chỉ email">
+						</div>
+						<div class="form-group">
+							<span class="input-icon"></span>
+							<input type="username" class="form-control" placeholder="Tên đăng nhập">
+						</div>
+						<div class="form-group">
+							<span class="input-icon"></span>
+							<input type="password" class="form-control" placeholder="Mật khẩu">
+						</div>
+						<div class="form-group">
+							<span class="input-icon"></span>
+							<input type="re-password" class="form-control" placeholder="Xác nhận mật khẩu">
+						</div>
+
+						<!--Register Button-->
+						<button class="btn">Đăng ký</button>
+					</div>
+				</div>
+			</div>
 		</div>
+
+		<!-- Dark overlay -->
+		<div class="overlay"></div>
+
+		<!-- Content -->
+		<div class="content">
+
+			<!-- open sidebar menu -->
+			<a class="btn btn-primary btn-customized open-menu" href="#" role="button">
+				<i class="fas fa-align-left"></i> <span></span>
+			</a>
+
+			<!-- Top content -->
+			<div class="top-content section-container" id="top-content">
+				<div class="container">
+					<div class="row">
+						<div class="col col-md-10 offset-md-1 col-lg-12 offset-lg-6">
+							<div class="buttons wow fadeInUp">
+								<a class="btn btn-primary btn-customized show-modal" role="button" data-toggle="modal"
+									data-target="#myModal">
+									<i class="fas fa-book-open"></i> Đăng nhập
+								</a>
+								<a class="btn btn-primary btn-customized-2 show-modal" role="button" data-toggle="modal"
+									data-target="#RegisterModal">
+									<i class="fas fa-pencil-alt"></i> Đăng ký
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Section 5 -->
+			<div class="section-5-container section-container" id="section-5">
+				<div class="container">
+					<div class="row">
+						<div class="col section-5 section-description wow fadeIn">
+							<h2 style="color: green">Sân bóng</h2>
+							<div class="divider-1 wow fadeInUp"><span></span></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 section-5-box wow fadeInUp">
+							<div class="section-5-box-image"><img src="assets/img/pitch.jpg" alt="portfolio-1"></div>
+							<h3><a href="#">Sân 1</a> <i class="fas fa-angle-right"></i></h3>
+							<p>Thông tin</p>
+						</div>
+						<div class="col-md-4 section-5-box wow fadeInDown">
+							<div class="section-5-box-image"><img src="assets/img/pitch.jpg" alt="portfolio-2"></div>
+							<h3><a href="#">Sân 2</a> <i class="fas fa-angle-right"></i></h3>
+							<p>Thông tin</p>
+						</div>
+						<div class="col-md-4 section-5-box wow fadeInUp">
+							<div class="section-5-box-image"><img src="assets/img/pitch.jpg" alt="portfolio-3"></div>
+							<h3><a href="#">Sân 3</a> <i class="fas fa-angle-right"></i></h3>
+							<p>Thông tin</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col section-bottom-button wow fadeInUp">
+							<a class="btn btn-primary btn-customized" href="#" role="button">
+								<i></i> Xem thêm
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Section 1 -->
+			<div class="section-1-container section-container" id="section-1">
+				<div class="container">
+					<div class="s009">
+						<form>
+							<div class="inner-form">
+								<div class="basic-search">
+									<div class="input-field">
+										<input id="search" type="text" />
+										<div class="icon-wrap">
+											<svg class="svg-inline--fa fa-search fa-w-16" fill="#ccc" aria-hidden="true"
+												data-prefix="fas" data-icon="search" role="img"
+												xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+												<path
+													d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
+												</path>
+											</svg>
+										</div>
+									</div>
+								</div>
+								<div class="advance-search">
+									<div class="row">
+										<div class="input-field">
+											<div class="input-select">
+												<select data-trigger="" name="choices-single-defaul">
+													<option placeholder="" value="">Khu vực</option>
+													<option>Thanh Xuân</option>
+													<option>Cầu Giấy</option>
+												</select>
+											</div>
+										</div>
+										<div class="input-field">
+											<div class="input-select">
+												<select data-trigger="" name="choices-single-defaul">
+													<option placeholder="" value="">Giá</option>
+													<option>200,000 - 300,000</option>
+													<option>300,000 - 400,000</option>
+												</select>
+											</div>
+										</div>
+										<div class="row">
+											<div class="input-field">
+												<div class="group-btn">
+													<button class="btn-delete" id="delete">Reset</button>
+													<button class="btn-search">Tìm kiếm</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+						</form>
+						<script src="js/extention/choices.js"></script>
+						<script>
+							const customSelects = document.querySelectorAll("select");
+							const deleteBtn = document.getElementById('delete')
+							const choices = new Choices('select',
+								{
+									searchEnabled: false,
+									itemSelectText: '',
+									removeItemButton: true,
+								});
+							deleteBtn.addEventListener("click", function (e) {
+								e.preventDefault()
+								const deleteAll = document.querySelectorAll('.choices__button')
+								for (let i = 0; i < deleteAll.length; i++) {
+									deleteAll[i].click();
+								}
+							});						  
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Section 3 -->
+		<div class="section-3-container section-container" id="section-3">
+			<div class="container">
+
+				<div class="row">
+					<div class="col section-3 section-description wow fadeIn">
+						<h2>Đến với Fast Soccer</h2>
+						<div class="divider-1 wow fadeInUp"><span></span></div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 section-3-box wow fadeInLeft">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="section-3-box-icon">
+									<i class="fas fa-search"></i>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<h3>Tìm kiếm và đặt sân bóng online</h3>
+								<p>
+									Tìm kiếm và đặt sân theo địa điểm, giá thành, đặt sân nhanh chóng, tiện lợi
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 section-3-box wow fadeInLeft">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="section-3-box-icon">
+									<i class="fas fa-tasks"></i>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<h3>Quản lý sân bóng</h3>
+								<p>
+									Công cụ quản lý sân bóng dành cho chủ sân
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 section-3-box wow fadeInLeft">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="section-3-box-icon">
+									<i class="fas fa-newspaper"></i>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<h3>Tin tức bóng đá</h3>
+								<p>
+									Tin tức bóng đá cập nhật hàng ngày
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 section-3-box wow fadeInLeft">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="section-3-box-icon">
+									<i class="fas fa-handshake"></i>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<h3>Tìm đối, cáp kèo</h3>
+								<p>
+									Dễ dàng tìm đối, cáp kèo thông qua bình luận
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Section 4 
+		        <div class="section-4-container section-container section-container-image-bg" id="section-4">
+			        <div class="container">
+			            <div class="row">
+			                <div class="col section-4 section-description wow fadeInLeftBig">
+			                	<h2></h2>
+			                    <p>
+			                    </p>
+			                </div>
+			            </div>
+			            <div class="row">
+			            	<div class="col section-bottom-button wow fadeInUp">
+		                        <a class="btn btn-primary btn-customized-2 scroll-link" href="#section-6" role="button">
+				            		<i class="fas fa-envelope"></i> Liên hệ
+				            	</a>
+			            	</div>
+			            </div>
+			        </div>
+		        </div>
+		        
+		        -->
+		<div class="to-top">
+			<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+		</div>
+		<!-- Section 6 -->
+		<div class="section-6-container section-container section-container-image-bg" id="section-6">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-sm-6">
+						<!--Column1-->
+						<div class="footer-pad">
+							<h4>Về Fast Soccer</h4>
+							<ul class="list-unstyled">
+								<li><a href="#"></a></li>
+								<li><a href="#">Giới thiệu Fast Soccer</a></li>
+								<li><a href="#">Điều khoản sử dụng</a></li>
+								<li><a href="#">Chính sách bảo mật</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<!--Column1-->
+						<div class="footer-pad">
+							<h4>Thông tin liên hệ</h4>
+							<ul class="list-unstyled">
+								<li><a style="color: #f35b3f">Số điện thoại:</a></li>
+								<li><a style="color: #f35b3f">Email:</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<!--Column1-->
+						<div class="footer-pad">
+							<h4>Thanh toán</h4>
+							<ul class="list-unstyled">
+								<li><a style="color: #f35b3f"><img style="height: 25px; margin-bottom: 10px"
+											src="/assets/ico/MoMo_Logo.png"> Momo:</a></li>
+								<li><a style="color: #f35b3f"><img style="height: 25px; margin-bottom: 10px"
+											src="/assets/ico/2489756.png"> Tiền mặt</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<h4>Follow Us</h4>
+						<ul class="social-network social-circle">
+							<li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook"></i></a>
+							</li>
+							<li><a href="#" class="icoYoutube" title="Linkedin"><i class="fab fa-youtube"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Footer -->
+		<footer>
+			<div class="col-md-12 copy">
+				<p class="text-center">&copy; Copyright 2022 - Company Name. All rights reserved.</p>
+		</footer>
+		<!-- End content -->
+		<!-- End wrapper -->
 	</div>
-  </div>
-  </div>
-</footer>
-<!-- ALL JS FILES -->
-<script src="js/all.js"></script>
-<!-- ALL PLUGINS -->
-<script src="js/custom.js"></script>
+	<!-- Javascript -->
+	<script src="assets/js/jquery-3.3.1.min.js"></script>
+	<script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script src="assets/js/jquery.backstretch.min.js"></script>
+	<script src="assets/js/wow.min.js"></script>
+	<script src="assets/js/jquery.waypoints.min.js"></script>
+	<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
 </body>
+
 </html>
