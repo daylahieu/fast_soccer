@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Fast Soccer</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&display=swap">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+		integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/media-queries.css">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/img/logo.jpg">
+</head>
+
+<body>
+
+	<!-- Wrapper -->
+	<div class="wrapper">
+
+		<!-- Sidebar -->
+		<nav class="sidebar">
+			<div class="sidenav">
+				<div class="logo">
+					<h3><a></a></h3>
+				</div>
+
+				<ul class="list-unstyled menu-elements">
+					<li class="active">
+						<a href="index.html"> Trang chủ</a>
+					</li>
+					<li>
+						<a href="order.html"> Đặt sân</a>
+					</li>
+					<li>
+						<a href="registerPitch.html"> Đăng ký sân</a>
+					</li>
+					<li>
+						<a href="news.html"> Tin tức</a>
+					</li>
+					<li>
+						<a href="contact.html"> Liên hệ</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!-- End sidebar -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content clearfix">
+					<!--Close button-->
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">×</span></button>
+					<div class="modal-body">
+						<h3 class="title">Đăng nhập</h3>
+						<p class="description"></p>
+						<div class="form-group">
+							<span class="input-icon"><i class="fa fa-user"></i></span>
+							<input type="username" class="form-control" placeholder="Tên đăng nhập">
+						</div>
+						<div class="form-group">
+							<span class="input-icon"><i class="fas fa-key"></i></span>
+							<input type="password" class="form-control" placeholder="Mật khẩu">
+						</div>
+
+						<!--forgot password-->
+						<a href="" class="forgot-pass">Quên mật khẩu?</a>
+						<!--Login Button-->
+						<button class="btn">Đăng nhập</button>
+
+						<!--Login Content-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content clearfix">
+					<!--Close button-->
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">×</span></button>
+					<div class="modal-body">
+						<h3 class="title">Đăng ký</h3>
+						<p class="description"></p>
+						<div class="form-group">
+							<span class="input-icon"></span>
+							<input type="email" class="form-control" placeholder="Địa chỉ email">
+						</div>
+						<div class="form-group">
+							<span class="input-icon"></span>
+							<input type="username" class="form-control" placeholder="Tên đăng nhập">
+						</div>
+						<div class="form-group">
+							<span class="input-icon"></span>
+							<input type="password" class="form-control" placeholder="Mật khẩu">
+						</div>
+						<div class="form-group">
+							<span class="input-icon"></span>
+							<input type="re-password" class="form-control" placeholder="Xác nhận mật khẩu">
+						</div>
+
+						<!--Register Button-->
+						<button class="btn">Đăng ký</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Dark overlay -->
+		<div class="overlay"></div>
+
+		<!-- Content -->
+		<div class="content">
+
+			<!-- open sidebar menu -->
+			<!-- <a class="btn open-menu" href="#" role="button">
+				<i class="fas fa-bars"></i>
+			</a> -->
+
+			<!-- Top content -->
+			<div class="top-content section-container" id="top-content">
+				<div class="container">
+					<div class="row">
+						<div class="col col-md-10 offset-md-1 col-lg-12 offset-lg-9">
+							<div class="buttons wow fadeInUp">
+								<a class="btn btn-primary btn-customized show-modal" href="#" role="button"
+									data-toggle="modal" data-target="#myModal">
+									<i class="fas fa-key"></i> Đăng nhập
+								</a>
+								<a class="btn btn-primary btn-customized-2 show-modal" href="#" role="button"
+									data-toggle="modal" data-target="#RegisterModal">
+									<i class="fas fa-user-plus"></i> Đăng ký
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Section 5 -->
+			<div class="section-5-container section-container" id="section-5">
+				<div class="container">
+					<div class="row">
+						<div class="col section-5 section-description wow fadeIn">
+							<h2 style="color: green">Sân bóng</h2>
+							<div class="divider-1 wow fadeInUp"><span></span></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 section-5-box wow fadeInUp">
+							<div class="section-5-box-image"><img src="assets/img/pitch.jpg" alt="portfolio-1"></div>
+							<h3><a href="#">Sân 1</a> <i class="fas fa-angle-right"></i></h3>
+							<p>Thông tin</p>
+						</div>
+						<div class="col-md-4 section-5-box wow fadeInDown">
+							<div class="section-5-box-image"><img src="assets/img/pitch.jpg" alt="portfolio-2"></div>
+							<h3><a href="#">Sân 2</a> <i class="fas fa-angle-right"></i></h3>
+							<p>Thông tin</p>
+						</div>
+						<div class="col-md-4 section-5-box wow fadeInUp">
+							<div class="section-5-box-image"><img src="assets/img/pitch.jpg" alt="portfolio-3"></div>
+							<h3><a href="#">Sân 3</a> <i class="fas fa-angle-right"></i></h3>
+							<p>Thông tin</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col section-bottom-button wow fadeInUp">
+							<a class="btn btn-primary btn-customized" href="#" role="button">
+								<i></i> Xem thêm
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Section 1 -->
+			<div class="section-1-container section-container" id="section-1">
+				<div class="container">
+					<div class="s009">
+						<form>
+							<div class="inner-form">
+								<div class="basic-search">
+									<div class="input-field">
+										<input id="search" type="text" />
+										<div class="icon-wrap">
+											<svg class="svg-inline--fa fa-search fa-w-16" fill="#ccc" aria-hidden="true"
+												data-prefix="fas" data-icon="search" role="img"
+												xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+												<path
+													d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
+												</path>
+											</svg>
+										</div>
+									</div>
+								</div>
+								<div class="advance-search">
+									<div class="row">
+										<div class="input-field">
+											<div class="input-select">
+												<select data-trigger="" name="choices-single-defaul">
+													<option placeholder="" value="">Khu vực</option>
+													<option>Thanh Xuân</option>
+													<option>Cầu Giấy</option>
+												</select>
+											</div>
+										</div>
+										<div class="input-field">
+											<div class="input-select">
+												<select data-trigger="" name="choices-single-defaul">
+													<option placeholder="" value="">Giá</option>
+													<option>200,000 - 300,000</option>
+													<option>300,000 - 400,000</option>
+												</select>
+											</div>
+										</div>
+										<div class="input-field">
+											<button class="btn-search">Tìm kiếm</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+						<script src="assets/js/extention/choices.js"></script>
+						<script>
+							const customSelects = document.querySelectorAll("select");
+							const deleteBtn = document.getElementById('delete')
+							const choices = new Choices('select',
+								{
+									searchEnabled: false,
+									itemSelectText: '',
+									removeItemButton: true,
+								});
+							deleteBtn.addEventListener("click", function (e) {
+								e.preventDefault()
+								const deleteAll = document.querySelectorAll('.choices__button')
+								for (let i = 0; i < deleteAll.length; i++) {
+									deleteAll[i].click();
+								}
+							});						  
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Section 3 -->
+		<div class="section-3-container section-container" id="section-3">
+			<div class="container">
+
+				<div class="row">
+					<div class="col section-3 section-description wow fadeIn">
+						<h2>Đến với Fast Soccer</h2>
+						<div class="divider-1 wow fadeInUp"><span></span></div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 section-3-box wow fadeInLeft">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="section-3-box-icon">
+									<i class="fas fa-search"></i>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<h3>Tìm kiếm và đặt sân bóng online</h3>
+								<p>
+									Tìm kiếm và đặt sân theo địa điểm, giá thành, đặt sân nhanh chóng, tiện lợi
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 section-3-box wow fadeInLeft">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="section-3-box-icon">
+									<i class="fas fa-tasks"></i>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<h3>Quản lý sân bóng</h3>
+								<p>
+									Công cụ quản lý sân bóng dành cho chủ sân
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 section-3-box wow fadeInLeft">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="section-3-box-icon">
+									<i class="fas fa-newspaper"></i>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<h3>Tin tức bóng đá</h3>
+								<p>
+									Tin tức bóng đá cập nhật hàng ngày
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 section-3-box wow fadeInLeft">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="section-3-box-icon">
+									<i class="fas fa-handshake"></i>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<h3>Tìm đối, cáp kèo</h3>
+								<p>
+									Dễ dàng tìm đối, cáp kèo thông qua bình luận
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Section 4 
+		        <div class="section-4-container section-container section-container-image-bg" id="section-4">
+			        <div class="container">
+			            <div class="row">
+			                <div class="col section-4 section-description wow fadeInLeftBig">
+			                	<h2></h2>
+			                    <p>
+			                    </p>
+			                </div>
+			            </div>
+			            <div class="row">
+			            	<div class="col section-bottom-button wow fadeInUp">
+		                        <a class="btn btn-primary btn-customized-2 scroll-link" href="#section-6" role="button">
+				            		<i class="fas fa-envelope"></i> Liên hệ
+				            	</a>
+			            	</div>
+			            </div>
+			        </div>
+		        </div>
+		        
+		        -->
+		<div class="to-top">
+			<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+		</div>
+
+		<!-- Footer -->
+		<footer>
+			<!-- Section 6 -->
+			<div class="section-6-container section-container section-container-image-bg" id="section-6">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3 col-sm-6">
+							<!--Column1-->
+							<div class="footer-pad">
+								<h4>Về Fast Soccer</h4>
+								<ul class="list-unstyled">
+									<li><a href="#"></a></li>
+									<li><a href="#">Giới thiệu Fast Soccer</a></li>
+									<li><a href="#">Điều khoản sử dụng</a></li>
+									<li><a href="#">Chính sách bảo mật</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<!--Column1-->
+							<div class="footer-pad">
+								<h4>Thông tin liên hệ</h4>
+								<ul class="list-unstyled">
+									<li><a style="color: #f35b3f">Số điện thoại:</a></li>
+									<li><a style="color: #f35b3f">Email:</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<!--Column1-->
+							<div class="footer-pad">
+								<h4>Thanh toán</h4>
+								<ul class="list-unstyled">
+									<li><a style="color: #f35b3f"><img style="height: 25px; margin-bottom: 10px"
+												src="https://static.mservice.io/img/logo-momo.png"> Momo:</a></li>
+									<li><a style="color: #f35b3f"><img style="height: 25px; margin-bottom: 10px"
+												src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png"> Tiền
+											mặt</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<h4>Follow Us</h4>
+							<ul class="social-network social-circle">
+								<li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook"></i></a>
+								</li>
+								<li><a href="#" class="icoYoutube" title="Linkedin"><i class="fab fa-youtube"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 copy">
+				<p class="text-center">&copy; Copyright 2022 - Company Name. All rights reserved.</p>
+			</div>
+		</footer>
+		<!-- End content -->
+		<!-- End wrapper -->
+	</div>
+	<!-- Javascript -->
+	<script src="assets/js/jquery-3.3.1.min.js"></script>
+	<script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script src="assets/js/jquery.backstretch.min.js"></script>
+	<script src="assets/js/wow.min.js"></script>
+	<script src="assets/js/jquery.waypoints.min.js"></script>
+	<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+</body>
+
+</html>
