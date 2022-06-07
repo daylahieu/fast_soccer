@@ -1,4 +1,4 @@
-package com.example.projectb2c.entity;
+package com.example.fastsoccer.entity;
 
 public enum Provider {
     LOCAL,FACEBOOK,GOOGLE
