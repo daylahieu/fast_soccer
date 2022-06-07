@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng kí thông tin sân bóng</title>
+</head>
+<body>
+<h5 class="py-2">ĐĂNG KÝ THÔNG TIN SÂN BÓNG ĐỂ NHẬN HỖ TRỢ</h5>
+<form th:action="@{/own/registerPitch}" method="post" enctype="multipart/form-data">
+    <a hidden name="id"></a>
+    <h6>THÔNG TIN LIỆN HỆ</h6>
+    <label>1. Họ & tên *</label><br>
+    <input name="name"><br>
+    <label>2. Số điện thoại liên hệ * (Bạn lưu ý điền đúng số điện thoại để được hỗ trợ)</label><br>
+    <input name="phone"><br>
+    <label>3. Email *</label><br>
+    <input name="mail"><br>
+
+    <h6>CÂU HỎI PHÂN LOẠI SÂN BÓNG</h6>
+
+    <label>Tên sân bóng</label><br>
+    <input name="namePitch"><br>
+    <label>STK ngân hàng</label><br>
+    <input name="stkbank"><br>
+    <label>Tên ngân hàng</label><br>
+    <input name="bank"><br>
+    <label>Quận/Huyện(Địa phương có sân bóng)</label><br>
+    <select name="district">
+        <option th:each="district : ${districtList}"
+                th:value="${district.id}"
+                th:text="${district.name}">
+        </option>
+    </select><br>
+    <label>Địa chỉ chính xác</label><br>
+    <input name="address"><br>
+    <label class="form-label">Chọn ảnh sân 1</label>
+    <input type="file" class="form-control" name="pic1"/>
+    <label class="form-label">Chọn ảnh sân 2</label>
+    <input type="file" class="form-control" name="pic2"/>
+    <label class="form-label">Chọn ảnh sân 3</label>
+    <input type="file" class="form-control" name="pic3"/>
+    <label>Số lượng sân</label><br>
+    <input name="amount"><br>
+    <label>Dịch vụ kèm theo</label><br>
+    <textarea name="service" rows="4" cols="50"></textarea>
+    <h5>
+        Lưu ý:
+
+        Shopee sẽ tự động tạo tên đăng nhập khi tạo tài khoản, bạn có thể chỉnh sửa (nếu cần).
+        Shopee sẽ tự động bật tất cả đơn vị vận chuyện hiện có, bạn có thể chỉnh sửa (nếu cần).
+        Mỗi sản phẩm được đăng tải sẽ có kho bằng 1, bạn có thể chỉnh sửa (nếu cần)
+    </h5>
+    <input  hidden name="status" value="false"><br>
+    <button type="submit" >Gửi/Submit</button>
+
+</form>
+</body>
+</html>

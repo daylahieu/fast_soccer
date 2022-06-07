@@ -1,10 +1,10 @@
 package com.example.fastsoccer.repository;
 
-import com.example.fastsoccer.entity.OwnPitch;
+import com.example.fastsoccer.entity.District;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public interface OwnPitchRepository extends JpaRepository<OwnPitch,Long> {
+public interface DistricRepository extends JpaRepository<District,Long> {
+
 }
