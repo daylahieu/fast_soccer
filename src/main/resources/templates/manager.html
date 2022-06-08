@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Manager of admin</title>
+    <link rel="icon" type="image/x-icon" href="upload/cy.png">
+</head>
+<body>
+<div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#product">
+                Tạo quảng cáo
+            </button>
+            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#category">
+                NULL
+            </button>
+            <a th:href="@{/sendmail}" type="button" class="btn btn-light">
+                Gửi thông báo tới khách hàng
+            </a>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+                aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+</div>
+
+<!-- Modal add product -->
+<div class="modal fade" id="product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/addpro" method="post" enctype="multipart/form-data">
+                    <a hidden name="id"></a>
+                    <label>Name:</label><br>
+                    <input name="productName"><br>
+                    <label>Price</label><br>
+                    <input name="price"><br>
+                    <label class="form-label" for="customFile">Chọn file cần tải</label>
+                    <input type="file" class="form-control" name="fileImage" id="customFile"/>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<h1>SÂN CHỜ DUYỆT</h1>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Tên chủ sân</th>
+        <th scope="col">SĐT</th>
+        <th scope="col">Tên sân</th>
+        <th scope="col">Ảnh sân</th>
+        <th scope="col">Địa chỉ sân</th>
+        <th scope="col">Xem thông tin đầy đủ và xác nhận</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ownPitch : ${ownPitchList}">
+        <td th:text="${ownPitch.name}"></td>
+        <td th:text="${ownPitch.phone}"></td>
+        <td th:text="${ownPitch.namePitch}"></td>
+
+        <td><img width="100px" height="80px" th:src="|@{upload/}${ownPitch.img1}|"></td>
+
+        <td th:text="${ownPitch.district.name}"></td>
+        <td><a class="btn btn-light" th:href="|/update?id=${ownPitch.getId()}|">UPDATE</a></td>
+    </tr>
+    </tbody>
+</table>
+<h1>SÂN ĐÃ DUYỆT</h1>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Tên chủ sân</th>
+        <th scope="col">SĐT</th>
+        <th scope="col">Tên sân</th>
+        <th scope="col">Ảnh sân</th>
+        <th scope="col">Địa chỉ sân</th>
+        <th scope="col">Tạo tài khoản</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ownPitchOk : ${ownPitchListOk}">
+        <td th:text="${ownPitchOk.name}"></td>
+        <td th:text="${ownPitchOk.phone}"></td>
+        <td th:text="${ownPitchOk.namePitch}"></td>
+        <td><img width="100px" height="80px" th:src="|@{upload/}${ownPitchOk.img1}|"></td>
+        <td th:text="${ownPitchOk.district.name}"></td>
+        <td><a class="btn btn-light" th:href="|/createacount?id=${ownPitchOk.getId()}|">Tạo tài khoản</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

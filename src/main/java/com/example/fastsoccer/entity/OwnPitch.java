@@ -50,8 +50,6 @@ public class OwnPitch {
     private String img2;
     @Column(name = "img3")//ảnh sân 3
     private String img3;
-    @Column(name = "amount")// số lượng sân
-    private Integer amount;
     @Column(name = "service")// dịch vụ đi kèm
     private String service;
     @Column(name = "status",nullable = true)//trạng thái chờ duyệt
