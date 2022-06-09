@@ -243,7 +243,7 @@
   </script>
 </head>
 
-<body>
+<body onload="disableSubmit()">
   <form class="jotform-form" action="thankyou.html" name="form_221573545412452" id="221573545412452"
     accept-charset="utf-8" autocomplete="on">
     <input type="hidden" name="formID" value="221573545412452" />
@@ -522,46 +522,10 @@
               data-component="textarea" aria-labelledby="label_33"></textarea>
           </div>
         </li>
-        <li class="form-line jf-required" data-type="control_widget" id="id_47">
-          <div id="cid_47" class="form-input-wide termsAndConditionsV2 jf-required" data-layout="full">
-            <div data-widget-name="Terms &amp;amp; Conditions" style="width:100%;text-align:Left;overflow-x:auto"
-              data-component="widget-field">
-              <iframe data-client-id="52948fb29322cd302b00000c" title="Terms &amp;amp; Conditions" frameBorder="0"
-                scrolling="no" allowtransparency="true"
-                allow="geolocation; microphone; camera; autoplay; encrypted-media; fullscreen" data-type="iframe"
-                class="custom-field-frame" id="customFieldFrame_47" src=""
-                style="max-width:650px;border:none;width:100%;height:50px" data-width="650" data-height="50">
-              </iframe>
-              <div class="widget-inputs-wrapper">
-                <input type="hidden" id="input_47" class="form-hidden form-widget widget-required " name="q47_typeA"
-                  value="" />
-                <input type="hidden" id="widget_settings_47" class="form-hidden form-widget-settings"
-                  value="%5B%7B%22name%22%3A%22termsText%22%2C%22value%22%3A%22T%C3%B4i%20%C4%91%C3%A3%20%C4%91%E1%BB%8Dc%20v%C3%A0%20%C4%91%E1%BB%93ng%20%C3%BD%20v%E1%BB%9Bi%20%7B%C4%90i%E1%BB%81u%20kho%E1%BA%A3n%20v%C3%A0%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%7D.%22%7D%2C%7B%22name%22%3A%22termsLink%22%2C%22value%22%3A%22term.html%22%7D%2C%7B%22name%22%3A%22theme%22%2C%22value%22%3A%22default%22%7D%2C%7B%22name%22%3A%22acceptedText%22%2C%22value%22%3A%22Accepted%22%7D%5D"
-                  data-version="2" />
-              </div>
-              <script type="text/javascript">
-                setTimeout(function () {
-                  var _cFieldFrame = document.getElementById("customFieldFrame_47");
-                  if (_cFieldFrame) {
-                    _cFieldFrame.onload = function () {
-                      if (typeof widgetFrameLoaded !== 'undefined') {
-                        widgetFrameLoaded(47, {
-                          "formID": 221573545412452
-                        })
-                      }
-                    };
-                    _cFieldFrame.src = "//app-widgets.jotform.io/termsConditions/?qid=47&ref=" + encodeURIComponent(window.location.protocol + "//" + window.location.host) + '&ndt=1' + '' + '&injectCSS=' + encodeURIComponent(window.location.search.indexOf("ndt=1") > -1);
-                    _cFieldFrame.addClassName("custom-field-frame-rendered");
-                  }
-                }, 0);
-              </script>
-            </div>
-          </div>
-        </li>
-        <li class="form-line" data-type="control_button" id="id_40">
+        <li class="form-line" data-type="control_button" id="submit">
           <div id="cid_40" class="form-input-wide" data-layout="full">
             <div data-align="center" class="form-buttons-wrapper form-buttons-center   jsTest-button-wrapperField">
-              <button id="input_40" type="submit"
+              <button id="submitBtn" type="submit"
                 class="form-submit-button form-submit-button-blue submit-button jf-form-buttons jsTest-submitField"
                 data-component="button" data-content="">
                 Xác nhận
@@ -578,4 +542,4 @@
 <script type="text/javascript">JotForm.ownerView = true;</script>
 <script src="https://cdn.jotfor.ms//js/vendor/smoothscroll.min.js?v=3.3.33860"></script>
 <script src="https://cdn.jotfor.ms//js/errorNavigation.js?v=3.3.33860"></script>
-<script src="assets/js/scripts.js"></script>
+<script src="../static/assets/js/scripts.js"></script>
