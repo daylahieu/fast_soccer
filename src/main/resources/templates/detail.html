@@ -1,0 +1,91 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <title>Thông tin chi tiết sân bóng</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous"/>
+    <style>
+        #ex2 {
+            border: 5px solid chocolate;
+            padding:  0em 1em;
+            border-radius: 16px;
+            font-size: 24px;
+            line-height: 2;
+        }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+
+</nav>
+<br>
+<div class="container" >
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-6" id="ex2">
+            <form  th:action="@{/own/updateStatus}" th:object="${ownPitch}" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col">
+                        <label>Tên chủ sân:</label><br>
+                        <label th:text="${ownPitch.name}"/><br>
+                        <input hidden name="name" type="text" th:value="${ownPitch.name}"/><br>
+
+                        <label>SĐT chủ sân:</label><br>
+                        <label th:text="${ownPitch.phone}"/><br>
+                        <input hidden name="name" type="text" th:value="${ownPitch.phone}"/><br>
+
+
+                        <label>Email chủ sân:</label><br>
+                        <label th:text="${ownPitch.mail}"/><br>
+                        <input hidden name="name" type="text" th:value="${ownPitch.mail}"/><br>
+
+                        <label> Tên sân bóng:</label><br>
+                        <label th:text="${ownPitch.namePitch}"/><br>
+                        <input hidden name="name" type="text" th:value="${ownPitch.namePitch}"/><br>
+
+                        <label> Quận/huyện</label><br>
+                        <input hidden name="district" type="text" th:value="${ownPitch.district.id}"/><br>
+                        <label th:text="${ownPitch.district.name}"/><br>
+
+                        <label> Địa chỉ chính xác</label><br>
+                        <label th:text="${ownPitch.address}"/><br>
+                        <input hidden name="name" type="text" th:value="${ownPitch.address}"/><br>
+
+                        <label> STK ngân hàng</label><br>
+                        <label th:text="${ownPitch.stkbank}"/><br>
+                        <input hidden name="name" type="text" th:value="${ownPitch.stkbank}"/><br>
+
+                        <label> Tên ngân hàng</label><br>
+                        <label th:text="${ownPitch.bank}"/><br>
+                        <input hidden name="name" type="text" th:value="${ownPitch.bank}"/><br>
+
+                        <label> Dịch vụ đi kèm</label><br>
+                        <label th:text="${ownPitch.service}"/><br>
+                        <input hidden name="name" type="text" th:value="${ownPitch.service}"/><br>
+                    </div>
+                    <div class="col">
+                        <br>
+
+                        <img width="100px" height="100px" th:src="|@{upload/}*{img1}|"><br>
+                        <img width="100px" height="100px" th:src="|@{upload/}*{img2}|"><br>
+                        <img width="100px" height="100px" th:src="|@{upload/}*{img3}|"><br>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary col-2">Xác nhận thông tin sân bóng</button>
+                <input type="hidden" th:field="*{id}"/>
+                <input  hidden name="status" value="true"><br>
+            </form>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

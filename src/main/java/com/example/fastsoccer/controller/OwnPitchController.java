@@ -19,6 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
@@ -44,15 +45,18 @@ public class OwnPitchController {
     @Value("${config.upload_folder}")
 String UPLOAD_FOLDER;
     @PostMapping("/registerPitch")
-    public String addPro(@ModelAttribute("obj") OwnPitch ownPitch, @RequestParam("pic1") MultipartFile file1, @RequestParam("pic2") MultipartFile file2, @RequestParam("pic3") MultipartFile file3) {
+    public String addPro(@ModelAttribute("obj") OwnPitch ownPitch,
+                         @RequestParam("pic1") MultipartFile file1,
+                         @RequestParam("pic2") MultipartFile file2,
+                         @RequestParam("pic3") MultipartFile file3) {
         String relativeFilePath1 = null;
         String relativeFilePath2 = null;
         String relativeFilePath3 = null;
         Date date = new Date();
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         int year = localDate.getYear();
-        int month = localDate.getDayOfMonth();
-        String subFolder = month + "_" + year + "/";
+        int day = localDate.getDayOfMonth();
+        String subFolder = day + "_" + year + "/";
         String fullUploadDir = UPLOAD_FOLDER + subFolder;
         File checkDir = new File(fullUploadDir);
         if (!checkDir.exists() || checkDir.isFile()) {
@@ -73,6 +77,12 @@ String UPLOAD_FOLDER;
             System.out.println("ko upload duoc");
             e.printStackTrace();
         }
+
+        ownPitchRepository.save(ownPitch);
+        return "index.html";
+    }
+    @PostMapping("/updateStatus")
+    public String updateStatus(@ModelAttribute("obj") OwnPitch ownPitch) {
 
         ownPitchRepository.save(ownPitch);
         return "index.html";

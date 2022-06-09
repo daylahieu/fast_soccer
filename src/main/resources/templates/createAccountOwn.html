@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo tài khoản cho chủ sân bóng</title>
+</head>
+<body>
+<form  th:action="@{/own/updateStatus}" th:object="${ownPitch}" method="POST" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col">
+            <label>SĐT chủ sân:</label><br>
+            <input readonly name="name" type="text" th:value="${ownPitch.phone}"/><br>
+            <label>Password</label><br>
+
+            <input name="password" id="myText" type="text"/><br>
+            <button type="button" onclick="myFunction()">Create password render</button>
+
+            <script>
+                function myFunction() {
+                    document.getElementById("myText").value =  Math.floor(Math.random() * 1000000) + 1;
+                }
+            </script>
+        </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary col-2">Xác nhận tạo tài khoản và gửi mail cho chủ sân</button>
+    <input type="hidden" name="idOwn" th:field="*{id}"/>
+    <input  hidden name="status" value="true"><br>
+</form>
+</body>
+</html>
