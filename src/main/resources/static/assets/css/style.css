@@ -1958,7 +1958,7 @@ html {
 	height: fit-content;
 	position: fixed;
 	z-index: 1;
-	bottom: 400px;
+	bottom: 20%;
 	left: 10px;
 	background: transparent;
 	overflow-x: hidden;
