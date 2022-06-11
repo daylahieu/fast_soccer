@@ -36,16 +36,16 @@
 
                         <label>SĐT chủ sân:</label><br>
                         <label th:text="${ownPitch.phone}"/><br>
-                        <input hidden name="name" type="text" th:value="${ownPitch.phone}"/><br>
+                        <input hidden name="phone" type="text" th:value="${ownPitch.phone}"/><br>
 
 
                         <label>Email chủ sân:</label><br>
                         <label th:text="${ownPitch.mail}"/><br>
-                        <input hidden name="name" type="text" th:value="${ownPitch.mail}"/><br>
+                        <input hidden name="mail" type="text" th:value="${ownPitch.mail}"/><br>
 
                         <label> Tên sân bóng:</label><br>
                         <label th:text="${ownPitch.namePitch}"/><br>
-                        <input hidden name="name" type="text" th:value="${ownPitch.namePitch}"/><br>
+                        <input hidden name="namePitch" type="text" th:value="${ownPitch.namePitch}"/><br>
 
                         <label> Quận/huyện</label><br>
                         <input hidden name="district" type="text" th:value="${ownPitch.district.id}"/><br>
@@ -53,22 +53,25 @@
 
                         <label> Địa chỉ chính xác</label><br>
                         <label th:text="${ownPitch.address}"/><br>
-                        <input hidden name="name" type="text" th:value="${ownPitch.address}"/><br>
+                        <input hidden name="address" type="text" th:value="${ownPitch.address}"/><br>
 
                         <label> STK ngân hàng</label><br>
                         <label th:text="${ownPitch.stkbank}"/><br>
-                        <input hidden name="name" type="text" th:value="${ownPitch.stkbank}"/><br>
+                        <input hidden name="stkbank" type="text" th:value="${ownPitch.stkbank}"/><br>
 
                         <label> Tên ngân hàng</label><br>
                         <label th:text="${ownPitch.bank}"/><br>
-                        <input hidden name="name" type="text" th:value="${ownPitch.bank}"/><br>
+                        <input hidden name="bank" type="text" th:value="${ownPitch.bank}"/><br>
 
                         <label> Dịch vụ đi kèm</label><br>
                         <label th:text="${ownPitch.service}"/><br>
-                        <input hidden name="name" type="text" th:value="${ownPitch.service}"/><br>
+                        <input hidden name="service" type="text" th:value="${ownPitch.service}"/><br>
                     </div>
                     <div class="col">
                         <br>
+                        <input hidden name="img1" type="text" th:value="${ownPitch.img1}"/><br>
+                        <input hidden name="img2" type="text" th:value="${ownPitch.img2}"/><br>
+                        <input hidden name="img3" type="text" th:value="${ownPitch.img3}"/><br>
 
                         <img width="100px" height="100px" th:src="|@{upload/}*{img1}|"><br>
                         <img width="100px" height="100px" th:src="|@{upload/}*{img2}|"><br>

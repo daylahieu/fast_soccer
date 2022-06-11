@@ -1,5 +1,6 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="vi" class="supernova">
+ <html lang="vi" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -244,7 +245,7 @@
 </head>
 
 <body>
-  <form class="jotform-form" action="thankyou.html" name="form_221573545412452" id="221573545412452"
+  <form class="jotform-form" th:action="@{/registerPitch}" method="post" enctype="multipart/form-data" name="form_221573545412452" id="221573545412452"
     accept-charset="utf-8" autocomplete="on">
     <input type="hidden" name="formID" value="221573545412452" />
     <input type="hidden" id="JWTContainer" value="" />
@@ -303,7 +304,7 @@
             </span>
           </label>
           <div id="cid_59" class="form-input-wide jf-required" data-layout="half">
-            <input type="text" id="input_59" name="q59_hoVa" data-type="input-textbox"
+            <input type="text" id="input_59" name="name" data-type="input-textbox"
               class="form-textbox validate[required]" data-defaultvalue="" style="width:310px" size="310" value=""
               data-component="textbox" aria-labelledby="label_59" required="" />
           </div>
@@ -316,7 +317,7 @@
             </span>
           </label>
           <div id="cid_5" class="form-input-wide jf-required" data-layout="half">
-            <input type="email" id="input_5" name="q5_email5" class="form-textbox validate[required, Email]"
+            <input type="email" id="input_5" name="mail" class="form-textbox validate[required, Email]"
               data-defaultvalue="" style="width:310px" size="310" value="" data-component="email"
               aria-labelledby="label_5" required="" />
           </div>
@@ -329,7 +330,7 @@
             </span>
           </label>
           <div id="cid_24" class="form-input-wide jf-required" data-layout="half">
-            <input type="number" id="input_24" name="q24_sDin" data-type="input-number"
+            <input type="number" id="input_24" name="phone" data-type="input-number"
               class=" form-number-input form-textbox validate[required]" data-defaultvalue="" style="width:310px"
               size="310" value="" data-component="number" aria-labelledby="label_24" required="" step="any" />
           </div>
@@ -342,7 +343,7 @@
             </span>
           </label>
           <div id="cid_43" class="form-input-wide jf-required" data-layout="half">
-            <select class="form-dropdown validate[required]" style="width:310px;" id="input_43" name="q43_nganHang">
+            <select name="bank" class="form-dropdown validate[required]" style="width:310px;" id="input_43" >
               <option value=""> Chọn ngân hàng </option>
               <option value="TP Bank"> TP Bank </option>
               <option value="BIDV"> BIDV </option>
@@ -357,9 +358,22 @@
             </span>
           </label>
           <div id="cid_53" class="form-input-wide jf-required" data-layout="half">
-            <input type="number" id="input_53" name="q53_sTai" data-type="input-number"
+            <input type="number" id="input_53" name="stkbank" data-type="input-number"
               class=" form-number-input form-textbox validate[required]" data-defaultvalue="" style="width:310px"
               size="310" value="" data-component="number" aria-labelledby="label_53" required="" step="any" />
+          </div>
+        </li>
+        <li class="form-line jf-required" data-type="control_number" id="id_53">
+          <label class="form-label form-label-left form-label-auto" id="label_53" for="input_53">
+            Tên sân bóng
+            <span class="form-required">
+              *
+            </span>
+          </label>
+          <div id="cid_53" class="form-input-wide jf-required" data-layout="half">
+            <input type="number" id="input_53" name="namePitch" data-type="input-number"
+                   class=" form-number-input form-textbox validate[required]" data-defaultvalue="" style="width:310px"
+                   size="310" value="" data-component="number" aria-labelledby="label_53" required="" step="any" />
           </div>
         </li>
         <li id="cid_23" class="form-input-wide" data-type="control_pagebreak">
@@ -401,10 +415,11 @@
             </span>
           </label>
           <div id="cid_26" class="form-input-wide jf-required" data-layout="half">
-            <select class="form-dropdown validate[required]" style="width:310px;" id="input_26" name="q26_qunHuyn">
-              <option value=""> Quận/huyện </option>
-              <option value="Thanh Xuân"> Thanh Xuân </option>
-              <option value="Hà Đông"> Hà Đông </option>
+            <select class="form-dropdown validate[required]" style="width:310px;" id="input_26" name="district">
+              <option th:each="district : ${districtList}"
+                      th:value="${district.id}"
+                      th:text="${district.name}">
+              </option>
             </select>
           </div>
         </li>
@@ -416,7 +431,7 @@
             </span>
           </label>
           <div id="cid_11" class="form-input-wide jf-required" data-layout="half">
-            <input type="text" id="input_11" name="q11_diaChi" data-type="input-textbox"
+            <input type="text" id="input_11" name="address" data-type="input-textbox"
               class="form-textbox validate[required]" data-defaultvalue="" style="width:310px" size="310" value=""
               data-component="textbox" aria-labelledby="label_11" required="" />
           </div>
@@ -452,32 +467,6 @@
             </div>
           </div>
         </li>
-        <li class="form-line jf-required" data-type="control_number" id="id_42">
-          <label class="form-label form-label-left form-label-auto" id="label_42" for="input_42"> Số lượng sân
-            <span class="form-required">
-              *
-            </span>
-          </label>
-          <div id="cid_42" class="form-input-wide" data-layout="half">
-            <input type="number" id="input_42" name="q42_sLung" data-type="input-number"
-              class=" form-number-input form-textbox validate[required]" data-defaultvalue="" style="width:50px"
-              size="50" value="" data-numbermin="1" data-numbermax="100" data-component="number"
-              aria-labelledby="label_42" step="any" />
-          </div>
-        </li>
-        <li class="form-line jf-required" data-type="control_number" id="id_60">
-          <label class="form-label form-label-left form-label-auto" id="label_60" for="input_60">
-            Giá sân/giờ
-            <span class="form-required">
-              *
-            </span>
-          </label>
-          <div id="cid_60" class="form-input-wide jf-required" data-layout="half">
-            <input type="number" id="input_60" name="q60_giaSangi" data-type="input-number"
-              class=" form-number-input form-textbox validate[required]" data-defaultvalue="" style="width:310px"
-              size="310" value="" data-component="number" aria-labelledby="label_60" required="" step="any" />
-          </div>
-        </li>
         <li class="form-line jf-required" data-type="control_widget" id="id_75">
           <label class="form-label form-label-left form-label-auto" id="label_75">
             Ảnh 1
@@ -485,10 +474,10 @@
               *
             </span>
           </label>
-          <form method="POST" action="/" enctype="multipart/form-data">
-            <input type="file" name="file" id="file1" accept="image/*" onchange="previewImage1();">
+
+            <input type="file" name="pic1" id="file1" accept="image/*" onchange="previewImage1();">
             <img id="preview1">
-          </form>
+
         </li>
         <li class="form-line jf-required" data-type="control_widget" id="id_76">
           <label class="form-label form-label-left form-label-auto" id="label_76">
@@ -497,10 +486,10 @@
               *
             </span>
           </label>
-          <form method="POST" action="/" enctype="multipart/form-data">
-            <input type="file" name="file" id="file2" accept="image/*" onchange="previewImage2();">
+
+            <input type="file" name="pic2" id="file2" accept="image/*" onchange="previewImage2();">
             <img id="preview2">
-          </form>
+
         </li>
         <li class="form-line jf-required" data-type="control_widget" id="id_77">
           <label class="form-label form-label-left form-label-auto" id="label_77">
@@ -509,19 +498,20 @@
               *
             </span>
           </label>
-          <form method="POST" action="/" enctype="multipart/form-data">
-            <input type="file" name="file" id="file3" accept="image/*" onchange="previewImage3();">
+
+            <input type="file" name="pic3"  accept="image/*" onchange="previewImage3();">
             <img id="preview3">
-          </form>
+
         </li>
         <li class="form-line" data-type="control_textarea" id="id_33">
           <label class="form-label form-label-left form-label-auto" id="label_33" for="input_33"> Dịch vụ đi kèm
           </label>
           <div id="cid_33" class="form-input-wide" data-layout="full">
-            <textarea id="input_33" class="form-textarea" name="q33_dichVu" style="width:648px;height:163px"
+            <textarea id="input_33" class="form-textarea" name="service" style="width:648px;height:163px"
               data-component="textarea" aria-labelledby="label_33"></textarea>
           </div>
         </li>
+        <input  hidden name="status" value="false"><br>
         <li class="form-line jf-required" data-type="control_widget" id="id_47">
           <div id="cid_47" class="form-input-wide termsAndConditionsV2 jf-required" data-layout="full">
             <div data-widget-name="Terms &amp;amp; Conditions" style="width:100%;text-align:Left;overflow-x:auto"

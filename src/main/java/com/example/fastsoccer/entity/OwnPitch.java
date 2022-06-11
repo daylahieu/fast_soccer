@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
+import java.util.List;
 
 
 @Getter
@@ -54,5 +55,8 @@ public class OwnPitch {
     private String service;
     @Column(name = "status",nullable = true)//trạng thái chờ duyệt
     private Boolean status;
-
+    @Column(name = "createacc",nullable = true)//trạng thái chờ duyệt
+    private String createacc;
+    @OneToMany(mappedBy = "ownPitch", cascade = CascadeType.ALL)
+    private List<Yard> yardList;
 }

@@ -18,15 +18,13 @@ public class UserEntity {
     private Long id;
     private String username;
     private String password;
-    private boolean enable;
 
-    @ManyToMany(targetEntity = RoleEntity.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "user_role",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    Set<RoleEntity>roles;
-
+/*
+    @ManyToOne
+    @JoinColumn(name="role_id", nullable=false)*/
+    private String role;
+    private Long idOwn;// id chủ sân
     @Enumerated(EnumType.STRING)
+
     private Provider provider;
 }

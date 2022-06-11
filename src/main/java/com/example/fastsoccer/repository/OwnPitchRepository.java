@@ -17,4 +17,5 @@ public interface OwnPitchRepository extends JpaRepository<OwnPitch,Long> {
     List<OwnPitch> findOwnPitchWatting();//sân chờ duyệt
     @Query("SELECT u FROM OwnPitch u WHERE u.status=1"  )
     List<OwnPitch> findOwnPitchSuccess();//sân đã được duyệt --b'1'
+   OwnPitch findAllByPhone(String phone);
 }

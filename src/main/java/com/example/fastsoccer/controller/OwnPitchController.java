@@ -3,8 +3,10 @@ package com.example.fastsoccer.controller;
 import com.example.fastsoccer.entity.District;
 import com.example.fastsoccer.entity.OwnPitch;
 
+import com.example.fastsoccer.entity.Yard;
 import com.example.fastsoccer.repository.DistricRepository;
 import com.example.fastsoccer.repository.OwnPitchRepository;
+import com.example.fastsoccer.repository.YardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -26,7 +28,7 @@ import java.util.List;
 //các chức năng cho chủ sân bóng
 @Controller
 @MultipartConfig
-@RequestMapping("/own")
+/*@RequestMapping("/own")*/
 public class OwnPitchController {
     @Autowired
     OwnPitchRepository ownPitchRepository;
@@ -34,11 +36,11 @@ public class OwnPitchController {
     @Autowired
     DistricRepository districRepository;
 
-    @GetMapping
+    @GetMapping("/showformRegisterPitch")
     public String loadDistrict(Model model) {
         List<District> districtList=districRepository.findAll();
         model.addAttribute("districtList", districtList);
-        return "formregisterOwnPitch";
+        return "registerPitch";
     }
 
 //đăng kí sân
@@ -79,12 +81,24 @@ String UPLOAD_FOLDER;
         }
 
         ownPitchRepository.save(ownPitch);
-        return "index.html";
+        return "thankyou.html";
     }
     @PostMapping("/updateStatus")
     public String updateStatus(@ModelAttribute("obj") OwnPitch ownPitch) {
 
         ownPitchRepository.save(ownPitch);
         return "index.html";
+    }
+
+@Autowired
+    YardRepository yardRepository;
+    //trang thông tin chủ sân sau khi login
+    @GetMapping("/homeOwn")
+    public String homeOwn(Model model,@RequestParam("phone") Long phone) {
+        OwnPitch ownPitch = ownPitchRepository.findAllByPhone(String.valueOf(phone));
+        Long id=ownPitch.getId().longValue();
+        List<Yard> yardList=yardRepository.findAllByOwnPitchId(id);
+        model.addAttribute("yardList", yardList);
+        return "homeOwn";
     }
 }

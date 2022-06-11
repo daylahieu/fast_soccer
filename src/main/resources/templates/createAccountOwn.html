@@ -6,13 +6,13 @@
     <title>Tạo tài khoản cho chủ sân bóng</title>
 </head>
 <body>
-<form  th:action="@{/own/updateStatus}" th:object="${ownPitch}" method="POST" enctype="multipart/form-data">
+<form  th:action="@{/admin/createAccountOwn}" th:object="${ownPitch}" method="POST" enctype="multipart/form-data">
     <div class="row">
         <div class="col">
             <label>SĐT chủ sân:</label><br>
-            <input readonly name="name" type="text" th:value="${ownPitch.phone}"/><br>
-            <label>Password</label><br>
+            <input readonly name="username" type="text" th:value="${ownPitch.phone}"/><br>
 
+            <label>Password</label><br>
             <input name="password" id="myText" type="text"/><br>
             <button type="button" onclick="myFunction()">Create password render</button>
 
@@ -21,6 +21,9 @@
                     document.getElementById("myText").value =  Math.floor(Math.random() * 1000000) + 1;
                 }
             </script>
+            <input hidden name="idOwn" type="text" th:value="${ownPitch.id}"/><br>
+            <input hidden name="role" type="text" value="OWN" /><br>
+
         </div>
     </div>
     <br>
