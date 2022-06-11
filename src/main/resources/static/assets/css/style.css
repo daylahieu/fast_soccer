@@ -1,5 +1,5 @@
 
-body { font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: 300; color: #888; line-height: 30px; text-align: center; }
+body { font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: 300; color: #888; line-height: 30px; text-align: center; margin: 0px; padding: 0px; overflow-x: hidden}
 
 strong { font-weight: 500; }
 
@@ -1958,7 +1958,7 @@ html {
 	height: fit-content;
 	position: fixed;
 	z-index: 1;
-	bottom: 400px;
+	bottom: 30%;
 	left: 10px;
 	background: transparent;
 	overflow-x: hidden;
@@ -1982,3 +1982,6 @@ html {
 	.sidenav {padding-top: 15px;}
 	.sidenav a {font-size: 18px;}
   }
+
+input[type="checkbox"]:required:invalid + label { color: red; }
+input[type="checkbox"]:required:valid + label { color: green; }

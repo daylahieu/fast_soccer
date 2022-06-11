@@ -90,9 +90,8 @@ jQuery(document).ready(function () {
         Background slideshow
     */
   $(".top-content").backstretch(
-    "assets/img/284837124_1803181136543036_2766812211706276132_n.jpg"
+    "../static/assets/img/284837124_1803181136543036_2766812211706276132_n.jpg"
   );
-  $(".section-4-container").backstretch("assets/img/pitch.jpg");
   /*
 	    Wow
 	*/
@@ -213,4 +212,19 @@ function previewImage3() {
 
     fileReader.readAsDataURL(file[0]);
   }
+}
+
+function disableSubmit() {
+  document.getElementById("submit").disabled = true;
+}
+
+function activateButton(element) {
+
+  if(element.checked) {
+    document.getElementById("submit").disabled = false;
+  }
+  else  {
+    document.getElementById("submit").disabled = true;
+  }
+
 }

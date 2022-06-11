@@ -39,6 +39,11 @@ public class AdminController {
         mav.addObject("ownPitch", ownPitch);
         return mav;
     }
+    @PostMapping("/updateStatus")
+    public String updateStatus(@ModelAttribute("obj") OwnPitch ownPitch) {
+        ownPitchRepository.save(ownPitch);
+        return "loadPitchNotAllow";
+    }
     //chuyển sang trang tạo tài khoản cho chủ sân bóng
     @GetMapping("/createacount")
     public ModelAndView createAcount(Model model, @RequestParam("id") Long id) {

@@ -17,7 +17,7 @@ public class HomeController {
     public String loadPage(Model model) {
        List<OwnPitch> ownPitchListOk=ownPitchRepository.findOwnPitchSuccess(); //hiển thị sân đã xác nhận
         model.addAttribute("ownPitchListOk", ownPitchListOk);
-        return "index.html";
+        return "index";
     }
  /*   @GetMapping("/listPitch")
     public String listPitch(Model model) {

@@ -83,12 +83,11 @@ String UPLOAD_FOLDER;
         ownPitchRepository.save(ownPitch);
         return "thankyou.html";
     }
-    @PostMapping("/updateStatus")
+  /*  @PostMapping("/updateStatus")
     public String updateStatus(@ModelAttribute("obj") OwnPitch ownPitch) {
-
         ownPitchRepository.save(ownPitch);
         return "index.html";
-    }
+    }*/
 
 @Autowired
     YardRepository yardRepository;
