@@ -68,87 +68,7 @@ img { max-width: 100%; }
 
 .sidebar ul ul li.active > a { background: #555; }
 
-.sidebar a[data-toggle="collapse"] {
-    position: relative;
-}
-
-.sidebar .dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-}
-
 .to-top { padding: 20px; text-align: center; }
-
-.sidebar .dark-light-buttons { padding: 10px 20px 30px 20px; text-align: center; }
-
-/* sidebar light */
-
-.sidebar.light { background: #fff; color: #888; }
-
-.sidebar.light .dismiss { background: #ddd; color: #888; }
-
-.sidebar.light .dismiss:hover, 
-.sidebar.light .dismiss:focus { background: #ccc; color: #888; }
-
-.sidebar.light .logo { border-color: #eee; }
-.sidebar.light .logo a { background-image: url(../img/logo.jpg); }
-
-.sidebar.light ul.menu-elements { border-color: #eee; }
-
-.sidebar.light ul li a { color: #888; }
-
-.sidebar.light ul li a:hover,
-.sidebar.light ul li a:focus,
-.sidebar.light ul li.active > a:hover,
-.sidebar.light ul li.active > a:focus { background: #ccc; color: #888; }
-
-.sidebar.light ul li.active > a, .sidebar.light a[aria-expanded="true"] {
-	background: #ddd;
-	color: #888;
-}
-
-.sidebar.light ul ul a { background: #ddd; }
-
-.sidebar.light ul ul li.active > a { background: #ccc; }
-
-.sidebar.light a.btn-customized-3 { background: #ddd; color: #888; }
-
-.sidebar.light a.btn-customized-3:hover, 
-.sidebar.light a.btn-customized-3:active, 
-.sidebar.light a.btn-customized-3:focus, 
-.sidebar.light a.btn-customized-3:active:focus, 
-.sidebar.light a.btn-customized-3.active:focus,
-.sidebar.light a.btn-customized-3.btn.btn-primary:not(:disabled):not(.disabled):active,
-.sidebar.light a.btn-customized-3.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
-	background: #ccc; color: #888;
-}
-
-.sidebar.light a.btn-customized-4.btn-customized-dark { background: #555; }
-.sidebar.light a.btn-customized-4.btn-customized-light { background: #eee; }
-
-.sidebar.light a.btn-customized-4.btn-customized-dark:hover, 
-.sidebar.light a.btn-customized-4.btn-customized-dark:active, 
-.sidebar.light a.btn-customized-4.btn-customized-dark:focus, 
-.sidebar.light a.btn-customized-4.btn-customized-dark:active:focus, 
-.sidebar.light a.btn-customized-4.btn-customized-dark.active:focus,
-.sidebar.light a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disabled):active,
-.sidebar.light a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
-	background: #ccc; color: #fff;
-}
-
-.sidebar.light a.btn-customized-4.btn-customized-light:hover, 
-.sidebar.light a.btn-customized-4.btn-customized-light:active, 
-.sidebar.light a.btn-customized-4.btn-customized-light:focus, 
-.sidebar.light a.btn-customized-4.btn-customized-light:active:focus, 
-.sidebar.light a.btn-customized-4.btn-customized-light.active:focus,
-.sidebar.light a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disabled):active,
-.sidebar.light a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
-	background: #ccc; color: #fff;
-}
-
 
 /***** Dark overlay *****/
 
@@ -1958,7 +1878,7 @@ html {
 	height: fit-content;
 	position: fixed;
 	z-index: 1;
-	bottom: 30%;
+	bottom: 25em;
 	left: 10px;
 	background: transparent;
 	overflow-x: hidden;
@@ -1983,5 +1903,3 @@ html {
 	.sidenav a {font-size: 18px;}
   }
 
-input[type="checkbox"]:required:invalid + label { color: red; }
-input[type="checkbox"]:required:valid + label { color: green; }
