@@ -1,445 +1,663 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/css/style.css">
+<html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Fast Soccer</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-	<title>Fast Soccer</title>
+    <!-- Favicons -->
+    <link href="/img/logo.jpg" rel="icon">
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&display=swap">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-		integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	<link rel="stylesheet" href="assets/css/media-queries.css">
-	<link rel="stylesheet" href="assets/css/style.css">
-	<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
-	<link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="assets/img/logo.jpg">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="vendor/aos/aos.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+
 </head>
 
 <body>
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center" style="background:#ffc107">
+    <div class="container d-flex align-items-center justify-content-between">
 
-	<!-- Wrapper -->
-	<div class="wrapper">
-		<!-- Sidebar -->
-		<nav class="sidebar">
-			<div class="sidenav">
-				<div class="logo">
-					<h3><a></a></h3>
-				</div>
+        <h1 class="logo">
+            <img src="img/logo.jpg" alt="">
+            <a th:href="|/loadPage|">Fast Soccer</a>
+        </h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
 
-				<ul class="list-unstyled menu-elements">
-					<li class="active">
-						<a href="index.html"> Trang chủ</a>
-					</li>
-					<li>
-						<a href="order.html"> Đặt sân</a>
-					</li>
-					<li>
-						<a href="registerPitch.html"> Đăng ký sân</a>
-					</li>
-					<li>
-						<a href="news.html"> Tin tức</a>
-					</li>
-					<li>
-						<a href="contact.html"> Liên hệ</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-		<!-- End sidebar -->
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content clearfix">
-					<!--Close button-->
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">×</span></button>
-					<div class="modal-body">
-						<h3 class="title">Đăng nhập</h3>
-						<p class="description"></p>
-						<div class="form-group">
-							<span class="input-icon"><i class="fa fa-user"></i></span>
-							<input type="username" class="form-control" placeholder="Tên đăng nhập">
-						</div>
-						<div class="form-group">
-							<span class="input-icon"><i class="fas fa-key"></i></span>
-							<input type="password" class="form-control" placeholder="Mật khẩu">
-						</div>
 
-						<!--forgot password-->
-						<a href="" class="forgot-pass">Quên mật khẩu?</a>
-						<!--Login Button-->
-						<button class="btn">Đăng nhập</button>
 
-						<!--Login Content-->
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content clearfix">
-					<!--Close button-->
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">×</span></button>
-					<div class="modal-body">
-						<h3 class="title">Đăng ký</h3>
-						<p class="description"></p>
-						<div class="form-group">
-							<span class="input-icon"></span>
-							<input type="email" class="form-control" placeholder="Địa chỉ email">
-						</div>
-						<div class="form-group">
-							<span class="input-icon"></span>
-							<input type="username" class="form-control" placeholder="Tên đăng nhập">
-						</div>
-						<div class="form-group">
-							<span class="input-icon"></span>
-							<input type="password" class="form-control" placeholder="Mật khẩu">
-						</div>
-						<div class="form-group">
-							<span class="input-icon"></span>
-							<input type="re-password" class="form-control" placeholder="Xác nhận mật khẩu">
-						</div>
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto active" th:href="|/loadPage|">Trang chủ</a></li>
+                <li><a class="nav-link scrollto" href="#order">Đặt sân</a></li>
+                <li class="dropdown"><a href="#"><span>Chủ sân</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                    <li><a th:href="|/showformRegisterPitch|">Đăng ký sân</a></li>
+                    <li><a th:href="|/loadmanagerown|">Trang quản lý cho chủ sân</a></li>
+                </ul>
+                <li><a class="nav-link scrollto " href="#news">Tin tức</a></li>
+                <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
+                <li class="dropdown"><a href="#"><span>Tài khoản</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a th:href="|/loadFormLogin|">Đăng nhập</a></li>
+                        <li><a th:href="|/loadFormRegister|">Đăng ký</a></li>
+                    </ul>
+                </li>
 
-						<!--Register Button-->
-						<button class="btn">Đăng ký</button>
-					</div>
-				</div>
-			</div>
-		</div>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+    </div>
+</header><!-- End Header -->
 
-		<!-- Dark overlay -->
-		<div class="overlay"></div>
+<!-- ======= Hero Section ======= -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" style="height: 25rem" src="/img/slidebar.jpg" alt="First slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" style="height: 25rem"  src="/img/slidebar2.jpg" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" style="height: 25rem" src="/img/slidebar.jpg" alt="Third slide">
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<main id="main">
 
-		<!-- Content -->
-		<div class="content">
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+        <div class="container" data-aos="fade-up">
 
-			<!-- open sidebar menu -->
-			<!-- <a class="btn open-menu" href="#" role="button">
-				<i class="fas fa-bars"></i>
-			</a> -->
+            <div class="row">
 
-			<!-- Top content -->
-			<div class="top-content section-container" id="top-content">
-				<div class="container">
-					<div class="row">
-						<div class="col col-md-10 offset-md-1 col-lg-12 offset-lg-9">
-							<div class="buttons wow fadeInUp">
-								<a class="btn btn-primary btn-customized show-modal" href="#" role="button"
-									data-toggle="modal" data-target="#myModal">
-									<i class="fas fa-key"></i> Đăng nhập
-								</a>
-								<a class="btn btn-primary btn-customized-2 show-modal" href="#" role="button"
-									data-toggle="modal" data-target="#RegisterModal">
-									<i class="fas fa-user-plus"></i> Đăng ký
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="count-box">
+                        <i class="bi bi-emoji-smile"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="200" data-purecounter-duration="1"
+                              class="purecounter"></span>
+                        <p>Happy</p>
+                    </div>
+                </div>
 
-			</div>
-			<!-- Section 5 -->
-			<div class="section-5-container section-container" id="section-5">
-				<div class="container">
-					<div class="row">
-						<div class="col section-5 section-description wow fadeIn">
-							<h2 style="color: green">Sân bóng</h2>
-							<div class="divider-1 wow fadeInUp"><span></span></div>
-						</div>
-					</div>
-					<div class="row">
+                <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+                    <div class="count-box">
+                        <i class="bi bi-geo-fill"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1"
+                              class="purecounter"></span>
+                        <p>Sân bóng</p>
+                    </div>
+                </div>
 
-						<div></div>
-						<div class="col-md-4 section-5-box wow fadeInUp" th:each="ownPitchListOk : ${ownPitchListOk}">
-							<div class="section-5-box-image"><img th:src="|@{upload/}${ownPitchListOk.img1}|"
-									alt="portfolio-1"></div>
-							<h3><a href="#" th:text="${ownPitchListOk.namePitch}" ></a> <i class="fas fa-angle-right" ></i></h3>
-							<p th:text="${ownPitchListOk.district.name}"></p>
-						</div>
-						<!--<div class="col-md-4 section-5-box wow fadeInDown">
-							<div class="section-5-box-image"><img src="../static/assets/img/pitch.jpg"
-									alt="portfolio-2"></div>
-							<h3><a href="#">Sân 2</a> <i class="fas fa-angle-right"></i></h3>
-							<p>Thông tin</p>
-						</div>
-						<div class="col-md-4 section-5-box wow fadeInUp">
-							<div class="section-5-box-image"><img src="../static/assets/img/pitch.jpg"
-									alt="portfolio-3"></div>
-							<h3><a href="#">Sân 3</a> <i class="fas fa-angle-right"></i></h3>
-							<p>Thông tin</p>
-						</div>-->
-					</div>
-					<div class="row">
-						<div class="col section-bottom-button wow fadeInUp">
-							<a class="btn btn-primary btn-customized" href="#" role="button">
-								<i></i> Xem thêm
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Section 1 -->
-			<div class="section-1-container section-container" id="section-1">
-				<div class="container">
-					<div class="s009">
-						<form>
-							<div class="inner-form">
-								<div class="basic-search">
-									<div class="input-field">
-										<input id="search" type="text" />
-										<div class="icon-wrap">
-											<svg class="svg-inline--fa fa-search fa-w-16" fill="#ccc" aria-hidden="true"
-												data-prefix="fas" data-icon="search" role="img"
-												xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-												<path
-													d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
-												</path>
-											</svg>
-										</div>
-									</div>
-								</div>
-								<div class="advance-search">
-									<div class="row">
-										<div class="input-field">
-											<div class="input-select">
-												<select data-trigger="" name="choices-single-defaul">
-													<option placeholder="" value="">Khu vực</option>
-													<option>Thanh Xuân</option>
-													<option>Cầu Giấy</option>
-												</select>
-											</div>
-										</div>
-										<div class="input-field">
-											<div class="input-select">
-												<select data-trigger="" name="choices-single-defaul">
-													<option placeholder="" value="">Giá</option>
-													<option>200,000 - 300,000</option>
-													<option>300,000 - 400,000</option>
-												</select>
-											</div>
-										</div>
-										<div class="input-field">
-											<button class="btn-search">Tìm kiếm</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</form>
-						<script src="assets/js/extention/choices.js"></script>
-						<script>
-							const customSelects = document.querySelectorAll("select");
-							const deleteBtn = document.getElementById('delete')
-							const choices = new Choices('select',
-								{
-									searchEnabled: false,
-									itemSelectText: '',
-									removeItemButton: true,
-								});
-							deleteBtn.addEventListener("click", function (e) {
-								e.preventDefault()
-								const deleteAll = document.querySelectorAll('.choices__button')
-								for (let i = 0; i < deleteAll.length; i++) {
-									deleteAll[i].click();
-								}
-							});						  
-						</script>
-					</div>
-				</div>
-			</div>
-		</div>
+                <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                    <div class="count-box">
+                        <i class="bi bi-headset"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="11" data-purecounter-duration="1"
+                              class="purecounter"></span>
+                        <p>Lượt góp ý</p>
+                    </div>
+                </div>
 
-		<!-- Section 3 -->
-		<div class="section-3-container section-container" id="section-3">
-			<div class="container">
+                <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                    <div class="count-box">
+                        <i class="bi bi-people"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="200" data-purecounter-duration="1"
+                              class="purecounter"></span>
+                        <p>User</p>
+                    </div>
+                </div>
 
-				<div class="row">
-					<div class="col section-3 section-description wow fadeIn">
-						<h2>Đến với Fast Soccer</h2>
-						<div class="divider-1 wow fadeInUp"><span></span></div>
-					</div>
-				</div>
+            </div>
 
-				<div class="row">
-					<div class="col-md-6 section-3-box wow fadeInLeft">
-						<div class="row">
-							<div class="col-md-3">
-								<div class="section-3-box-icon">
-									<i class="fas fa-search"></i>
-								</div>
-							</div>
-							<div class="col-md-9">
-								<h3>Tìm kiếm và đặt sân bóng online</h3>
-								<p>
-									Tìm kiếm và đặt sân theo địa điểm, giá thành, đặt sân nhanh chóng, tiện lợi
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 section-3-box wow fadeInLeft">
-						<div class="row">
-							<div class="col-md-3">
-								<div class="section-3-box-icon">
-									<i class="fas fa-tasks"></i>
-								</div>
-							</div>
-							<div class="col-md-9">
-								<h3>Quản lý sân bóng</h3>
-								<p>
-									Công cụ quản lý sân bóng dành cho chủ sân
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
+        </div>
+    </section><!-- End Counts Section -->
 
-				<div class="row">
-					<div class="col-md-6 section-3-box wow fadeInLeft">
-						<div class="row">
-							<div class="col-md-3">
-								<div class="section-3-box-icon">
-									<i class="fas fa-newspaper"></i>
-								</div>
-							</div>
-							<div class="col-md-9">
-								<h3>Tin tức bóng đá</h3>
-								<p>
-									Tin tức bóng đá cập nhật hàng ngày
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 section-3-box wow fadeInLeft">
-						<div class="row">
-							<div class="col-md-3">
-								<div class="section-3-box-icon">
-									<i class="fas fa-handshake"></i>
-								</div>
-							</div>
-							<div class="col-md-9">
-								<h3>Tìm đối, cáp kèo</h3>
-								<p>
-									Dễ dàng tìm đối, cáp kèo thông qua bình luận
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
 
-			</div>
-		</div>
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+        <div class="container" data-aos="fade-up">
 
-		<!-- Section 4 
-		        <div class="section-4-container section-container section-container-image-bg" id="section-4">
-			        <div class="container">
-			            <div class="row">
-			                <div class="col section-4 section-description wow fadeInLeftBig">
-			                	<h2></h2>
-			                    <p>
-			                    </p>
-			                </div>
-			            </div>
-			            <div class="row">
-			            	<div class="col section-bottom-button wow fadeInUp">
-		                        <a class="btn btn-primary btn-customized-2 scroll-link" href="#section-6" role="button">
-				            		<i class="fas fa-envelope"></i> Liên hệ
-				            	</a>
-			            	</div>
-			            </div>
-			        </div>
-		        </div>
-		        
-		        -->
-		<div class="to-top">
-			<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-		</div>
-	</div>
-	<!-- End content -->
-	<!-- End wrapper -->
-	<!-- Footer -->
-	<footer>
-		<!-- Section 6 -->
-		<div class="section-6-container section-container section-container-image-bg" id="section-6">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 col-sm-6">
-						<!--Column1-->
-						<div class="footer-pad">
-							<h4>Về Fast Soccer</h4>
-							<ul class="list-unstyled">
-								<li><a href="#"></a></li>
-								<li><a href="#">Giới thiệu Fast Soccer</a></li>
-								<li><a href="#">Điều khoản sử dụng</a></li>
-								<li><a href="#">Chính sách bảo mật</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<!--Column1-->
-						<div class="footer-pad">
-							<h4>Thông tin liên hệ</h4>
-							<ul class="list-unstyled">
-								<li><a style="color: #f35b3f">Số điện thoại:</a></li>
-								<li><a style="color: #f35b3f">Email:</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<!--Column1-->
-						<div class="footer-pad">
-							<h4>Thanh toán</h4>
-							<ul class="list-unstyled">
-								<li><a style="color: #f35b3f"><img style="height: 25px; margin-bottom: 10px"
-											src="https://static.mservice.io/img/logo-momo.png"> Momo:</a></li>
-								<li><a style="color: #f35b3f"><img style="height: 25px; margin-bottom: 10px"
-											src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png"> Tiền
-										mặt</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<h4>Follow Us</h4>
-						<ul class="social-network social-circle">
-							<li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook"></i></a>
-							</li>
-							<li><a href="#" class="icoYoutube" title="Linkedin"><i class="fab fa-youtube"></i></a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="row">
+            <div class="section-title">
+                <h2>Dịch vụ</h2>
+                <h3>Đến với <span>Fast Soccer</span></h3>
+                <p>Điểm đến số 1 cho người yêu đá bóng phủi</p>
+            </div>
 
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12 copy">
-			<p class="text-center">&copy; Copyright 2022 - Company Name. All rights reserved.</p>
-		</div>
-	</footer>
+            <section id="featured-services" class="featured-services">
+                <div class="container" data-aos="fade-up">
 
-	<!-- Javascript -->
-	<script src="assets/js/jquery-3.3.1.min.js"></script>
-	<script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-		crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-		crossorigin="anonymous"></script>
-	<script src="assets/js/jquery.backstretch.min.js"></script>
-	<script src="assets/js/wow.min.js"></script>
-	<script src="assets/js/jquery.waypoints.min.js"></script>
-	<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="assets/js/scripts.js"></script>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                                <div class="icon"><i class="fas fa-search"></i></div>
+                                <h4 class="title"><a href="">Tìm kiếm và đặt sân bóng online</a></h4>
+                                <p class="description">Tìm kiếm và đặt sân theo địa điểm, giá thành, đặt sân nhanh
+                                    chóng, tiện lợi</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                                <div class="icon"><i class="fas fa-tasks"></i></div>
+                                <h4 class="title"><a href="">Quản lý sân bóng</a></h4>
+                                <p class="description">Công cụ quản lý sân bóng dành cho chủ sân</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                                <div class="icon"><i class="fas fa-newspaper"></i></div>
+                                <h4 class="title"><a href="">Tin tức bóng đá</a></h4>
+                                <p class="description">Tin tức bóng đá cập nhật hàng ngày</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                                <div class="icon"><i class="fas fa-handshake"></i></div>
+                                <h4 class="title"><a href="">Tìm đối, cáp kèo</a></h4>
+                                <p class="description">Dễ dàng tìm đối, cáp kèo thông qua bình luận</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section><!-- End Services Section -->
+
+            <!-- ======= Testimonials Section ======= -->
+            <section id="testimonials" class="testimonials" style="background-image: url('img/yardBackground.jpg')">
+                <div class="container" data-aos="zoom-in">
+
+                    <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-item">
+                                    <img src="" class="testimonial-img" alt="">
+                                    <h3>Đặng Chí Thanh</h3>
+                                    <p>
+                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                        Đối văn phòng mà giới thiệu là đối mềm
+                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                    </p>
+                                </div>
+                            </div><!-- End testimonial item -->
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-item">
+                                    <img src="" class="testimonial-img" alt="">
+                                    <h3>Anh Lê Thành Nhân</h3>
+                                    <p>
+                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                        Trang web rất tiện lợi, giúp tôi đặt sân nhanh chóng
+                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                    </p>
+                                </div>
+                            </div><!-- End testimonial item -->
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-item">
+                                    <img src="" class="testimonial-img" alt="">
+                                    <h3>Anh Mai Minh Hiếu</h3>
+                                    <p>
+                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                        Địa chỉ uy tín, sẽ ủng hộ lâu dài
+                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                    </p>
+                                </div>
+                            </div><!-- End testimonial item -->
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-item">
+                                    <img src="" class="testimonial-img" alt="">
+                                    <h3>Lê Xuân Đức</h3>
+                                    <p>
+                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                        Quá tuyệt vời
+                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                    </p>
+                                </div>
+                            </div><!-- End testimonial item -->
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-item">
+                                    <img src="" class="testimonial-img" alt="">
+                                    <h3>Phạm Tiến</h3>
+                                    <p>
+                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                        Ủng hộ các bạn làm thêm app trên điện thoại
+                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                    </p>
+                                </div>
+                            </div><!-- End testimonial item -->
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                </div>
+            </section><!-- End Testimonials Section -->
+
+            <!-- ======= Pricing Section ======= -->
+            <section id="pricing" class="pricing">
+                <div class="container" data-aos="fade-up">
+
+                    <div class="section-title">
+                        <h2>Sân gợi ý</h2>
+                    </div>
+
+                    <!--  <div class="row">
+
+                          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+
+                              <div class="box">
+                                  <div class="card" style="width: 18rem;">
+                                      <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
+                                      <div class="card-body">
+                                          <h5 class="card-title">Sân 1</h5>
+                                          <p class="card-text">Thông tin</p>
+                                          <a href="#" class="btn btn-primary">Xem sân</a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+                              <div class="box">
+                                  <div class="card" style="width: 18rem;">
+                                      <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
+                                      <div class="card-body">
+                                          <h5 class="card-title">Sân 1</h5>
+                                          <p class="card-text">Thông tin</p>
+                                          <a href="#" class="btn btn-primary">Xem sân</a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+                              <div class="box">
+                                  <div class="card" style="width: 18rem;">
+                                      <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
+                                      <div class="card-body">
+                                          <h5 class="card-title">Sân 1</h5>
+                                          <p class="card-text">Thông tin</p>
+                                          <a href="#" class="btn btn-primary">Xem sân</a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+                              <div class="box">
+                                  <div class="card" style="width: 18rem;">
+                                      <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
+                                      <div class="card-body">
+                                          <h5 class="card-title">Sân 1</h5>
+                                          <p class="card-text">Thông tin</p>
+                                          <a href="#" class="btn btn-primary">Xem sân</a>
+                                      </div>
+                                  </div>
+                              </div>
+
+                          </div>
+
+                      </div>-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" th:each="ownPitchListOk : ${ownPitchListOk}">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top"  style="height: 10rem" th:src="|@{upload/}${ownPitchListOk.img1}|" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title" th:text="${ownPitchListOk.namePitch}"></h5>
+                                        <p class="card-text" th:text="${ownPitchListOk.district.name}"></p>
+                                        <a href="#" class="btn btn-secondary btn-lg btn-block" style="background:#ffc107" >Xem sân</a>
+                                    </div>
+                                </div>
+                            </div>
+                           <!-- <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Sân 1</h5>
+                                        <p class="card-text">Ba Đình</p>
+                                        <a href="#" class="btn btn-secondary btn-lg btn-block">Xem sân</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Sân 1</h5>
+                                        <p class="card-text">Ba Đình</p>
+                                        <a href="#" class="btn btn-secondary btn-lg btn-block">Xem sân</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Sân 1</h5>
+                                        <p class="card-text">Ba Đình</p>
+                                        <a href="#" class="btn btn-secondary btn-lg btn-block">Xem sân</a>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </section><!-- End Pricing Section -->
+
+            <!-- ======= Contact Section ======= -->
+            <!-- End Contact Section -->
+        </div>
+    </section>
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer" style="color: white">
+
+    <div class="footer-top" style="background: url('img/banner.jpg')">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h3>Fast Soccer</h3>
+                    <p>
+                        Đại học FPT <br>
+                        Khu CNC Hòa Lạc<br>
+                        Hà Nội <br><br>
+                        <strong>Số điện thoại:</strong><br>
+                        <strong>Email:</strong><br>
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Về Fast Soccer</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Giới thiệu Fast Soccer</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Điều khoản sử dụng</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Chính sách bảo mật</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Đóng góp ý kiến</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Thanh toán</h4>
+                    <ul>
+                        <li><a><img style="height: 25px; margin-bottom: 10px"
+                                    src="https://static.mservice.io/img/logo-momo.png"> Momo:</a></li>
+                        <li><a><img style="height: 25px; margin-bottom: 10px"
+                                    src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png"> Tiền
+                            mặt</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Tài khoản mạng xã hội</h4>
+                    <div class="social-links mt-3">
+                        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                        <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+   <!-- <div class="container py-4">
+        <div class="copyright">
+            &copy; Đồ án <strong><span>Fast Soccer</span></strong>. Summer 2022
+        </div>
+        <div class="credits">
+            Designed by <a href="">FastSoccer</a>
+        </div>
+    </div>-->
+</footer><!-- End Footer -->
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="vendor/purecounter/purecounter.js"></script>
+<script src="vendor/aos/aos.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/glightbox/js/glightbox.min.js"></script>
+<script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="vendor/swiper/swiper-bundle.min.js"></script>
+<script src="vendor/waypoints/noframework.waypoints.js"></script>
+<script src="vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/js/main.js"></script>
+
 </body>
+<style>
+    #footer {
+        background: #fff;
+        padding: 0 0 30px 0;
+        color: white;
+        font-size: 14px;
+        background: #f1f6fe;
+    }
 
+    #footer .footer-newsletter {
+        padding: 50px 0;
+        background: #f1f6fe;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    #footer .footer-newsletter h4 {
+        font-size: 24px;
+        margin: 0 0 20px 0;
+        padding: 0;
+        line-height: 1;
+        font-weight: 600;
+    }
+
+    #footer .footer-newsletter form {
+        margin-top: 30px;
+        background: #fff;
+        padding: 6px 10px;
+        position: relative;
+        border-radius: 4px;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.06);
+        text-align: left;
+    }
+
+    #footer .footer-newsletter form input[type=email] {
+        border: 0;
+        padding: 4px 8px;
+        width: calc(100% - 100px);
+    }
+
+    #footer .footer-newsletter form input[type=submit] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border: 0;
+        background: none;
+        font-size: 16px;
+        padding: 0 20px;
+        background: #106eea;
+        color: #fff;
+        transition: 0.3s;
+        border-radius: 0 4px 4px 0;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #footer .footer-newsletter form input[type=submit]:hover {
+        background: #0d58ba;
+    }
+
+    #footer .footer-top {
+        padding: 60px 0 30px 0;
+        background: white;
+    }
+
+    #footer .footer-top .footer-contact {
+        margin-bottom: 30px;
+    }
+
+    #footer .footer-top .footer-contact h3 {
+        font-size: 24px;
+        margin: 0 0 15px 0;
+        padding: 2px 0 2px 0;
+        line-height: 1;
+        font-weight: 700;
+    }
+
+    #footer .footer-top .footer-contact h3 span {
+        color: white;
+    }
+
+    #footer .footer-top .footer-contact p {
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 0;
+        font-family: "Roboto", sans-serif;
+        color: white;
+    }
+
+    #footer .footer-top h4 {
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        position: relative;
+        padding-bottom: 12px;
+    }
+
+    #footer .footer-top .footer-links {
+        margin-bottom: 30px;
+    }
+
+    #footer .footer-top .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    #footer .footer-top .footer-links ul i {
+        padding-right: 2px;
+        color: #106eea;
+        font-size: 18px;
+        line-height: 1;
+    }
+
+    #footer .footer-top .footer-links ul li {
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+    }
+
+    #footer .footer-top .footer-links ul li:first-child {
+        padding-top: 0;
+    }
+
+    #footer .footer-top .footer-links ul a {
+        color: white;
+        transition: 0.3s;
+        display: inline-block;
+        line-height: 1;
+    }
+
+    #footer .footer-top .footer-links ul a:hover {
+        text-decoration: none;
+        color: #106eea;
+    }
+
+    #footer .footer-top .social-links a {
+        font-size: 18px;
+        display: inline-block;
+        background: #106eea;
+        color: #fff;
+        line-height: 1;
+        padding: 8px 0;
+        margin-right: 4px;
+        border-radius: 4px;
+        text-align: center;
+        width: 36px;
+        height: 36px;
+        transition: 0.3s;
+    }
+
+    #footer .footer-top .social-links a:hover {
+        background: #3b8af2;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    #footer .copyright {
+        text-align: center;
+        float: left;
+    }
+
+    #footer .credits {
+        float: right;
+        text-align: center;
+        font-size: 13px;
+        color: #444444;
+    }
+
+    @media (max-width: 768px) {
+        #footer .copyright, #footer .credits {
+            float: none;
+            text-align: center;
+            padding: 2px 0;
+        }
+    }
+</style>
 </html>

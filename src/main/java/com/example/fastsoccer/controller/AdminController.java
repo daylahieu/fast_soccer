@@ -23,7 +23,7 @@ public class AdminController {
 
     //detail sân chờ duyệt
 
-    @GetMapping("/loadPitchNotAllow")
+    @GetMapping("/admin")
     public String loadPitchNotAllow(Model model) {
         List<OwnPitch> ownPitchList=ownPitchRepository.findOwnPitchWatting(); //hiển thị sân chưa xác nhận
         model.addAttribute("ownPitchList", ownPitchList);
@@ -42,7 +42,7 @@ public class AdminController {
     @PostMapping("/updateStatus")
     public String updateStatus(@ModelAttribute("obj") OwnPitch ownPitch) {
         ownPitchRepository.save(ownPitch);
-        return "loadPitchNotAllow";
+        return "admin";
     }
     //chuyển sang trang tạo tài khoản cho chủ sân bóng
     @GetMapping("/createacount")
@@ -56,6 +56,6 @@ public class AdminController {
     @PostMapping("/createAccountOwn")
     public String updateStatus(@ModelAttribute("obj") UserEntity userEntity) {
         userRepository.save(userEntity);
-        return "index.html";
+        return "indexold.html";
     }
 }

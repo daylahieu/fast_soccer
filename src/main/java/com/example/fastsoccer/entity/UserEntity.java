@@ -18,10 +18,12 @@ public class UserEntity {
     private Long id;
     private String username;
     private String password;
+    private String token;
 
-/*
-    @ManyToOne
-    @JoinColumn(name="role_id", nullable=false)*/
+
+    /*
+        @ManyToOne
+        @JoinColumn(name="role_id", nullable=false)*/
     private String role;
     private Long idOwn;// id chủ sân
     @Enumerated(EnumType.STRING)

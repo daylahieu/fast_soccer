@@ -3,18 +3,22 @@ package com.example.fastsoccer.controller;
 import com.example.fastsoccer.entity.District;
 import com.example.fastsoccer.entity.OwnPitch;
 
+import com.example.fastsoccer.entity.UserEntity;
 import com.example.fastsoccer.entity.Yard;
 import com.example.fastsoccer.repository.DistricRepository;
 import com.example.fastsoccer.repository.OwnPitchRepository;
 import com.example.fastsoccer.repository.YardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -86,7 +90,7 @@ String UPLOAD_FOLDER;
   /*  @PostMapping("/updateStatus")
     public String updateStatus(@ModelAttribute("obj") OwnPitch ownPitch) {
         ownPitchRepository.save(ownPitch);
-        return "index.html";
+        return "indexold.html";
     }*/
 
 @Autowired
@@ -100,4 +104,30 @@ String UPLOAD_FOLDER;
         model.addAttribute("yardList", yardList);
         return "homeOwn";
     }
+    @RequestMapping("load-manager-own")
+    public String load(Model model, HttpSession session) {
+        UserEntity userEntity = (UserEntity) session.getAttribute("user");
+
+        model.addAttribute("user", userEntity);
+        /*Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            String username = ((UserDetails)principal).getUsername();
+            model.addAttribute("userInfo", username);
+        } else {
+            String username = principal.toString();
+            model.addAttribute("userInfo", username);
+        }*/
+
+        return "ownmanager";
+    }
+    @RequestMapping(value = "/loadyardmanagerown")
+    public String loadYardManagerOwn() {
+        return "ownyard";
+    }
+    @GetMapping("/loadformaddyard")
+    public String loadformaddyard() {
+        return "ownyard";
+    }
+
 }
