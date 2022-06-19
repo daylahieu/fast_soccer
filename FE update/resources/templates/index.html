@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Fast Soccer</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/img/logo.jpg" rel="icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../static/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="index.html" class="logo"><img src="/static/img/logo.jpg" alt=""></a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="#">Trang chủ</a></li>
+                    <li><a class="nav-link scrollto" href="#order">Đặt sân</a></li>
+                    <li><a class="nav-link scrollto" href="#register">Đăng ký sân</a></li>
+                    <li><a class="nav-link scrollto " href="#news">Tin tức</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
+                    <li class="dropdown"><a href="#"><span>Tài khoản</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="#" role="button" data-toggle="modal" data-target="#myModal">Đăng nhập</a></li>
+                            <li><a href="#" role="button" data-toggle="modal" data-target="#RegisterModal">Đăng ký</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+
+        </div>
+    </header><!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <!-- <section id="hero" class="d-flex flex-column justify-content-center">
+        <div class="container" data-aos="zoom-in" data-aos-delay="100">
+        </div>
+    </section> -->
+    <!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= Counts Section ======= -->
+        <section id="counts" class="counts">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="count-box">
+                            <i class="bi bi-emoji-smile"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
+                                class="purecounter"></span>
+                            <p>Happy Clients</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+                        <div class="count-box">
+                            <i class="bi bi-journal-richtext"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
+                                class="purecounter"></span>
+                            <p>Projects</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                        <div class="count-box">
+                            <i class="bi bi-headset"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1"
+                                class="purecounter"></span>
+                            <p>Hours Of Support</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                        <div class="count-box">
+                            <i class="bi bi-people"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
+                                class="purecounter"></span>
+                            <p>Hard Workers</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Counts Section -->
+
+
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="services">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Dịch vụ</h2>
+                    <h3>Đến với <span>Fast Soccer</span></h3>
+                    <p>Điểm đến số 1 cho người yêu đá bóng phủi</p>
+                </div>
+
+                <section id="featured-services" class="featured-services">
+                    <div class="container" data-aos="fade-up">
+
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="icon"><i class="fas fa-search"></i></div>
+                                    <h4 class="title"><a href="">Tìm kiếm và đặt sân bóng online</a></h4>
+                                    <p class="description">Tìm kiếm và đặt sân theo địa điểm, giá thành, đặt sân nhanh
+                                        chóng, tiện lợi</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                                <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="icon"><i class="fas fa-tasks"></i></div>
+                                    <h4 class="title"><a href="">Quản lý sân bóng</a></h4>
+                                    <p class="description">Công cụ quản lý sân bóng dành cho chủ sân</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                                <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="icon"><i class="fas fa-newspaper"></i></div>
+                                    <h4 class="title"><a href="">Tin tức bóng đá</a></h4>
+                                    <p class="description">Tin tức bóng đá cập nhật hàng ngày</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                                <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="icon"><i class="fas fa-handshake"></i></div>
+                                    <h4 class="title"><a href="">Tìm đối, cáp kèo</a></h4>
+                                    <p class="description">Dễ dàng tìm đối, cáp kèo thông qua bình luận</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- End Services Section -->
+
+                <!-- ======= Testimonials Section ======= -->
+                <section id="testimonials" class="testimonials" style="background-image: url('img/yardBackground.jpg')">
+                    <div class="container" data-aos="zoom-in">
+
+                        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item">
+                                        <img src="" class="testimonial-img" alt="">
+                                        <h3>Đặng Chí Thanh</h3>
+                                        <p>
+                                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                            Đối văn phòng mà giới thiệu là đối mềm
+                                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                        </p>
+                                    </div>
+                                </div><!-- End testimonial item -->
+
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item">
+                                        <img src="" class="testimonial-img" alt="">
+                                        <h3>Anh Lê Thành Nhân</h3>
+                                        <p>
+                                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                            Trang web rất tiện lợi, giúp tôi đặt sân nhanh chóng
+                                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                        </p>
+                                    </div>
+                                </div><!-- End testimonial item -->
+
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item">
+                                        <img src="" class="testimonial-img" alt="">
+                                        <h3>Anh Mai Minh Hiếu</h3>
+                                        <p>
+                                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                            Địa chỉ uy tín, sẽ ủng hộ lâu dài
+                                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                        </p>
+                                    </div>
+                                </div><!-- End testimonial item -->
+
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item">
+                                        <img src="" class="testimonial-img" alt="">
+                                        <h3>Lê Xuân Đức</h3>
+                                        <p>
+                                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                            Quá tuyệt vời
+                                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                        </p>
+                                    </div>
+                                </div><!-- End testimonial item -->
+
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item">
+                                        <img src="" class="testimonial-img" alt="">
+                                        <h3>Phạm Tiến</h3>
+                                        <p>
+                                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                            Ủng hộ các bạn làm thêm app trên điện thoại
+                                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                        </p>
+                                    </div>
+                                </div><!-- End testimonial item -->
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+
+                    </div>
+                </section><!-- End Testimonials Section -->
+
+                <!-- ======= Pricing Section ======= -->
+                <section id="pricing" class="pricing">
+                    <div class="container" data-aos="fade-up">
+
+                        <div class="section-title">
+                            <h2>Sân gợi ý</h2>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+
+                                <div class="box">
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Sân 1</h5>
+                                            <p class="card-text">Thông tin</p>
+                                            <a href="#" class="btn btn-primary">Xem sân</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+                                <div class="box">
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Sân 1</h5>
+                                            <p class="card-text">Thông tin</p>
+                                            <a href="#" class="btn btn-primary">Xem sân</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+                                <div class="box">
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Sân 1</h5>
+                                            <p class="card-text">Thông tin</p>
+                                            <a href="#" class="btn btn-primary">Xem sân</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+                                <div class="box">
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Sân 1</h5>
+                                            <p class="card-text">Thông tin</p>
+                                            <a href="#" class="btn btn-primary">Xem sân</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </section><!-- End Pricing Section -->
+
+                <!-- ======= Contact Section ======= -->
+                <!-- End Contact Section -->
+            </div>
+        </section>
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+        <div class="footer-top" style="background: url('img/banner.jpg')">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h3>Fast Soccer</h3>
+                        <p>
+                            Đại học FPT <br>
+                            Khu CNC Hòa Lạc<br>
+                            Hà Nội <br><br>
+                            <strong>Số điện thoại:</strong><br>
+                            <strong>Email:</strong><br>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Về Fast Soccer</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Giới thiệu Fast Soccer</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Điều khoản sử dụng</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Chính sách bảo mật</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Đóng góp ý kiến</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Thanh toán</h4>
+                        <ul>
+                            <li><a><img style="height: 25px; margin-bottom: 10px"
+                                        src="https://static.mservice.io/img/logo-momo.png"> Momo:</a></li>
+                            <li><a><img style="height: 25px; margin-bottom: 10px"
+                                        src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png"> Tiền
+                                    mặt</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Tài khoản mạng xã hội</h4>
+                        <div class="social-links mt-3">
+                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                            <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </footer><!-- End Footer -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/static/vendor/purecounter/purecounter.js"></script>
+    <script src="/static/vendor/aos/aos.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/static/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/static/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="/static/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/static/js/main.js"></script>
+
+</body>
+
+</html>
