@@ -39,7 +39,8 @@ public class OwnPitchController {
 
     @Autowired
     DistricRepository districRepository;
-
+@Autowired
+YardRepository yardRepository;
     @GetMapping("/showformRegisterPitch")
     public String loadDistrict(Model model) {
         List<District> districtList=districRepository.findAll();
@@ -93,8 +94,7 @@ String UPLOAD_FOLDER;
         return "indexold.html";
     }*/
 
-@Autowired
-    YardRepository yardRepository;
+
     //trang thông tin chủ sân sau khi login
     @GetMapping("/homeOwn")
     public String homeOwn(Model model,@RequestParam("phone") Long phone) {
@@ -107,27 +107,28 @@ String UPLOAD_FOLDER;
     @RequestMapping("load-manager-own")
     public String load(Model model, HttpSession session) {
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
-
         model.addAttribute("user", userEntity);
-        /*Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        if (principal instanceof UserDetails) {
-            String username = ((UserDetails)principal).getUsername();
-            model.addAttribute("userInfo", username);
-        } else {
-            String username = principal.toString();
-            model.addAttribute("userInfo", username);
-        }*/
-
         return "ownmanager";
     }
+
     @RequestMapping(value = "/loadyardmanagerown")
-    public String loadYardManagerOwn() {
+    public String loadYardManagerOwn(Model model, HttpSession session) {
+        UserEntity userEntity = (UserEntity) session.getAttribute("user");
+        List<Yard> yardList=yardRepository.findAllByOwnPitchId(userEntity.getIdOwn());
+        model.addAttribute("user", userEntity);
+        model.addAttribute("yardList",yardList);
         return "ownyard";
     }
     @GetMapping("/loadformaddyard")
-    public String loadformaddyard() {
-        return "ownyard";
+    public String loadformaddyard(Model model, HttpSession session) {
+        UserEntity userEntity = (UserEntity) session.getAttribute("user");
+        model.addAttribute("user", userEntity);
+        return "add-yard";
+    }
+    @PostMapping("/addyard")
+    public String addYard(Yard yard) {
+        yardRepository.save(yard);
+        return "redirect:/loadyardmanagerown";
     }
 
 }

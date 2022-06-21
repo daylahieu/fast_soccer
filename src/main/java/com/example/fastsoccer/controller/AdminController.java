@@ -42,7 +42,7 @@ public class AdminController {
     @PostMapping("/updateStatus")
     public String updateStatus(@ModelAttribute("obj") OwnPitch ownPitch) {
         ownPitchRepository.save(ownPitch);
-        return "admin";
+        return "redirect:/admin";
     }
     //chuyển sang trang tạo tài khoản cho chủ sân bóng
     @GetMapping("/createacount")

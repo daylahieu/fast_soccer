@@ -6,12 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "yardown")
+@Table(name = "yard")
 @Entity
 public class Yard {
     @Id
@@ -19,13 +20,11 @@ public class Yard {
     private Long id;
     @Column(name = "name")
     private String name;
-    private int hour7_11;
-    private int hour11_15;
-    private int hour15_18;
-    private int hour18_20;
-    private int hour20_22;
-    private int hour22_7;
+    @Column(name = "detail")
+    private String detail;
     @ManyToOne
     @JoinColumn(name = "ownpitch_id") // thông qua khóa ngoại
     private OwnPitch ownPitch;
+    @OneToMany(mappedBy = "yardId", cascade = CascadeType.ALL)
+    private List<PriceYard> priceYardList;
 }
