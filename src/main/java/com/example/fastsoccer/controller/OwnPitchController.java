@@ -1,12 +1,10 @@
 package com.example.fastsoccer.controller;
 
-import com.example.fastsoccer.entity.District;
-import com.example.fastsoccer.entity.OwnPitch;
+import com.example.fastsoccer.entity.*;
 
-import com.example.fastsoccer.entity.UserEntity;
-import com.example.fastsoccer.entity.Yard;
 import com.example.fastsoccer.repository.DistricRepository;
 import com.example.fastsoccer.repository.OwnPitchRepository;
+import com.example.fastsoccer.repository.PriceYardRepository;
 import com.example.fastsoccer.repository.YardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -114,9 +112,13 @@ String UPLOAD_FOLDER;
     @RequestMapping(value = "/loadyardmanagerown")
     public String loadYardManagerOwn(Model model, HttpSession session) {
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
+        //hiển thị tất cả sân nhỏ
         List<Yard> yardList=yardRepository.findAllByOwnPitchId(userEntity.getIdOwn());
         model.addAttribute("user", userEntity);
         model.addAttribute("yardList",yardList);
+        //hiển thị tất cả giá tiền ở sân nhỏ theo giờ
+        List<PriceYard>priceYardList=priceYardRepository.findAllByYardId_OwnPitch_Id(userEntity.getIdOwn());
+        model.addAttribute("priceYardList",priceYardList);
         return "ownyard";
     }
     @GetMapping("/loadformaddyard")
@@ -128,6 +130,21 @@ String UPLOAD_FOLDER;
     @PostMapping("/addyard")
     public String addYard(Yard yard) {
         yardRepository.save(yard);
+        return "redirect:/loadyardmanagerown";
+    }
+    @GetMapping("/loadformaddprice")
+    public String loadformaddprice(Model model, HttpSession session) {
+        UserEntity userEntity = (UserEntity) session.getAttribute("user");
+        model.addAttribute("user", userEntity);
+        List<Yard>yardList=yardRepository.findAll();
+        model.addAttribute("yardList",yardList);
+        return "addPriceYard";
+    }
+    @Autowired
+    PriceYardRepository priceYardRepository;
+    @PostMapping("/addprice")
+    public String addPrice(PriceYard priceYard) {
+        priceYardRepository.save(priceYard);
         return "redirect:/loadyardmanagerown";
     }
 

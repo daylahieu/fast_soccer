@@ -21,6 +21,8 @@ public class PriceYard {
     private String startTime;
     @Column(name = "endTime")
     private String endTime;
+    @Column(name = "price")
+    private String price;
     @ManyToOne
     @JoinColumn(name = "yard_id") // thông qua khóa ngoại
     private Yard yardId;

@@ -81,36 +81,35 @@
         </div>
         <div class="row tm-edit-product-row">
           <div class="col-xl-6 col-lg-6 col-md-12">
-            <form th:action="@{/addPriceyard}" method="post" class="tm-edit-product-form">
+            <form th:action="@{/addprice}" method="post" class="tm-edit-product-form">
               <div class="form-group mb-3">
-                <label for="name">Tên sân</label>
-                <input id="name" name="name" type="text" class="form-control validate" required />
-              </div>
-              <div class="form-group mb-3">
-                <label>Choose a category:</label>
-
-                <select name="category">
-                  <option th:each="cate : ${listCate}"
-                          th:value="${cate.getId()}"
-                          th:text="${cate.getNameCategory()}">
+                <label>Chọn sân cần thêm khoảng giá:</label>
+                  <select name="yardId">
+                  <option th:each="yard : ${yardList}"
+                          th:value="${yard.getId()}"
+                          th:text="${yard.getName()}">
                   </option>
                 </select><br>
               </div>
-              <input hidden name="ownPitch" th:value="${user.getIdOwn()}">
+                <div class="form-group mb-3">
+                    <label for="name">Thời gian bắt đầu</label>
+                    <input id="name" name="startTime" type="text" class="form-control validate" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="name">Thời gian kết thúc</label>
+                    <input id="name" name="endTime" type="text" class="form-control validate" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="name">Giá tiền</label>
+                    <input id="name" name="price" type="text" class="form-control validate" required />
+                </div>
+             <!-- <input hidden name="ownPitch" th:value="${user.getIdOwn()}">-->
           </div>
         </div>
         <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-          <div class="row">
-            <div class="form-group mb-3 col-xs-12 col-sm-9">
-              <label>Giá tiền khung giờ 9h00-10h30</label>
-            </div>
-            <div class="form-group mb-3 col-xs-12 col-sm-3">
-              <label>120,000</label>
-            </div>
-          </div>
         </div>
         <div class="col-12">
-          <button type="submit" class="btn btn-primary btn-block text-uppercase">Xác nhận thêm sân</button>
+          <button type="submit" class="btn btn-primary btn-block text-uppercase">Xác nhận thêm giá sân</button>
         </div>
         </form>
       </div>

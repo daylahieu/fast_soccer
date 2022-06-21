@@ -102,9 +102,7 @@
               </table>
             </div>
             <!-- table container -->
-            <a
-                    th:href="|/loadformaddyard|"
-              class="btn btn-primary btn-block text-uppercase mb-3">Thêm sân</a>
+            <a th:href="|/loadformaddyard|" class="btn btn-primary btn-block text-uppercase mb-3">Thêm sân</a>
           <!--  <button class="btn btn-primary btn-block text-uppercase">
               Delete selected products
             </button>-->
@@ -116,8 +114,8 @@
             <div class="tm-product-table-container">
               <table class="table tm-table-small tm-product-table">
                 <tbody>
-                  <tr>
-                    <td class="tm-product-name">sân 1:12h-13h : 200000</td>
+                  <tr th:each="priceYard : ${priceYardList}">
+                    <td class="tm-product-name" th:text="${priceYard.getYardId().name}+':'+${priceYard.getStartTime()}+'-'+${priceYard.getEndTime()}+':'+${priceYard.getPrice()}"></td>
                     <td class="text-center">
                       <a href="#" class="tm-product-delete-link">
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
@@ -128,9 +126,10 @@
               </table>
             </div>
             <!-- table container -->
-            <button class="btn btn-primary btn-block text-uppercase mb-3">
-              Thêm giá san
-            </button>
+           <!-- <button th:href="|/loadformaddprice|" class="btn btn-primary btn-block text-uppercase mb-3">
+              Thêm giá sân
+            </button>-->
+            <a th:href="|/loadformaddprice|" class="btn btn-primary btn-block text-uppercase mb-3">Thêm giá sân</a>
           </div>
         </div>
       </div>
