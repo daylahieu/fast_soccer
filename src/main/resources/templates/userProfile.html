@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Fast Soccer</title>
+
+    <!-- CSS -->
+<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&display=swap">-->
+    <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+            rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.7.95/css/materialdesignicons.min.css">   <!--..-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/assets/css/media-queries.css">
+    <link rel="stylesheet" href="../static/assets/css/style.css">
+    <link rel="stylesheet" href="../static/assets/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="../static/assets/css/animate.css">
+    <link href="../static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../static/assets/img/logo.jpg">
+</head>
+
+<body>
+
+<!-- Wrapper -->
+<div class="wrapper">
+    <!-- Sidebar -->
+    <!-- End sidebar -->
+    <!-- Dark overlay -->
+    <div class="overlay"></div>
+
+    <!-- Content -->
+    <div class="content">
+        <header id="header" class="d-flex align-items-center">
+            <div class="container d-flex align-items-center justify-content-between">
+                <a href="index.html" class="logo"><img src="../static/assets/img/logo.jpg" alt=""></a>
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li><a class="nav-link scrollto " href="#">Trang chủ</a></li>
+                        <li><a class="nav-link scrollto" href="#order">Đặt sân</a></li>
+                        <li><a class="nav-link scrollto" href="#register">Đăng ký sân</a></li>
+                        <li><a class="nav-link scrollto " href="#news">Tin tức</a></li>
+                        <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
+                        <li class="dropdown "><a href="#" class="active"><span>Tài khoản</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="#" role="button" data-toggle="modal" data-target="#myModal">Đăng nhập</a></li>
+                                <li><a href="#" role="button" data-toggle="modal" data-target="#RegisterModal">Đăng ký</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav><!-- .navbar -->
+            </div>
+        </header>
+        <!-- Section 5 -->
+        <div class="section-5-container section-container mt-5 py-5" id="section-5">
+            <div class="container bootstrap snippet min-vh-50">
+                <h1 id="form-title" class="text-center mt-5 pt-5 ">Thông tin tài khoản</h1>
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#profile" onclick="$('#form-title').text('Thông tin tài khoản')">Tài khoản</a></li>
+                            <li ><a data-toggle="tab" href="#history" onclick="$('#form-title').text('Lịch sử đặt sân')">Lịch đặt</a></li>
+                            <li ><a data-toggle="tab" href="#notify" onclick="$('#form-title').text('Hộp thư')">Hộp thư</a></li>
+                            <li ><a data-toggle="tab" href="#change-password" onclick="$('#form-title').text('Thay đổi mật khẩu')">Mật khẩu</a></li>
+                        </ul>
+                        <hr/>
+                        <div class="tab-content pt-5">
+                            <div class="tab-pane active" id="profile">
+                                <form  id="form-profile" class="form" action="##" method="post">
+                                    <div class="row">
+                                        <div class="col-sm-3"><!--left col-->
+                                            <div id="avata-frame" class="text-center position-relative">
+                                                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar position-absolute image-circle image-thumbnail " alt="avatar">
+                                                <label for="image-change">Sửa</label>
+                                                <span class="image-change-overlay"></span>
+                                                <input id="image-change" type="file" class="text-center center-block file-upload">
+                                            </div>
+                                        </div><!--/col-3-->
+                                        <div class="col-sm-9">
+                                            <div class="form-group text-left">
+                                                <div class="col-xs-12">
+                                                    <label><h4 class="text-dark">Tên đăng nhập: User1</h4></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-left">
+                                                <div class="col-xs-6 " style="height: 6.5em">
+                                                    <label for="name"><h4 class="text-dark m-0">Họ Tên</h4></label>
+                                                    <input id="name" type="text" class="form-control" name="name"
+                                                           placeholder="Vd: Nguyễn Văn A"
+                                                            required />
+                                                    <div class="input-error-message">Tên không được để trống</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group text-left">
+                                                <div class="col-xs-6" style="height: 6.5em">
+                                                    <label for="phone"><h4 class="text-dark m-0">Số điện thoại</h4></label>
+                                                    <input type="text" class="form-control" name="phone" id="phone"
+                                                           placeholder="098x xxx xxx"
+                                                           title="Số điện thoại gồm 10 số và bắt đầu bằng 09, 08, ..."
+                                                           required>
+                                                    <div class="input-error-message">
+                                                        Số điện thoại gồm 10 ký tự
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-left">
+                                                <div class="col-xs-6" style="height: 6.5em">
+                                                    <label for="email"><h4 class="text-dark m-0">Email:</h4></label>
+                                                    <input type="email" class="form-control" name="enail" id="email"
+                                                           placeholder="example@example.com"
+                                                           title="example@example.com"
+                                                           required>
+                                                    <div class="input-error-message">
+                                                        Email không được để trống
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-left">
+                                                <div class="col-xs-6" style="height: 6.5em">
+                                                    <label for="address"><h4 class="text-dark m-0">Địa chỉ:</h4></label>
+                                                    <input type="text" class="form-control" name="address" id="address"
+                                                           placeholder="Vd: Đại học FPT, Thạch Hòa, Thạch Thất, Hà Nội"
+                                                           title="Hãy nhập địa chỉ của bạn."
+                                                            required>
+                                                    <div class="input-error-message">
+                                                        Địa chỉ không được để trống
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-left">
+
+                                                <div class="col-xs-6" style="height: 6.5em">
+                                                    <label for="province"><h4 class="text-dark m-0">Tỉnh/Thành phố:</h4></label>
+                                                    <select id="province" name="province" class="form-control form-control-lg">
+                                                        <option>Hà Nội</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-left">
+                                                <div class="col-xs-6" style="height: 6.5em">
+                                                    <label for="district"><h4 class="text-dark m-0">Quận/Huyện:</h4></label>
+                                                    <select id="district" name="district" class="form-control form-control-lg">
+                                                        <option value="01">Cầu Giấy</option>
+                                                        <option value="01">Hoàng Mai</option>
+                                                        <option value="01">Thanh Xuân</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-left">
+                                                <div class="col-xs-6" style="height: 6.5em">
+                                                    <label for="birthdate"><h4 class="text-dark m-0">Ngày sinh:</h4></label>
+                                                    <input type="date" class="form-control" name="birthdate" id="birthdate"
+                                                           placeholder="dd/mm/yyyy"
+                                                           title="Nhập ngày sinh của bạn."
+                                                            required>
+                                                    <div class="input-error-message">
+                                                        Ngày sinh không được để trống
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-left">
+                                                <div class="col-xs-6" style="height: 6.5em">
+                                                    <label><h4 class="text-dark m-0">Giới tính:</h4></label>
+                                                    <div class="form-control border-0 shadow-none">
+                                                        <div class="form-check form-check-inline mr-5">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                   id="male" value="male" checked>
+                                                            <label class="form-check-label" for="male">Nam</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline mr-5">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                   id="female" value="female">
+                                                            <label class="form-check-label" for="female">Nữ</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline mr-5">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                   id="other" value="other">
+                                                            <label class="form-check-label" for="other">Khác</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-left">
+                                                <div class="col-xs-12">
+                                                    <br>
+                                                    <button id="profile-submit" class="btn btn-lg btn-success" type="button"><i class="glyphicon glyphicon-ok-sign"></i> Cập nhật</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div><!--/tab-pane-->
+                            <div class="tab-pane " id="history">
+                                <div class="table-responsive">
+                                    <table class="table table-borderless table-hover">
+                                        <thead >
+                                        <tr class="bg-light">
+                                            <th scope="col" width="5%" class="text-center">#</th>
+                                            <th scope="col" width="10%" class="text-center">Ngày đặt</th>
+                                            <th scope="col" width="25%" class="text-center">Tên Sân</th>
+                                            <th scope="col" width="10%" class="text-center">Ngày đá</th>
+                                            <th scope="col" width="20%" class="text-center">Giờ đá</th>
+                                            <th scope="col" width="15%" class="text-center">Giá tiền</th>
+                                            <th scope="col" width="15%" class="text-center">Trạng thái</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="cursor-pointer">
+                                            <td  class="py-4 text-center">12</td>
+                                            <td  class="py-4 text-center">22-06-2022</td>
+                                            <td  class="py-4"><img src="https://i.imgur.com/VKOeFyS.png" width="25"> FPTU</td>
+                                            <td  class="py-4 text-center">22-06-2022</td>
+                                            <td  class="py-4 text-center">10:30 - 12:00</td>
+                                            <td class="text-center py-4"><span class="fw-bolder">600.000 ₫</span> <!--<i class="fa fa-ellipsis-h  ms-2"></i>--></td>
+                                            <td  class="py-4 text-center"><i class="fa fa-check-circle-o green"></i><span class="ms-1">Đã thanh toán</span></td>
+                                        </tr>
+
+                                        <tr class="cursor-pointer">
+                                            <td class="py-4 text-center">14</td>
+                                            <td class="py-4 text-center">12-06-2022</td>
+                                            <td  class="py-4"><img src="https://i.imgur.com/VKOeFyS.png" width="25"> FPTU</td>
+                                            <td  class="py-4 text-center">22-06-2022</td>
+                                            <td  class="py-4 text-center">10:30 - 12:00</td>
+                                            <td class="text-center"><span class="fw-bolder">800.000 ₫</span></td>
+                                            <td class="py-4 text-center"><i class="fa fa-dot-circle-o text-danger"></i><span class="ms-1">Đã hủy</span></td>
+                                        </tr>
+
+                                        <tr class="cursor-pointer">
+                                            <td class="py-4 text-center">17</td>
+                                            <td class="py-4 text-center">02-06-2022</td>
+                                            <td><img src="https://i.imgur.com/VKOeFyS.png" width="25"> FPTU</td>
+                                            <td  class="py-4 text-center">22-06-2022</td>
+                                            <td  class="py-4 text-center">10:30 - 12:00</td>
+                                            <td class="text-center"><span class="fw-bolder">800.000 ₫</span></td>
+                                            <td class="py-4 text-center"><i class="fa fa-check-circle-o green"></i><span class="ms-1">Đã thanh toán</span></td>
+                                        </tr>
+
+                                        <tr class="cursor-pointer">
+                                            <td class="py-4 text-center">90</td>
+                                            <td class="py-4 text-center">19-05-2022</td>
+                                            <td><img src="https://i.imgur.com/VKOeFyS.png" width="25"> FPTU</td>
+                                            <td  class="py-4 text-center">22-06-2022</td>
+                                            <td  class="py-4 text-center">10:30 - 12:00</td>
+                                            <td class="text-center"><span class="fw-bolder">700.000 ₫</span></td>
+                                            <td class="py-4 text-center"><i class="fa fa-check-circle-o green"></i><span class="ms-1">Đã thanh toán</span></td>
+                                        </tr>
+
+                                        <tr class="cursor-pointer">
+                                            <td class="py-4 text-center">12</td>
+                                            <td class="py-4 text-center">16-03-2022</td>
+                                            <td><img src="https://i.imgur.com/nmnmfGv.png" width="25"> FPTU</td>
+                                            <td  class="py-4 text-center">22-06-2022</td>
+                                            <td  class="py-4 text-center">10:30 - 12:00</td>
+                                            <td class="text-center"><span class="fw-bolder">600.000 ₫</span></td>
+                                            <td class="py-4 text-center"><i class="fa fa-check-circle-o green"></i><span class="ms-1">Đã thanh toán</span></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><!--/tab-pane-->
+                            <div class="tab-pane " id="notify">
+                            <!--/notify-->
+                                <div class="content-wrapper">
+                                    <div class="email-wrapper wrapper">
+                                        <div class="row align-items-stretch">
+                                            <div class="mail-list-container col-md-4 pt-4 pb-4 border-right bg-white">
+                                                <div class="mail-list">
+                                                    <div class="d-flex align-items-center">
+                                                        <img
+                                                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                                                alt=""
+                                                                style="width: 45px; height: 45px"
+                                                                class="rounded-circle mr-sm-5"
+                                                        />
+                                                        <div class="ms-3">
+                                                            <p class="sender-name font-weight-bold mb-3 text-left ">John Doe</p>
+                                                            <p class="message_text text-left">Change the password for your Microsoft Account using the security code 35525</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mail-list new_mail">
+                                                    <div class="d-flex align-items-center">
+                                                        <img
+                                                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                                                alt=""
+                                                                style="width: 45px; height: 45px"
+                                                                class="rounded-circle mr-sm-5"
+                                                        />
+                                                        <div class="ms-3">
+                                                            <p class="sender-name font-weight-bold mb-3 text-left ">John Doe</p>
+                                                            <p class="message_text text-left">Change the password for your Microsoft Account using the security code 35525</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mail-list">
+                                                    <div class="d-flex align-items-center">
+                                                        <img
+                                                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                                                alt=""
+                                                                style="width: 45px; height: 45px"
+                                                                class="rounded-circle mr-sm-5"
+                                                        />
+                                                        <div class="ms-3">
+                                                            <p class="sender-name font-weight-bold mb-3 text-left ">John Doe</p>
+                                                            <p class="message_text text-left">Change the password for your Microsoft Account using the security code 35525</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mail-list">
+                                                    <div class="d-flex align-items-center">
+                                                        <img
+                                                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                                                alt=""
+                                                                style="width: 45px; height: 45px"
+                                                                class="rounded-circle mr-sm-5"
+                                                        />
+                                                        <div class="ms-3">
+                                                            <p class="sender-name font-weight-bold mb-3 text-left ">John Doe</p>
+                                                            <p class="message_text text-left">Change the password for your Microsoft Account using the security code 35525</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mail-list">
+                                                    <div class="d-flex align-items-center">
+                                                        <img
+                                                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                                                alt=""
+                                                                style="width: 45px; height: 45px"
+                                                                class="rounded-circle mr-sm-5"
+                                                        />
+                                                        <div class="ms-3">
+                                                            <p class="sender-name font-weight-bold mb-3 text-left ">John Doe</p>
+                                                            <p class="message_text text-left">Change the password for your Microsoft Account using the security code 35525</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mail-list">
+                                                    <div class="d-flex align-items-center">
+                                                        <img
+                                                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                                                alt=""
+                                                                style="width: 45px; height: 45px"
+                                                                class="rounded-circle mr-sm-5"
+                                                        />
+                                                        <div class="ms-3">
+                                                            <p class="sender-name font-weight-bold mb-3 text-left ">John Doe</p>
+                                                            <p class="message_text text-left">Change the password for your Microsoft Account using the security code 35525</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="mail-view d-none d-md-block col-md-8 bg-white">
+                                                <div class="message-body">
+                                                    <div class="sender-details pb-5">
+                                                        <img class="img-sm rounded-circle mr-3" src="http://www.urbanui.com/dashflat/template/images/faces/face11.jpg" alt="avatar">
+                                                        <div class="details text-left ml-5">
+                                                            <p class="msg-subject">
+                                                                Weekly Update - Week 19 (May 8, 2017 - May 14, 2017)
+                                                            </p>
+                                                            <p class="sender-email">Sarah Graves</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="message-content text-left">
+                                                        <p>Hi Emily,</p>
+                                                        <p>This week has been a great week and the team is right on schedule with the set deadline. The team has made great progress and achievements this week. At the current rate we will be able to deliver the product right on time and meet the quality that is expected of us. Attached are the seminar report held this week by our team and the final product design that needs your approval at the earliest.</p>
+                                                        <p>For the coming week the highest priority is given to the development for <a href="http://www.urbanui.com/" target="_blank">http://www.urbanui.com/</a> once the design is approved and necessary improvements are made.</p>
+                                                        <p><br><br>Regards,<br>Sarah Graves</p>
+                                                    </div>
+                                                    <div class="attachments-sections">
+                                                        <ul>
+                                                            <li>
+                                                                <div class="thumb"><i class="mdi mdi-file-pdf"></i></div>
+                                                                <div class="details">
+                                                                    <p class="file-name">Seminar Reports.pdf</p>
+                                                                    <div class="buttons">
+                                                                        <p class="file-size">678Kb</p>
+                                                                        <a href="#" class="view">View</a>
+                                                                        <a href="#" class="download">Download</a>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="thumb"><i class="mdi mdi-file-image"></i></div>
+                                                                <div class="details">
+                                                                    <p class="file-name">Product Design.jpg</p>
+                                                                    <div class="buttons">
+                                                                        <p class="file-size">1.96Mb</p>
+                                                                        <a href="#" class="view">View</a>
+                                                                        <a href="#" class="download">Download</a>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/end notify-->
+                            </div>
+                            <div class="tab-pane" id="change-password">
+                                    <div class="col-md-6 offset-md-3 mb-5">
+                                        <form class="form" role="form" autocomplete="off">
+                                            <div class="form-group text-left">
+                                                <label for="inputPasswordOld" class="font-weight-normal">Mật khẩu hiện tại:</label>
+                                                <input type="password" class="form-control" id="inputPasswordOld" required="">
+                                            </div>
+                                            <div class="form-group text-left ">
+                                                <label for="inputPasswordNew" class="font-weight-normal">Mật khẩu mới</label>
+                                                <input type="password" class="form-control " id="inputPasswordNew" required="">
+                                                <span class="form-text small text-muted">
+                                            mật khẩu phải từ 8-20 ký tự và không được chứa khoảng trắng.
+                                        </span>
+                                            </div>
+                                            <div class="form-group text-left">
+                                                <label for="inputPasswordNewVerify" class="font-weight-normal">Nhập lại mật khẩu mới:</label>
+                                                <input type="password" class="form-control" id="inputPasswordNewVerify" required="">
+                                                <span class="form-text small text-muted">
+                                            Nhập lại mật khẩu mới để xác nhận mật khẩu.
+                                        </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-success btn-lg float-left">Xác nhận</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                            </div>
+
+                        </div><!--/tab-pane-->
+
+                    </div><!--/tab-content-->
+        </div>
+    </div>
+        <!-- Section 1 -->
+
+    </div>
+
+    <!-- Section 3 -->
+</div>
+<!-- End content -->
+<!-- End wrapper -->
+<!-- Footer -->
+<footer id="footer">
+    <div class="footer-top mt-5" style="background: url('../static/assets/img/banner.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h3>Fast Soccer</h3>
+                    <p>
+                        Đại học FPT <br>
+                        Khu CNC Hòa Lạc<br>
+                        Hà Nội <br><br>
+                        <strong>Số điện thoại:</strong><br>
+                        <strong>Email:</strong><br>
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Về Fast Soccer</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Giới thiệu Fast Soccer</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Điều khoản sử dụng</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Chính sách bảo mật</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Đóng góp ý kiến</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Thanh toán</h4>
+                    <ul>
+                        <li><a><img style="height: 25px; margin-bottom: 10px"
+                                    src="https://static.mservice.io/img/logo-momo.png"> Momo:</a></li>
+                        <li><a><img style="height: 25px; margin-bottom: 10px"
+                                    src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png"> Tiền
+                            mặt</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Tài khoản mạng xã hội</h4>
+                    <div class="social-links mt-3">
+                        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                        <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</footer><!-- End Footer -->
+<!--<div id="preloader"></div>-->
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+<!-- Javascript -->
+<script src="../static/assets/js/jquery-3.3.1.min.js"></script>
+<script src="../static/assets/js/jquery-migrate-3.0.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="../static/assets/js/jquery.backstretch.min.js"></script>
+<script src="../static/assets/js/wow.min.js"></script>
+<script src="../static/assets/js/jquery.waypoints.min.js"></script>
+<script src="../static/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../static/assets/js/scripts.js"></script>
+<script src="../static/assets/js/main.js"></script>
+</body>
+
+</html>

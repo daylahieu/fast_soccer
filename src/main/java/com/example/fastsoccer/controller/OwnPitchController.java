@@ -41,9 +41,9 @@ public class OwnPitchController {
         return "formregisterOwnPitch";
     }
 
-//đăng kí sân
+    //đăng kí sân
     @Value("${config.upload_folder}")
-String UPLOAD_FOLDER;
+    String UPLOAD_FOLDER;
     @PostMapping("/registerPitch")
     public String addPro(@ModelAttribute("obj") OwnPitch ownPitch,
                          @RequestParam("pic1") MultipartFile file1,

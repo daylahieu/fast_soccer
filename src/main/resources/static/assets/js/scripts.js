@@ -1,3 +1,6 @@
+
+
+
 function scroll_to(clicked_link, nav_height) {
   var element_class = clicked_link.attr("href").replace("#", ".");
   var scroll_to = 0;
@@ -90,7 +93,7 @@ jQuery(document).ready(function () {
         Background slideshow
     */
   $(".top-content").backstretch(
-    "../static/assets/img/284837124_1803181136543036_2766812211706276132_n.jpg"
+    "../static/assets/img/banner.jpg"
   );
   /*
 	    Wow
@@ -227,4 +230,81 @@ function activateButton(element) {
     document.getElementById("submit").disabled = true;
   }
 
+}
+$(document).ready(function() {
+  var readURL = function(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('.avatar').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+
+  $(".file-upload").on('change', function(){
+    readURL(this);
+  });
+});
+
+
+
+$("#profile-submit").on('click',function (){
+  var inputField = $('#form-profile input');
+  check(inputField);
+});
+
+var inputField = $('#form-profile input');
+check(inputField);
+
+function check(inputToCheck) {
+  for (let i = 0; i < inputToCheck.length; i++) {
+    if(inputToCheck[i].type == "radio") continue;
+    inputToCheck[i].addEventListener(
+        "input",
+        function(event) {
+          validateInFocus(event.target, event.target.nextElementSibling);
+        },
+        true
+    );
+    inputToCheck[i].addEventListener('blur', function(event){
+      validateOutFocus(event.target, event.target.nextElementSibling);
+    })
+  };
+}
+
+function validateInFocus(element, sibling) {
+  console.log(element)
+  element.classList.remove("input-error");
+  sibling.classList.remove("input-error-message");
+  if (element.value == "" || element.value == null) {
+    sibling.classList.add("input-assist-message", "is-active");
+    element.classList.add("input-assist");
+  } else if (element.value.length<8) {
+    sibling.classList.add("input-assist-message", "is-active");
+    element.classList.add("input-assist");
+  } else {
+    sibling.classList.remove("is-active");
+    element.classList.remove("input-assist");
+  }
+}
+
+function validateOutFocus(element, sibling) {
+  element.classList.remove("input-assist");
+  if (element.value == "" || element.value == null) {
+    sibling.classList.remove("input-assist-message");
+    sibling.classList.add("input-error-message", "is-active");
+    element.classList.add("input-error");
+  } else if (element.value.length<8) {
+    sibling.classList.remove("input-assist-message");
+    sibling.classList.add("input-error-message", "is-active");
+    element.classList.add("input-error");
+  } else {
+
+    sibling.classList.remove("input-error-message", "is-active");
+    element.classList.remove("input-error");
+  }
 }
