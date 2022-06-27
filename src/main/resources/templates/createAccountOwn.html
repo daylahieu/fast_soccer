@@ -6,7 +6,7 @@
     <title>Tạo tài khoản cho chủ sân bóng</title>
 </head>
 <body>
-<form  th:action="@{/admin/createAccountOwn}" th:object="${ownPitch}" method="POST" enctype="multipart/form-data">
+<form   th:action="@{/createAccountOwn}" th:object="${user}" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col">
             <label>SĐT chủ sân:</label><br>

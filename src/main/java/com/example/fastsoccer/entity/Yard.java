@@ -1,5 +1,6 @@
 package com.example.fastsoccer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -23,8 +25,10 @@ public class Yard {
     @Column(name = "detail")
     private String detail;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "ownpitch_id") // thông qua khóa ngoại
     private OwnPitch ownPitch;
     @OneToMany(mappedBy = "yardId", cascade = CascadeType.ALL)
-    private List<PriceYard> priceYardList;
+
+    private Set<PriceYard> priceYardList;
 }

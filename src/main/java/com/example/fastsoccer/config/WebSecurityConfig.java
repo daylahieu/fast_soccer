@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         response.sendRedirect("/load-form-add-yard");*/
         /*http.csrf().disable();*/
         http.authorizeRequests()
-                .antMatchers("/loadPage", "/login", "/logout", "/loadFormRegister", "/process_register").permitAll()
+                .antMatchers("/loadPage", "/login", "/logout", "/loadFormRegister", "/process_register","/showDetail").permitAll()
                 //trang quản lý của chủ sân yêu cầu quyền OWN
                 .antMatchers("/load-manager-own", "/loadyardmanagerown", "/loadformaddyard").hasAuthority("OWN")
                 // Trang chỉ dành cho ADMIN

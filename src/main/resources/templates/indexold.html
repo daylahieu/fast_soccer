@@ -357,7 +357,7 @@
 									<div class="card-body">
 										<h5 class="card-title" th:text="${ownPitchListOk.namePitch}"></h5>
 										<p class="card-text" th:text="${ownPitchListOk.district.name}"></p>
-										<a href="#" class="btn btn-secondary btn-lg btn-block" style="background:#ffc107" >Xem sân</a>
+										<a th:href="|/showDetail?id=${ownPitchListOk.id}|" class="btn btn-secondary btn-lg btn-block" style="background:#ffc107" >Xem sân</a>
 									</div>
 								</div>
 							</div>

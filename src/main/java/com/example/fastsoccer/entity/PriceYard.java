@@ -1,5 +1,6 @@
 package com.example.fastsoccer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,5 +26,6 @@ public class PriceYard {
     private String price;
     @ManyToOne
     @JoinColumn(name = "yard_id") // thông qua khóa ngoại
+    @JsonIgnore
     private Yard yardId;
 }

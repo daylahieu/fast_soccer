@@ -5,6 +5,7 @@ import com.example.fastsoccer.entity.UserEntity;
 import com.example.fastsoccer.repository.OwnPitchRepository;
 import com.example.fastsoccer.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -50,12 +51,18 @@ public class AdminController {
         ModelAndView mav = new ModelAndView("createAccountOwn");
         OwnPitch ownPitch = ownPitchRepository.findById(id).get();
         mav.addObject("ownPitch", ownPitch);
+        model.addAttribute("user", new UserEntity());
         return mav;
     }
     //tạo tài khoản cho chủ sân bóng
+
     @PostMapping("/createAccountOwn")
-    public String updateStatus(@ModelAttribute("obj") UserEntity userEntity) {
-        userRepository.save(userEntity);
-        return "indexold.html";
+    public String processRegister(UserEntity user) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+        user.setRole("OWN");
+        userRepository.save(user);
+        return "redirect:/admin";
     }
 }

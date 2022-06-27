@@ -1,22 +1,17 @@
 package com.example.fastsoccer.controller;
 
-import com.example.fastsoccer.entity.District;
-import com.example.fastsoccer.entity.OwnPitch;
-import com.example.fastsoccer.entity.UserEntity;
-import com.example.fastsoccer.repository.DistricRepository;
-import com.example.fastsoccer.repository.OwnPitchRepository;
-import com.example.fastsoccer.repository.UserRepository;
+import com.example.fastsoccer.entity.*;
+import com.example.fastsoccer.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,6 +44,8 @@ public class HomeController {
         model.addAttribute("districtList", districtList);
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
         model.addAttribute("user", userEntity);
+        int countUser=userRepository.countReview();
+        model.addAttribute("countUser",countUser);
         return "indexold";
     }
 
@@ -69,7 +66,6 @@ public class HomeController {
         user.setPassword(encodedPassword);
         user.setRole("USER");
         userRepository.save(user);
-
         return "thankyou";
     }
     @RequestMapping(value="/logout", method = RequestMethod.GET)
@@ -80,4 +76,29 @@ public class HomeController {
         }
         return "redirect:/loadPage";
     }
+    @Autowired
+    YardRepository yardRepository;
+    @Autowired
+    PriceYardRepository priceYardRepository;
+    @GetMapping("/showDetail")
+    public String showDetail(Model model, @RequestParam("id") Long id) {
+      //  ModelAndView mav = new ModelAndView("single");
+        OwnPitch ownPitch=ownPitchRepository.findById(id).get();
+        model.addAttribute("ownPitch",ownPitch);
+        List<Yard>yardList=yardRepository.findAllByOwnPitchId(id);
+        model.addAttribute("yardList",yardList);
+        List<PriceYard> priceYardList=priceYardRepository.findAllByYardId_OwnPitch_Id(id);
+        model.addAttribute("priceYardList",priceYardList);
+       // mav.addObject("ownPitch", ownPitch);
+        return "pitchDetail";
+    }
+
+
+    @GetMapping("/loadbyyard")
+    public String loadbyyard(Model model, @RequestParam("id") Long id) {
+    List<PriceYard> priceYardList=priceYardRepository.findAllByYardId(id);
+        model.addAttribute("priceYardList",priceYardList);
+        return "pitchDetail";
+    }
+
 }

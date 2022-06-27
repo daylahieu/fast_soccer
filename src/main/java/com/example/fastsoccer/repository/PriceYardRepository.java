@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface PriceYardRepository extends JpaRepository<PriceYard,Long> {
     List<PriceYard> findAllByYardId_OwnPitch_Id(Long idOwn);
+    List<PriceYard> findAllByYardId(Long idYard);
 }
