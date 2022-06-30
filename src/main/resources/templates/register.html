@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký</title>
+    <link href="../static/css/login.css" rel="stylesheet">
+</head>
+<body>
+<div class="parent clearfix">
+    <div class="bg-illustration">
+        <a href="index.html"><img src="../static/img/logo.jpg" alt="logo"></a>
+
+        <div class="burger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+    <div class="login">
+        <div class="container">
+            <h1 style="color: #ffc107">Đăng ký</h1>
+            <br>
+            <h2>Đã có tài khoản? <a href="login.html">Đăng nhập</a></h2>
+            <div class="login-form">
+                <form action="" onsubmit="return formValidation()">
+                    <input id="username" type="text" placeholder="Tên đăng nhập">
+                    <input id="password" type="password" placeholder="Mật khẩu">
+                    <input id="re-password" type="password" placeholder="Nhập lại mật khẩu">
+                    <button type="submit">Đăng ký</button>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    function formValidation() {
+        var username = document.getElementById('username').value,
+            errors = [];
+        if (username.length < 6) {
+            errors.push("Tên đăng nhập lớn hơn 6 ký tự");
+        }
+        var pass = document.getElementById('password').value,
+            errors = [];
+        if (pass.length < 8) {
+            errors.push("Mật khẩu ít nhất 8 ký tự");
+        }
+        if (pass.search(/[a-z]/i) < 0) {
+            errors.push("Mật khẩu chứa ít nhất 1 chữ cái thường");
+        }
+        if (pass.search(/[A-Z]/i) < 0) {
+            errors.push("Mật khẩu chứa ít nhất 1 chữ cái in hoa");
+        }
+        if (pass.search(/[0-9]/) < 0) {
+            errors.push("Mật khẩu chứ ít nhất 1 chữ số");
+        }
+        if (pass.search(/[.!@#$%^&*]/) < 0) {
+            errors.push("Mật khẩu chứ ít nhất 1 ký tự đặc biệt");
+        }
+        if (errors.length > 0) {
+            alert(errors.join("\n"));
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>
