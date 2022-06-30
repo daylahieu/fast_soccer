@@ -1,15 +1,9 @@
 package com.example.fastsoccer.controller;
 
 import com.example.fastsoccer.entity.*;
-
-import com.example.fastsoccer.repository.DistricRepository;
-import com.example.fastsoccer.repository.OwnPitchRepository;
-import com.example.fastsoccer.repository.PriceYardRepository;
-import com.example.fastsoccer.repository.YardRepository;
+import com.example.fastsoccer.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +17,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+
 //các chức năng cho chủ sân bóng
 @Controller
 @MultipartConfig
@@ -37,18 +31,26 @@ public class OwnPitchController {
 
     @Autowired
     DistricRepository districRepository;
-@Autowired
-YardRepository yardRepository;
+    @Autowired
+    YardRepository yardRepository;
+    //đăng kí sân
+    @Value("${config.upload_folder}")
+    String UPLOAD_FOLDER;
+    @Autowired
+    PriceYardRepository priceYardRepository;
+
     @GetMapping("/showformRegisterPitch")
     public String loadDistrict(Model model) {
-        List<District> districtList=districRepository.findAll();
+        List<District> districtList = districRepository.findAll();
         model.addAttribute("districtList", districtList);
         return "registerPitch";
     }
+  /*  @PostMapping("/updateStatus")
+    public String updateStatus(@ModelAttribute("obj") OwnPitch ownPitch) {
+        ownPitchRepository.save(ownPitch);
+        return "indexold.html";
+    }*/
 
-//đăng kí sân
-    @Value("${config.upload_folder}")
-String UPLOAD_FOLDER;
     @PostMapping("/registerPitch")
     public String addPro(@ModelAttribute("obj") OwnPitch ownPitch,
                          @RequestParam("pic1") MultipartFile file1,
@@ -86,26 +88,26 @@ String UPLOAD_FOLDER;
         ownPitchRepository.save(ownPitch);
         return "thankyou.html";
     }
-  /*  @PostMapping("/updateStatus")
-    public String updateStatus(@ModelAttribute("obj") OwnPitch ownPitch) {
-        ownPitchRepository.save(ownPitch);
-        return "indexold.html";
-    }*/
-
 
     //trang thông tin chủ sân sau khi login
-    @GetMapping("/homeOwn")
-    public String homeOwn(Model model,@RequestParam("phone") Long phone) {
+/*    @GetMapping("/homeOwn")
+    public String homeOwn(Model model, @RequestParam("phone") Long phone) {
         OwnPitch ownPitch = ownPitchRepository.findAllByPhone(String.valueOf(phone));
-        Long id=ownPitch.getId().longValue();
-        List<Yard> yardList=yardRepository.findAllByOwnPitchId(id);
+        Long id = ownPitch.getId().longValue();
+        List<Yard> yardList = yardRepository.findAllByOwnPitchId(id);
         model.addAttribute("yardList", yardList);
         return "homeOwn";
-    }
+    }*/
+@Autowired
+    BookingService bookingService;
     @RequestMapping("load-manager-own")
     public String load(Model model, HttpSession session) {
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
         model.addAttribute("user", userEntity);
+
+        List<Booking> bookingList = bookingService.findAllByPriceYardID_YardId_OwnPitch_Id(userEntity.getIdOwn());
+       // List<Booking> bookingList = bookingService.findAll();
+        model.addAttribute("bookingList", bookingList);
         return "ownmanager";
     }
 
@@ -113,35 +115,37 @@ String UPLOAD_FOLDER;
     public String loadYardManagerOwn(Model model, HttpSession session) {
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
         //hiển thị tất cả sân nhỏ
-        List<Yard> yardList=yardRepository.findAllByOwnPitchId(userEntity.getIdOwn());
+        List<Yard> yardList = yardRepository.findAllByOwnPitchId(userEntity.getIdOwn());
         model.addAttribute("user", userEntity);
-        model.addAttribute("yardList",yardList);
+        model.addAttribute("yardList", yardList);
         //hiển thị tất cả giá tiền ở sân nhỏ theo giờ
-        List<PriceYard>priceYardList=priceYardRepository.findAllByYardId_OwnPitch_Id(userEntity.getIdOwn());
-        model.addAttribute("priceYardList",priceYardList);
+        List<PriceYard> priceYardList = priceYardRepository.findAllByYardId_OwnPitch_Id(userEntity.getIdOwn());
+        model.addAttribute("priceYardList", priceYardList);
         return "ownyard";
     }
+
     @GetMapping("/loadformaddyard")
     public String loadformaddyard(Model model, HttpSession session) {
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
         model.addAttribute("user", userEntity);
         return "add-yard";
     }
+
     @PostMapping("/addyard")
     public String addYard(Yard yard) {
         yardRepository.save(yard);
         return "redirect:/loadyardmanagerown";
     }
+
     @GetMapping("/loadformaddprice")
     public String loadformaddprice(Model model, HttpSession session) {
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
         model.addAttribute("user", userEntity);
-        List<Yard>yardList=yardRepository.findAll();
-        model.addAttribute("yardList",yardList);
+        List<Yard> yardList = yardRepository.findAll();
+        model.addAttribute("yardList", yardList);
         return "addPriceYard";
     }
-    @Autowired
-    PriceYardRepository priceYardRepository;
+
     @PostMapping("/addprice")
     public String addPrice(PriceYard priceYard) {
         priceYardRepository.save(priceYard);

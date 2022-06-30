@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -20,13 +21,10 @@ public class UserEntity {
     private String password;
     private String token;
 
-
-    /*
-        @ManyToOne
-        @JoinColumn(name="role_id", nullable=false)*/
     private String role;
     private Long idOwn;// id chủ sân
     @Enumerated(EnumType.STRING)
-
     private Provider provider;
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Booking> bookingList;
 }

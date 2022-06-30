@@ -116,25 +116,26 @@
                                     <th scope="col">ORDER NO.</th>
                                     <th scope="col">Trạng thái</th>
                                     <th scope="col">Tên người đặt</th>
-                                    <th scope="col">Sân đặt</th>
+                                    <th scope="col">Vị trí sân</th>
+                                    <th scope="col">Ngày</th>
                                     <th scope="col">Khung giờ</th>
                                     <th scope="col">Giá</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row"><b>#1</b></th>
+                                <tr th:each="booking : ${bookingList}">
+                                    <th scope="row" th:text="${booking.id}"></th>
                                     <td>
                                         <div class="tm-status-circle moving">
                                         </div>Moving
                                     </td>
-                                    <td><b>Hiếu</b></td>
-                                    <td><b>Sân 1</b></td>
-                                    <td>16:00, 12/6/2022</td>
-                                    <td><b>200000</b></td>
-
+                                    <td th:text="${booking.getUserId().getUsername()}"></td>
+                                    <td th:text="${booking.getPriceYardID().getYardId().name}"></td>
+                                    <td th:text="${booking.getDateBooking()}"></td>
+                                    <td th:text="${booking.getPriceYardID().getStartTime()}+'-'+${booking.getPriceYardID().getEndTime()}"></td>
+                                    <td th:text="${booking.getPriceYardID().price}"></td>
                                 </tr>
-                                <tr>
+                                <!--<tr>
                                     <th scope="row"><b>#2</b></th>
                                     <td>
                                         <div class="tm-status-circle pending">
@@ -156,7 +157,7 @@
                                     <td><b>Sân 2</b></td>
                                     <td>12:00, 10/6/2022</td>
                                     <td><b>340000</b></td>
-                                </tr>
+                                </tr>-->
                             </tbody>
                         </table>
                     </div>

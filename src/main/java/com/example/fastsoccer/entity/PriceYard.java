@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,9 +24,11 @@ public class PriceYard {
     @Column(name = "endTime")
     private String endTime;
     @Column(name = "price")
-    private String price;
+    private Integer price;
     @ManyToOne
     @JoinColumn(name = "yard_id") // thông qua khóa ngoại
     @JsonIgnore
     private Yard yardId;
+    @OneToMany(mappedBy = "priceYardID", cascade = CascadeType.ALL)
+    private List<Booking> bookingList;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <link rel="stylesheet" href="/css/style.css">
 <html lang="en">
 
@@ -74,11 +74,34 @@
                 <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
                 <li class="dropdown"><a href="#"><span>Tài khoản</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a th:href="|/loadFormLogin|">Đăng nhập</a></li>
-                        <li><a th:href="|/loadFormRegister|">Đăng ký</a></li>
+                        <li sec:authorize="isAuthenticated()">
+                            Xin chào: <b id="nameUser1"> <span sec:authentication="name"></span></b></li>
+                        <li id="loginF" ><a th:href="|/loadFormLogin|">Đăng nhập</a></li>
+                        <li id="regisF" ><a th:href="|/loadFormRegister|">Đăng ký</a></li>
+                        <li id="logoutF"><a th:href="|/logout|">Đăng xuất</a></li>
+                        <li id="myBooking"><a th:href="|/myBooking|">Sân đã đặt</a></li>
                     </ul>
                 </li>
 
+                <script type="text/javascript">
+                    window.onload = code;
+                    //nếu chưa đăng nhập thì chỉ hiển thị login
+                    //còn nếu đăng nhập rồi thì hiển thị logout và đơn đặt sân
+                    function code() {
+                        if (document.getElementById("nameUser1") == null) {
+                            document.getElementById("loginF").hidden = false;
+                            document.getElementById("regisF").hidden = false;
+                            document.getElementById("logoutF").hidden = true;
+                            document.getElementById("myBooking").hidden = true;
+                        } else {
+                            document.getElementById("loginF").hidden = true;
+                            document.getElementById("regisF").hidden = true;
+                            document.getElementById("logoutF").hidden = false;
+                            document.getElementById("myBooking").hidden = false;
+                        }
+                    }
+
+                </script>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -294,61 +317,6 @@
                         <h2>Sân gợi ý</h2>
                     </div>
 
-                    <!--  <div class="row">
-
-                          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-
-                              <div class="box">
-                                  <div class="card" style="width: 18rem;">
-                                      <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
-                                      <div class="card-body">
-                                          <h5 class="card-title">Sân 1</h5>
-                                          <p class="card-text">Thông tin</p>
-                                          <a href="#" class="btn btn-primary">Xem sân</a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-                              <div class="box">
-                                  <div class="card" style="width: 18rem;">
-                                      <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
-                                      <div class="card-body">
-                                          <h5 class="card-title">Sân 1</h5>
-                                          <p class="card-text">Thông tin</p>
-                                          <a href="#" class="btn btn-primary">Xem sân</a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
-                              <div class="box">
-                                  <div class="card" style="width: 18rem;">
-                                      <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
-                                      <div class="card-body">
-                                          <h5 class="card-title">Sân 1</h5>
-                                          <p class="card-text">Thông tin</p>
-                                          <a href="#" class="btn btn-primary">Xem sân</a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
-                              <div class="box">
-                                  <div class="card" style="width: 18rem;">
-                                      <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
-                                      <div class="card-body">
-                                          <h5 class="card-title">Sân 1</h5>
-                                          <p class="card-text">Thông tin</p>
-                                          <a href="#" class="btn btn-primary">Xem sân</a>
-                                      </div>
-                                  </div>
-                              </div>
-
-                          </div>
-
-                      </div>-->
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" th:each="ownPitchListOk : ${ownPitchListOk}">
@@ -361,37 +329,7 @@
                                     </div>
                                 </div>
                             </div>
-                           <!-- <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Sân 1</h5>
-                                        <p class="card-text">Ba Đình</p>
-                                        <a href="#" class="btn btn-secondary btn-lg btn-block">Xem sân</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Sân 1</h5>
-                                        <p class="card-text">Ba Đình</p>
-                                        <a href="#" class="btn btn-secondary btn-lg btn-block">Xem sân</a>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="img/pitch.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Sân 1</h5>
-                                        <p class="card-text">Ba Đình</p>
-                                        <a href="#" class="btn btn-secondary btn-lg btn-block">Xem sân</a>
-                                    </div>
-                                </div>
-                            </div>-->
                         </div>
                     </div>
                 </div>

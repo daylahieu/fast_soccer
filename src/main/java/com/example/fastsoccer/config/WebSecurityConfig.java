@@ -57,10 +57,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      /*   response.sendRedirect("/load-yard-manager-own");
         response.sendRedirect("/load-form-add-yard");*/
         /*http.csrf().disable();*/
+        http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/loadPage", "/login", "/logout", "/loadFormRegister", "/process_register","/showDetail").permitAll()
                 //trang quản lý của chủ sân yêu cầu quyền OWN
                 .antMatchers("/load-manager-own", "/loadyardmanagerown", "/loadformaddyard").hasAuthority("OWN")
+                .antMatchers("/booking").hasAuthority("USER")
                 // Trang chỉ dành cho ADMIN
                 .antMatchers("/admin", "/updateStatus","/update").hasAuthority("ADMIN")
                 .and().exceptionHandling().accessDeniedPage("/403")
@@ -90,7 +92,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")//
                 .passwordParameter("password")*/
                 // Cấu hình cho Logout Page.
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logout-success").permitAll()
         ;
     }
        /* // Cấu hình Remember Me.
