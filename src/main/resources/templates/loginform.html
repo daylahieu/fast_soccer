@@ -24,7 +24,7 @@
         <div class="container">
             <h1 style="color: #ffc107">Đăng nhập</h1>
             <br>
-                <h2>Chưa có tài khoản? <a href="register.html">Đăng ký</a></h2>
+                <h2>Chưa có tài khoản? <a th:href="|/loadFormRegister|">Đăng ký</a></h2>
             <div class="login-form">
                 <form th:action="@{/login}" method="POST">
                     <input name="username" id="username" type="text" placeholder="Tên đăng nhập">

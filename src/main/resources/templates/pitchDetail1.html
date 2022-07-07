@@ -71,25 +71,28 @@
                     <ul>
                         <li sec:authorize="isAuthenticated()">
                             Xin chào: <b id="nameUser1"> <span sec:authentication="name"></span></b></li>
-                        <li id="loginF" ><a th:href="|/loadFormLogin|">Đăng nhập</a></li>
-                        <li id="regisF" ><a th:href="|/loadFormRegister|">Đăng ký</a></li>
+                        <li id="loginF"><a th:href="|/loadFormLogin|">Đăng nhập</a></li>
+                        <li id="regisF"><a th:href="|/loadFormRegister|">Đăng ký</a></li>
                         <li id="logoutF"><a th:href="|/logout|">Đăng xuất</a></li>
+                        <li id="myBooking"><a th:href="|/myBooking|">Sân đã đặt</a></li>
                     </ul>
                 </li>
 
                 <script type="text/javascript">
                     window.onload = code;
                     //nếu chưa đăng nhập thì chỉ hiển thị login
-                    //còn nếu đăng nhập rồi thì hiển thị logout và giỏ hàng
+                    //còn nếu đăng nhập rồi thì hiển thị logout và đơn đặt sân
                     function code() {
                         if (document.getElementById("nameUser1") == null) {
                             document.getElementById("loginF").hidden = false;
                             document.getElementById("regisF").hidden = false;
                             document.getElementById("logoutF").hidden = true;
+                            document.getElementById("myBooking").hidden = true;
                         } else {
                             document.getElementById("loginF").hidden = true;
                             document.getElementById("regisF").hidden = true;
                             document.getElementById("logoutF").hidden = false;
+                            document.getElementById("myBooking").hidden = false;
                         }
                     }
 
@@ -359,7 +362,7 @@
                                                     <input name="id" value="${p.id}" type="radio" checked autocomplete="off" style="display: none"  >${p.startTime} - ${p.endTime}
                                                 </label>
                                             </div>
-`))
+                                            `))
                 }
             });
         ;
@@ -372,7 +375,7 @@
 
     function getPrice(value) {
         var money = Math.floor(value / 1000) + 'K';
-        document.getElementById("price").innerText = "Giá: " + money;
+        document.getElementById("price").innerText = "Giá: " + money + " VND";
     }
 
     function passValue() {

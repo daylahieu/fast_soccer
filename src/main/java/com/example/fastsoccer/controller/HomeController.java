@@ -5,6 +5,9 @@ import com.example.fastsoccer.entity.*;
 import com.example.fastsoccer.repository.*;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +25,8 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import static org.thymeleaf.util.StringUtils.substring;
 
 //trang home
 @Controller
@@ -73,6 +78,11 @@ public class HomeController {
         user.setPassword(encodedPassword);
         user.setRole("USER");
         userRepository.save(user);
+        //gưi tinh nhắn thông báo đến user
+        Twilio.init("ACb451dd21c4c07f810dd8d7d3351678bf", "bb6c8342627a5f6602ea99c6e476bd86");
+        String truePhone=substring(user.getUsername(),1);
+        Message.creator(new PhoneNumber("+84"+truePhone),
+                new PhoneNumber("+14845099386"), "Fast soccer chúc mừng bạn đăng kí thành công 📞").create();
         return "thankyou";
     }
 
@@ -174,7 +184,7 @@ public class HomeController {
         vnp_Params.put("vnp_ExpireDate", vnp_ExpireDate);
         //Billing
         vnp_Params.put("vnp_Bill_Mobile", "09123891");
-        vnp_Params.put("vnp_Bill_Email", "huuquangnh@gmail.com");
+        vnp_Params.put("vnp_Bill_Email", "maiminhhieu1999@gmail.com");
         String fullName = "Quang dz".trim();
         if (fullName != null && !fullName.isEmpty()) {
             int idx = fullName.indexOf(' ');
@@ -238,19 +248,25 @@ public class HomeController {
     public String myBooking(HttpSession session, Model model) {
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
         if (userEntity == null) {
-            return "redirect:/login";
+            return "redirect:/loadFormLogin";
         }else {
-            List<Booking> bookingList = bookingService.findAllByUserId(userEntity);
+            List<Booking> bookingList = bookingService.findAllByUserId1(userEntity);
             model.addAttribute("bookingList", bookingList);
             return "myBooking";
         }
     }
 
     @GetMapping("/user/pay")
-    public String payvn(@RequestParam("id") Long id,Model model) {
+    public String payvn(@RequestParam("id") Long id,Model model,HttpSession session) {
         Booking booking = bookingService.findById(id).get();
         booking.setStatus(true);
         bookingService.save(booking);
+        //gưi tinh nhắn thông báo đến user
+        UserEntity userEntity = (UserEntity) session.getAttribute("user");
+        Twilio.init("ACb451dd21c4c07f810dd8d7d3351678bf", "bb6c8342627a5f6602ea99c6e476bd86");
+        String truePhone=substring(userEntity.getUsername(),1);
+        Message.creator(new PhoneNumber("+84"+truePhone),
+                new PhoneNumber("+14845099386"), "Fast soccer thông tin đặt sân: "+booking.getPriceYardID().getYardId().getName()+" thời gian: "+booking.getPriceYardID().getStartTime()+"-"+booking.getPriceYardID().getEndTime()).create();
         //hien thi file html
         model.addAttribute("booking", booking);
         return "bookingsuccess";

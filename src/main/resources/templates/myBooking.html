@@ -130,6 +130,11 @@
         </tbody>
     </table>
 </main><!-- End #main -->
+<script>
+    function formatMoney(n) {
+        return "$ " + (Math.round(n * 100) / 100).toLocaleString();
+    }
+</script>
 
 <!-- ======= Footer ======= -->
 <footer id="footer" style="background: url('img/banner.jpg') center">

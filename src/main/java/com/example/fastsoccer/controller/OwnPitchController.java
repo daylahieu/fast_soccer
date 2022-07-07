@@ -105,7 +105,7 @@ public class OwnPitchController {
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
         model.addAttribute("user", userEntity);
 
-        List<Booking> bookingList = bookingService.findAllByPriceYardID_YardId_OwnPitch_Id(userEntity.getIdOwn());
+        List<Booking> bookingList = bookingService.findAllByPriceYardID_YardId_OwnPitch_IdAndStatusIsTrue(userEntity.getIdOwn());
        // List<Booking> bookingList = bookingService.findAll();
         model.addAttribute("bookingList", bookingList);
         return "ownmanager";
