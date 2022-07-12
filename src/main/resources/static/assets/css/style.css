@@ -14,12 +14,12 @@ body {
 }
 
 a {
-	color: #106eea;
+	color: red;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #3b8af2;
+	color: red;
 	text-decoration: none;
 }
 
@@ -188,7 +188,7 @@ h1, h2, h3, h4, h5, h6 {
 # Navigation Menu
 --------------------------------------------------------------*/
 /**
-* Desktop Navigation 
+* Desktop Navigation
 */
 .navbar {
 	padding: 0;
@@ -241,7 +241,7 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 }
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-	color: #106eea;
+        color: #106eea;
 }
 .navbar .dropdown ul {
 	display: block;
@@ -296,7 +296,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /**
-* Mobile Navigation 
+* Mobile Navigation
 */
 .mobile-nav-toggle {
 	color: #222222;
@@ -1379,7 +1379,7 @@ section {
 --------------------------------------------------------------*/
 #footer {
 	background: #fff;
-	margin-top: 5em;
+	padding: 0 0 0 0;
 	font-size: 14px;
 	background: #f1f6fe;
 	bottom: 0px;
@@ -1431,8 +1431,8 @@ section {
 }
 #footer .footer-top {
 	color: white;
-	padding: 60px 0 30px 0;
-	background: url("/static/img/banner.jpg");
+	padding: 60px 0 0 0;
+	background: url("../img/banner.jpg");
 }
 #footer .footer-top .footer-contact {
 	margin-bottom: 30px;
@@ -1566,7 +1566,7 @@ section {
 }
 .heading-section {
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 70px;
 }
 .sub-heading {
 	font-size: 12px;
@@ -1632,12 +1632,7 @@ section {
 .product-thumb .item img {
 	height: 100px;
 }
-.product-name {
-	font-size: 22px;
-	font-weight: 500;
-	line-height: 22px;
-	margin-bottom: 4px;
-}
+
 .product-price-discount {
 	font-size: 22px;
 	font-weight: 400;
@@ -1767,7 +1762,9 @@ section {
 }
 .product-info-tabs .nav-tabs .nav-item {
 	margin-bottom: 0;
+	position: relative;
 }
+
 .product-info-tabs .nav-tabs .nav-link {
 	border: none;
 	border-bottom: 2px solid transparent;
@@ -1779,8 +1776,8 @@ section {
 .product-info-tabs .nav-tabs .nav-item.show .nav-link,
 .product-info-tabs .nav-tabs .nav-link.active,
 .product-info-tabs .nav-tabs .nav-link.active:hover {
-	border: none;
-	border-bottom: 2px solid #d8d8d8;
+	border: 2px solid #dee2e6;
+	border-bottom: 2px solid #ffff;
 	font-weight: bold;
 }
 .product-info-tabs .tab-content .tab-pane {
@@ -1821,6 +1818,13 @@ section {
 	text-transform: uppercase;
 	cursor: pointer;
 }
+.product-slider .item img{
+	height: 300px;
+	width: 450px;
+}
+
+
+/*Custom css by Duc*/
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 #priceTime{
@@ -1951,42 +1955,6 @@ section {
 	border-bottom-color: #f3ded7;
 }
 
-.input-assist-message{
-	font-size: 1.3rem;
-	line-height: 1.5rem;
-	padding: 0.3rem 0.5rem;
-	color: rgba(0,0,0,0.75);
-	background-color: #f3edc7;
-	border: 1px solid #e4d154;
-	position: relative;
-	margin-top: 0.5rem;
-	display: none;
-}
-.input-assist-message:before{
-	content:"";
-	position:absolute;
-	left: 11px;
-	top: -16px;
-	width: 0;
-	height: 0;
-	pointer-events: none;
-	border: 8px solid transparent;
-	border-bottom-color: #e4d154;
-}
-.input-assist-message:after{
-	content:"";
-	position:absolute;
-	left: 11px;
-	top: -15px;
-	width: 0;
-	height: 0;
-	pointer-events: none;
-	border: 8px solid transparent;
-	border-bottom-color: #f3edc7;
-}
-.input-assist-message.is-active{
-	display: inline-block;
-}
 .form .is-active{
 	display: inline-block;
 }
@@ -2305,4 +2273,121 @@ section {
 	color: #cc404a;
 	cursor: pointer;
 }
+
+.sliding-middle-out {
+	display: inline-block;
+	position: relative;
+	padding-bottom: 3px;
+	cursor: pointer;
+}
+.sliding-middle-out:after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 2px;
+	width: 0px;
+	background: transparent;
+	transition: width .5s ease, background-color .5s ease;
+}
+.sliding-middle-out:hover:after {
+	width: 100%;
+	background: blue;
+}
+
+.view-more-btn{
+	color: #828282 !important;
+	text-decoration: none !important;
+}
+.view-more-btn:hover{
+	color: #323232 !important;
+	transition: color .2s ease-in-out !important;
+}
+
+.btn-view{
+	position: relative;
+	overflow: hidden;
+	transition: all .5s;
+}
+.btn-view:hover{
+	border-color: #ffaa54 !important;
+}
+
+.btn-view:before{
+	width: 100%;
+	height: 100%;
+	content: '';
+	margin: auto;
+	position: absolute;
+	top:  0;
+	left: -100%;
+	background: #ffaa54;
+	transition: all .5s;
+	z-index: 10;
+}
+
+.btn-view:hover span{
+	color: white;
+}
+.btn-view:hover:before{
+	left: 0;
+}
+
+.btn-view span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+	z-index: 100;
+}
+
+.btn-view span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+	z-index: 100;
+}
+
+.btn-view:hover span {
+	padding-right: 25px;
+}
+
+.btn-view:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+
+#pagination {
+	margin: 0;
+	padding: 0;
+	text-align: center
+}
+#pagination li {
+	display: inline
+}
+#pagination li a {
+	display: inline-block;
+	text-decoration: none;
+	padding: 5px 10px;
+	color: #000;
+	font-size: 1.2em;
+}
+
+/* Active and Hoverable Pagination */
+#pagination li a {
+	border-radius: 5px;
+	-webkit-transition: background-color 0.3s;
+	transition: background-color 0.3s
+
+}
+#pagination li a.active {
+	background-color: #4caf50;
+	color: #fff
+}
+#pagination li a:hover:not(.active) {
+	background-color: #ddd;
+}
+
 /*End custom css*/
