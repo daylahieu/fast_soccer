@@ -1,0 +1,315 @@
+<!DOCTYPE>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Tìm đối</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FontAweome CDN Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <!-- Favicons -->
+    <link href="img/logo.jpg" rel="icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="vendor/aos/aos.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="index.html" class="logo"><img src="/img/logo.jpg" alt=""></a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="#">Trang chủ</a></li>
+                    <li><a class="nav-link scrollto" href="#order">Đặt sân</a></li>
+                    <li><a class="nav-link scrollto" href="#register">Đăng ký sân</a></li>
+                    <li><a class="nav-link scrollto " href="#news">Tin tức</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
+                    <li class="dropdown"><a href="#"><span>Tài khoản</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="#" role="button" data-toggle="modal" data-target="#myModal">Đăng nhập</a></li>
+                            <li><a href="#" role="button" data-toggle="modal" data-target="#RegisterModal">Đăng ký</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+
+        </div>
+    </header>
+    <main id="main">
+        <nav class="navbar navbar-light bg-white">
+            <a href="#" class="navbar-brand"></a>
+            <form class="form-inline">
+                <div class="input-group">
+                    <select data-menu>
+                        <option disabled selected hidden>Vị trí</option>
+                        <option>Thanh Xuân</option>
+                        <option>Hà Đông</option>
+                        <option>Đống Đa</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="button" id="button-addon2">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </nav>
+
+        <!-- ======= Details Section ======= -->
+        <section>
+            <!--- \\\\\\\Post-->
+            <div class="card gedf-card">
+                <form>
+                    <div class="card-body">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="posts" role="tabpanel"
+                                aria-labelledby="posts-tab">
+                                <div class="form-group">
+                                    <label class="sr-only" for="message">Đăng bài</label>
+                                    <textarea class="form-control" id="message" rows="3" placeholder=""></textarea>
+
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" id="customFile">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="btn-toolbar justify-content-between">
+                            <div>
+                                <select data-menu>
+                                    <option disabled selected hidden>Vị trí</option>
+                                    <option>Thanh Xuân</option>
+                                    <option>Hà Đông</option>
+                                    <option>Đống Đa</option>
+                                </select>
+                            </div>
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-primary">Đăng bài</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Post /////-->
+
+            <!--- \\\\\\\Post-->
+            <div class="card gedf-card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mr-2">
+                                <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                            </div>
+                            <div class="ml-2">
+                                <div class="h5 m-0">Nguyễn Thành Long</div>
+                                <div class="h7 text-muted">@ntl</div>
+                            </div>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>15 phút trước</div>
+                    <a class="card-link" style="color: royalblue">
+                        <h5 class="card-title">Cần tìm đối ở Thanh Xuân</h5>
+                    </a>
+
+                    <p class="card-text">
+                        Mình cần tìm đối đá lúc 20h tối ngày 11/7
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a type="button" class="card-link" data-toggle="reply-form" data-target="comment-1-reply-form"><i
+                            class="fa fa-comment"></i> Bình luận</a>
+                </div>
+                <form method="POST" class="reply-form d-none" id="comment-1-reply-form">
+                    <textarea placeholder="Đăng bình luận" rows="4"></textarea>
+                    <button type="submit" class="btn btn-primary">Xác nhận</button>
+                    <button type="button" data-toggle="reply-form" data-target="comment-1-reply-form"
+                        class="btn btn-secondary">Huỷ</button>
+                </form>
+            </div>
+            <!-- Post /////-->
+
+
+            <!--- \\\\\\\Post-->
+            <div class="card gedf-card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mr-2">
+                                <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                            </div>
+                            <div class="ml-2">
+                                <div class="h5 m-0">Mai Minh Hiếu</div>
+                                <div class="h7 text-muted"> @mmh </div>
+                            </div>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> 20 phút trước</div>
+                    <a class="card-link" style="color: royalblue">
+                        <h5 class="card-title"> Cần tìm đối ở Đống Đa </h5>
+                    </a>
+
+                    <p class="card-text">
+                        Mình cần tìm đối đá lúc 20h tối ngày 11/7
+                    </p>
+                    <div>
+                        <span class="badge badge-primary">Đống Đa</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a type="button" class="card-link" data-toggle="reply-form" data-target="comment-2-reply-form"><i
+                            class="fa fa-comment"></i> Bình luận</a>
+                </div>
+                <form method="POST" class="reply-form d-none" id="comment-2-reply-form">
+                    <textarea placeholder="Đăng bình luận" rows="4"></textarea>
+                    <button type="submit" class="btn btn-primary">Xác nhận</button>
+                    <button type="button" data-toggle="reply-form" data-target="comment-2-reply-form"
+                        class="btn btn-secondary">Huỷ</button>
+                </form>
+            </div>
+            <!-- Post /////-->
+
+        </section><!-- End Counts Section -->
+    </main>
+
+    <footer id="footer" style="background: url('img/banner.jpg') center">
+
+        <div class="footer-top">
+            <div class=" container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h3>Fast Soccer</h3>
+                        <p>
+                            Đại học FPT <br>
+                            Khu CNC Hòa Lạc<br>
+                            Hà Nội <br><br>
+                            <strong>Số điện thoại:</strong><br>
+                            <strong>Email:</strong><br>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Về Fast Soccer</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Giới thiệu Fast Soccer</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Điều khoản sử dụng</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Chính sách bảo mật</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Đóng góp ý kiến</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Thanh toán</h4>
+                        <ul>
+                            <li><a><img style="height: 25px; margin-bottom: 10px"
+                                        src="https://static.mservice.io/img/logo-momo.png"> Momo:</a></li>
+                            <li><a><img style="height: 25px; margin-bottom: 10px"
+                                        src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png"> Tiền
+                                    mặt</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Tài khoản mạng xã hội</h4>
+                        <div class="social-links mt-3">
+                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                            <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="vendor/purecounter/purecounter.js"></script>
+    <script src="vendor/aos/aos.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="js/main.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

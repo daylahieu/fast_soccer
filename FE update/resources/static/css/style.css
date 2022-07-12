@@ -1379,10 +1379,9 @@ section {
 --------------------------------------------------------------*/
 #footer {
   background: #fff;
-  padding: 0 0 30px 0;
+  padding: 0 0 0 0;
   font-size: 14px;
   background: #f1f6fe;
-  bottom: 0px;
 }
 #footer .footer-newsletter {
   padding: 50px 0;
@@ -1432,7 +1431,7 @@ section {
 #footer .footer-top {
   color: white;
   padding: 60px 0 30px 0;
-  background: url("/static/img/banner.jpg");
+  background: url("../img/banner.jpg");
 }
 #footer .footer-top .footer-contact {
   margin-bottom: 30px;
@@ -1820,4 +1819,43 @@ section {
 .review-form .round-black-btn {
 	text-transform: uppercase;
 	cursor: pointer;
+}
+
+/* Matching */
+.gedf-wrapper {
+  margin-top: 0.97rem;
+}
+
+@media (min-width: 992px) {
+  .gedf-main {
+      padding-left: 4rem;
+      padding-right: 4rem;
+  }
+  .gedf-card {
+      margin-bottom: 2.77rem;
+  }
+}
+
+.reply-form textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+.d-none {
+  display: none;
+}
+button:hover,
+button:focus,
+button:active {
+    cursor: pointer;
+    background-color: #ecf0f1;
+}
+
+/**Reset Bootstrap*/
+.dropdown-toggle::after {
+  content: none;
+  display: none;
 }

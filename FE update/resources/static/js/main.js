@@ -298,7 +298,7 @@
 $(document).ready(function () {
   var slider = $("#slider");
   var thumb = $("#thumb");
-  var slidesPerPage = 4; //globaly define number of elements per page
+  var slidesPerPage = 3; //globaly define number of elements per page
   var syncedSecondary = true;
   slider
     .owlCarousel({
@@ -317,9 +317,11 @@ $(document).ready(function () {
     })
     .owlCarousel({
       items: slidesPerPage,
+      margin: 10,
       dots: false,
       nav: true,
-      item: 4,
+      loop: true,
+      item: 3,
       smartSpeed: 200,
       slideSpeed: 500,
       slideBy: slidesPerPage,
@@ -382,3 +384,35 @@ $(document).ready(function () {
     }
   });
 });
+
+$('[data-toggle="buttons"] .btn').on("click", function () {
+  // toggle style
+  $(this).toggleClass(
+    "btn-outline-dark btn-outline-success border-success bi-check"
+  );
+  // toggle checkbox
+  var $chk = $(this).find("[type=checkbox]");
+  $chk.prop("checked", !$chk.prop("checked"));
+
+  return false;
+});
+
+$("form").on("submit", function (e) {
+  // watch form values
+  $("#formValues").html($("form").serialize());
+  e.preventDefault();
+});
+
+/*Matching*/
+document.addEventListener(
+  "click",
+  function (event) {
+    var target = event.target;
+    var replyForm;
+    if (target.matches("[data-toggle='reply-form']")) {
+      replyForm = document.getElementById(target.getAttribute("data-target"));
+      replyForm.classList.toggle("d-none");
+    }
+  },
+  false
+);
