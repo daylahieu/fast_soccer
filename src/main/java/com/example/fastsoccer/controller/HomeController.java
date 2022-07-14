@@ -35,7 +35,7 @@ import static org.thymeleaf.util.StringUtils.substring;
 @Controller
 public class HomeController {
     private final static String ACCOUNT_SID = "ACb451dd21c4c07f810dd8d7d3351678bf";
-    private final static String AUTH_ID = "78291a4460246323349d348c30ec9e5f";
+    private final static String AUTH_ID = "f42adea0fc1519cff5b7019d4fe81838";
     @Autowired
     OwnPitchRepository ownPitchRepository;
     @Autowired
@@ -83,22 +83,22 @@ public class HomeController {
     }
 
     @PostMapping("/process_register")
-    public String processRegister(UserEntity user,HttpSession session) {
+    public String processRegister(UserEntity user, HttpSession session) {
         List<String> listUsername = userRepository.getListUsername();
-        if (listUsername.contains(user.getUsername())){
+        if (listUsername.contains(user.getUsername())) {
             session.setAttribute("userExit", "SDT đã tồn tại");
             return "redirect:/loadFormRegister";
-        }else {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-        user.setRole("USER");
-        userRepository.save(user);
-        //gưi tinh nhắn thông báo đến user
-        Twilio.init(ACCOUNT_SID, AUTH_ID);
-        String truePhone = substring(user.getUsername(), 1);
-        Message.creator(new PhoneNumber("+84" + truePhone),
-                new PhoneNumber("+14845099386"), "Fast soccer chúc mừng bạn đăng kí thành công 📞").create();
+        } else {
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            String encodedPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(encodedPassword);
+            user.setRole("USER");
+            userRepository.save(user);
+            //gưi tinh nhắn thông báo đến user
+            Twilio.init(ACCOUNT_SID, AUTH_ID);
+            String truePhone = substring(user.getUsername(), 1);
+            Message.creator(new PhoneNumber("+84" + truePhone),
+                    new PhoneNumber("+14845099386"), "Fast soccer chúc mừng bạn đăng kí thành công 📞").create();
         }
         return "thankyou";
     }
@@ -346,11 +346,18 @@ public class HomeController {
             return "changePassword";
         }
     }
+    /*
+    * @author: HieuMM
+    * @since: 14-Jul-22 2:55 PM
+    * @description-VN:  Thay đổi mật khẩu nếu đúng OTP
+    * @description-EN:
+    * @param:
+    * */
 
     @PostMapping("/changePassword")
     public String changePassword(@RequestParam("password") String password, @RequestParam("otp") Integer otp, HttpSession session) {
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
-        if (!otp.equals(userEntity.getToken()) ) {
+        if (!otp.equals(userEntity.getToken())) {
             session.setAttribute("OTPchangePassword", "sai OTP");
             return "changePassword";
         } else if (userEntity.getToken().equals(otp)) {
@@ -366,5 +373,40 @@ public class HomeController {
         }
     }
 
+    @GetMapping("/loadFormforgotPassword")
+    public String loadFormforgotPassword() {
+
+        return "forgotPassword";
+    }
+/*
+* @author: HieuMM
+* @since: 14-Jul-22 2:54 PM
+* @description-VN:  Gửi mật khẩu mới cho user
+* @description-EN:
+* @param:
+* */
+    @PostMapping("/forgotPassword")
+    public String forgotPassword(@RequestParam("username") String username, HttpSession session) {
+        UserEntity userEntity = userRepository.findAllByUsername(username);
+        if (userEntity == null) {
+            session.setAttribute("userNotExit", "Tài khoản không tồn tại !");
+            return "redirect:/loadFormforgotPassword";
+        } else {
+            String password="123@123Ha";
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            String encodedPassword = passwordEncoder.encode(password);
+            userEntity.setPassword(encodedPassword);
+            userRepository.save(userEntity);
+            String message = "Mật khẩu mới của bạn là:  " + password;
+            //gưi tinh nhắn thông báo đến user
+            Twilio.init(ACCOUNT_SID, AUTH_ID);
+            String truePhone = substring(userEntity.getUsername(), 1);
+            Message.creator(new PhoneNumber("+84" + truePhone),
+                    new PhoneNumber("+14845099386"), message).create();
+            return "redirect:/loadFormLogin";
+        }
+
+
+    }
 }
 
