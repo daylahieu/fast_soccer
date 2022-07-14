@@ -15,7 +15,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,7 +42,14 @@ public class HomeController {
     UserRepository userRepository;
     @Autowired
     BookingService bookingService;
-
+    @Autowired
+    YardRepository yardRepository;
+    @Autowired
+    PriceYardRepository priceYardRepository;
+    @Autowired
+    PostRepository postRepository;
+    private final static String ACCOUNT_SID = "ACb451dd21c4c07f810dd8d7d3351678bf";
+    private final static String AUTH_ID = "";
     @GetMapping("/loadPage")
     public String loadPage(Model model) {
         List<OwnPitch> ownPitchListOk = ownPitchRepository.findOwnPitchSuccess(); //hiển thị sân đã xác nhận
@@ -60,7 +70,7 @@ public class HomeController {
         return "redirect:/loadPage";
     }
 
-    @GetMapping( "/loadFormLogin")
+    @GetMapping("/loadFormLogin")
     public String loadFormLogin() {
         return "loginform";
     }
@@ -79,14 +89,14 @@ public class HomeController {
         user.setRole("USER");
         userRepository.save(user);
         //gưi tinh nhắn thông báo đến user
-        Twilio.init("ACb451dd21c4c07f810dd8d7d3351678bf", "bb6c8342627a5f6602ea99c6e476bd86");
-        String truePhone=substring(user.getUsername(),1);
-        Message.creator(new PhoneNumber("+84"+truePhone),
+        Twilio.init(ACCOUNT_SID, AUTH_ID);
+        String truePhone = substring(user.getUsername(), 1);
+        Message.creator(new PhoneNumber("+84" + truePhone),
                 new PhoneNumber("+14845099386"), "Fast soccer chúc mừng bạn đăng kí thành công 📞").create();
         return "thankyou";
     }
 
-    @GetMapping( "/logout-success")
+    @GetMapping("/logout-success")
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
@@ -94,11 +104,6 @@ public class HomeController {
         }
         return "redirect:/loadPage";
     }
-
-    @Autowired
-    YardRepository yardRepository;
-    @Autowired
-    PriceYardRepository priceYardRepository;
 
     @GetMapping("/showDetail")
     public String showDetail(Model model, @RequestParam("id") Long id) {
@@ -112,7 +117,6 @@ public class HomeController {
         // mav.addObject("ownPitch", ownPitch);
         return "pitchDetail1";
     }
-
 
     @GetMapping("/loadbyyard")
     public String loadbyyard(Model model, @RequestParam("id") Long id) {
@@ -170,7 +174,7 @@ public class HomeController {
         } else {
             vnp_Params.put("vnp_Locale", "vn");
         }
-        vnp_Params.put("vnp_ReturnUrl", Config.vnp_Returnurl+booking.getId());
+        vnp_Params.put("vnp_ReturnUrl", Config.vnp_Returnurl + booking.getId());
         vnp_Params.put("vnp_IpAddr", vnp_IpAddr);
         Calendar cld = Calendar.getInstance(TimeZone.getTimeZone("Etc/GMT+7"));
 
@@ -203,7 +207,7 @@ public class HomeController {
         // Invoice
         vnp_Params.put("vnp_Inv_Phone", "0963089510");
         vnp_Params.put("vnp_Inv_Email", "coolquanghuu@gmail.com");
-        vnp_Params.put("vnp_Inv_Customer","nguyen huu quang");
+        vnp_Params.put("vnp_Inv_Customer", "nguyen huu quang");
         vnp_Params.put("vnp_Inv_Address", "Ha Noi");
         vnp_Params.put("vnp_Inv_Company", "CY");
         vnp_Params.put("vnp_Inv_Taxcode", "32222");
@@ -241,15 +245,15 @@ public class HomeController {
         job.addProperty("message", "success");
         job.addProperty("data", paymentUrl);
         Gson gson = new Gson();
-        return  "redirect:"+paymentUrl;
+        return "redirect:" + paymentUrl;
     }
 
-    @GetMapping( "/myBooking")
+    @GetMapping("/myBooking")
     public String myBooking(HttpSession session, Model model) {
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
         if (userEntity == null) {
             return "redirect:/loadFormLogin";
-        }else {
+        } else {
             List<Booking> bookingList = bookingService.findAllByUserId1(userEntity);
             model.addAttribute("bookingList", bookingList);
             return "myBooking";
@@ -257,19 +261,95 @@ public class HomeController {
     }
 
     @GetMapping("/user/pay")
-    public String payvn(@RequestParam("id") Long id,Model model,HttpSession session) {
+    public String payvn(@RequestParam("id") Long id, Model model, HttpSession session) {
         Booking booking = bookingService.findById(id).get();
         booking.setStatus(true);
         bookingService.save(booking);
         //gưi tinh nhắn thông báo đến user
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
-        Twilio.init("ACb451dd21c4c07f810dd8d7d3351678bf", "bb6c8342627a5f6602ea99c6e476bd86");
-        String truePhone=substring(userEntity.getUsername(),1);
-        Message.creator(new PhoneNumber("+84"+truePhone),
-                new PhoneNumber("+14845099386"), "Fast soccer thông tin đặt sân: "+booking.getPriceYardID().getYardId().getName()+" thời gian: "+booking.getPriceYardID().getStartTime()+"-"+booking.getPriceYardID().getEndTime()).create();
+        Twilio.init("ACb451dd21c4c07f810dd8d7d3351678bf", "78291a4460246323349d348c30ec9e5f");
+        String truePhone = substring(userEntity.getUsername(), 1);
+        Message.creator(new PhoneNumber("+84" + truePhone),
+                new PhoneNumber("+14845099386"), "Fast soccer thông tin đặt sân: " + booking.getPriceYardID().getYardId().getName() + " thời gian: " + booking.getPriceYardID().getStartTime() + "-" + booking.getPriceYardID().getEndTime()).create();
         //hien thi file html
         model.addAttribute("booking", booking);
         return "bookingsuccess";
+    }
+
+    @GetMapping("/loadPost")
+    public String loadPost(Model model) {
+        List<Post> postList = postRepository.findAll();
+        model.addAttribute("postList", postList);
+        return "post";
+    }
+
+    @PostMapping("/postMatching")
+    public String postMatching(Post post, HttpSession session) {
+        UserEntity userEntity = (UserEntity) session.getAttribute("user");
+        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+
+        post.setPublicationTime(date);
+        post.setUserEntity(userEntity);
+        postRepository.save(post);
+        return "redirect:/loadMatching";
+    }
+
+    @GetMapping("/loadMatching")
+    public String loadMatching(Model model) {
+        List<District> districtList = districRepository.findAll();
+        model.addAttribute("districtList", districtList);
+        List<Post> postList = postRepository.findAll();
+        model.addAttribute("postList", postList);
+        return "matching";
+    }
+    @GetMapping("/loadUserProfile")
+    public String loadUserProfile(HttpSession session, Model model) {
+        UserEntity userEntity = (UserEntity) session.getAttribute("user");
+        if (userEntity == null) {
+            return "redirect:/loadFormLogin";
+        } else {
+            //hiển thị sân đã đặt của người dùng
+            List<Booking> bookingList = bookingService.findAllByUserId1(userEntity);
+            model.addAttribute("bookingList", bookingList);
+            //hiển thị bài viết đã đăng của người dùng
+            List<Post> postList = postRepository.findAllByUserEntity(userEntity);
+            model.addAttribute("postList", postList);
+            return "userProfile";
+
+        }
+    }
+    @GetMapping("/sendOTPChangePassword")
+    public String sendOTPChangePassword(HttpSession session, Model model) {
+        UserEntity userEntity = (UserEntity) session.getAttribute("user");
+        if (userEntity == null) {
+            return "redirect:/loadFormLogin";
+        } else {
+            int otp = (int) (Math.random() * 1000);
+            userEntity.setToken(String.valueOf(otp));
+            userRepository.save(userEntity);
+            String message = "OTP của bạn là: " + otp;
+            //gưi tinh nhắn thông báo đến user
+            Twilio.init(ACCOUNT_SID, AUTH_ID);
+            String truePhone = substring(userEntity.getUsername(), 1);
+            Message.creator(new PhoneNumber("+84" + truePhone),
+                    new PhoneNumber("+14845099386"), message).create();
+
+            return "redirect:/loadUserProfile";
+        }
+    }
+    @PostMapping("/changePassword")
+    public String changePassword(@ModelAttribute("password") String password,@ModelAttribute("otp") int otp, HttpSession session) {
+        UserEntity userEntity = (UserEntity) session.getAttribute("user");
+        if (userEntity.getToken() == null) {
+            return "redirect:/loadFormLogin";
+        } else if(userEntity.getToken().equals(String.valueOf(otp))) {
+            userEntity.setPassword(password);
+            userEntity.setToken(null);
+            userRepository.save(userEntity);
+            return "redirect:/loadUserProfile";
+        } else {
+            return "redirect:/loadUserProfile";
+        }
     }
 }
 

@@ -36,9 +36,7 @@ public class OwnPitch {
     @ManyToOne
     @JoinColumn(name="district_id", nullable=false)//huyện
     private District district;
-    /*@ManyToOne
-    @JoinColumn(name="ward_id", nullable=false)//xã
-    private WardEntity wardEntity;*/
+
     @Column(name = "address")//địa chỉ chính xác
     private String address;
     @Column(name = "stkbank")//stk ngân hàng

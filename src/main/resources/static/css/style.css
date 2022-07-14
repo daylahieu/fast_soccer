@@ -1838,7 +1838,6 @@ body,
 html {
   height: 100vh;
   display: grid;
-  font-family: "Staatliches", cursive;
   color: black;
   font-size: 14px;
   letter-spacing: 0.1em;

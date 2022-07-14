@@ -120,12 +120,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="booking : ${bookingList}">
-            <th th:text="${booking.getPriceYardID().getYardId().getOwnPitch().getNamePitch()}"></th>
-            <td th:text="${booking.getDateBooking()}"></td>
-            <td th:text="${booking.getPriceYardID().getStartTime()}+'-'+${booking.getPriceYardID().getEndTime()}"></td>
-            <td th:text="${booking.getPriceYardID().getYardId().getName()}"></td>
-            <td th:text="${booking.getPriceYardID().getPrice()}"></td>
+        <tr class="cursor-pointer" th:each="booking : ${bookingList}">
+            <th  class="py-4 text-center" th:text="${booking.getPriceYardID().getYardId().getOwnPitch().getNamePitch()}"></th>
+            <td  class="py-4 text-center" th:text="${booking.getDateBooking()}"></td>
+            <td  class="py-4 text-center" th:text="${booking.getPriceYardID().getStartTime()}+'-'+${booking.getPriceYardID().getEndTime()}"></td>
+            <td  class="py-4 text-center" th:text="${booking.getPriceYardID().getYardId().getName()}"></td>
+            <td  class="py-4 text-center" th:text="${booking.getPriceYardID().getPrice()}"></td>
         </tr>
         </tbody>
     </table>

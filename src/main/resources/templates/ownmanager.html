@@ -71,18 +71,7 @@
         <div class="container">
             <!-- row -->
             <div class="row tm-content-row">
-                <!--<div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block">
-                        <h2 class="tm-block-title">Latest Hits</h2>
-                        <canvas id="lineChart"></canvas>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block">
-                        <h2 class="tm-block-title">Performance</h2>
-                        <canvas id="barChart"></canvas>
-                    </div>
-                </div>-->
+
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block tm-block-taller">
                         <h2 class="tm-block-title">Đánh giá từ người dùng</h2>
@@ -114,7 +103,6 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ORDER NO.</th>
-                                    <th scope="col">Trạng thái</th>
                                     <th scope="col">Tên người đặt</th>
                                     <th scope="col">Vị trí sân</th>
                                     <th scope="col">Ngày</th>
@@ -125,39 +113,13 @@
                             <tbody>
                                 <tr th:each="booking : ${bookingList}">
                                     <th scope="row" th:text="${booking.id}"></th>
-                                    <td>
-                                        <div class="tm-status-circle moving">
-                                        </div>Moving
-                                    </td>
                                     <td th:text="${booking.getUserId().getUsername()}"></td>
                                     <td th:text="${booking.getPriceYardID().getYardId().name}"></td>
                                     <td th:text="${booking.getDateBooking()}"></td>
                                     <td th:text="${booking.getPriceYardID().getStartTime()}+'-'+${booking.getPriceYardID().getEndTime()}"></td>
                                     <td th:text="${booking.getPriceYardID().price}"></td>
                                 </tr>
-                                <!--<tr>
-                                    <th scope="row"><b>#2</b></th>
-                                    <td>
-                                        <div class="tm-status-circle pending">
-                                        </div>Pending
-                                    </td>
-                                    <td><b>Long</b></td>
-                                    <td><b>Sân 2</b></td>
-                                    <td>11:00, 10/6/2022</td>
-                                    <td><b>300000</b></td>
 
-                                </tr>
-                                <tr>
-                                    <th scope="row"><b>#3</b></th>
-                                    <td>
-                                        <div class="tm-status-circle cancelled">
-                                        </div>Cancelled
-                                    </td>
-                                    <td><b>Thanh</b></td>
-                                    <td><b>Sân 2</b></td>
-                                    <td>12:00, 10/6/2022</td>
-                                    <td><b>340000</b></td>
-                                </tr>-->
                             </tbody>
                         </table>
                     </div>

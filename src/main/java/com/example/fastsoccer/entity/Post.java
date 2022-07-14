@@ -4,27 +4,27 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.sql.Date;
+
+
 @Data
 @Entity
-@Table(name = "booking")
+@Table(name = "post")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Booking {
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date dateBooking;
+    Date publicationTime;
+    private String content;
     @ManyToOne
-    @JoinColumn(name = "user_id") // thông qua khóa ngoại
-    @JsonIgnore
-    private UserEntity userId;
+    @JoinColumn(name="district_id", nullable=false)
+    private District districtEntity;
     @ManyToOne
-    @JoinColumn(name = "priceYard_id") // thông qua khóa ngoại
     @JsonIgnore
-    private PriceYard priceYardID;
-    private Boolean status;
+    @JoinColumn(name = "user_id")
+    private UserEntity userEntity;
 }

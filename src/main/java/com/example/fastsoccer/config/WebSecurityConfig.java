@@ -62,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/loadPage", "/login", "/logout", "/loadFormRegister", "/process_register","/showDetail").permitAll()
                 //trang quản lý của chủ sân yêu cầu quyền OWN
                 .antMatchers("/load-manager-own", "/loadyardmanagerown", "/loadformaddyard").hasAuthority("OWN")
-                .antMatchers("/booking").hasAuthority("USER")
+                .antMatchers("/booking","/loadMatching").hasAuthority("USER")
                 // Trang chỉ dành cho ADMIN
                 .antMatchers("/admin", "/updateStatus","/update").hasAuthority("ADMIN")
                 .and().exceptionHandling().accessDeniedPage("/403")
@@ -83,7 +83,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         } else if (user.getRole().equals("OWN")) {
                             response.sendRedirect("/load-manager-own");
                         } else {
-                            response.sendRedirect("/loadPageAfterLogin");
+                            response.sendRedirect("/loadPage");
                         }
                     }
                 })

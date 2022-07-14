@@ -26,4 +26,7 @@ public class District {
 
     @OneToMany(mappedBy="district")
     private List<OwnPitch> ownPitchList;
+    @OneToMany(mappedBy="districtEntity")
+    @JsonIgnore
+    private List<Post> postList;
 }

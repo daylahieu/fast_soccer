@@ -130,11 +130,18 @@ public class OwnPitchController {
         model.addAttribute("user", userEntity);
         return "add-yard";
     }
-
+//thêm sân nhỏ
     @PostMapping("/addyard")
     public String addYard(Yard yard) {
         yardRepository.save(yard);
         return "redirect:/loadyardmanagerown";
+    }
+    //xóa sân nhỏ
+    @GetMapping("/deleteYard")
+    public String deleteYard(@RequestParam("id") Long id) {
+        yardRepository.deleteById(id);
+        return "redirect:/loadyardmanagerown";
+
     }
 
     @GetMapping("/loadformaddprice")
@@ -152,4 +159,11 @@ public class OwnPitchController {
         return "redirect:/loadyardmanagerown";
     }
 
+    //xóa giá sân
+    @GetMapping("/deletePrice")
+    public String deletePrice(@RequestParam("id") Long id) {
+        priceYardRepository.deleteById(id);
+        return "redirect:/loadyardmanagerown";
+
+    }
 }

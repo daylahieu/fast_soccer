@@ -31,4 +31,5 @@ public class PriceYard {
     private Yard yardId;
     @OneToMany(mappedBy = "priceYardID", cascade = CascadeType.ALL)
     private List<Booking> bookingList;
+
 }

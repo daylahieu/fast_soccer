@@ -20,7 +20,9 @@ public interface BookingService extends JpaRepository<Booking, Long> {
 * @description-EN:
 * @param:
 * */
-    @Query("select b from Booking b where b.dateBooking=?1 and b.priceYardID.yardId.id=?2 and b.status = true")
-    List<Booking> findAllPriceYardIsBooking(Date dateB,Long id);
+    @Query("select b.priceYardID.id from Booking b where b.dateBooking=?1 and b.priceYardID.yardId.id=?2 and b.status = true")
+    List<Long> findAllPriceYardIsBooking(Date dateB,Long id);
+
+
 }
 

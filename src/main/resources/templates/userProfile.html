@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Fast Soccer</title>
+
+    <!-- CSS -->
+    <!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&display=swap">-->
+    <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+            rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.7.95/css/materialdesignicons.min.css">   <!--..-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/media-queries.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link href="static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link href="/img/logo.jpg" rel="icon">
+</head>
+
+<body>
+<header id="header" class="d-flex align-items-center" style="background:#ffc107">
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <h1 class="logo">
+            <img src="img/logo.jpg" alt="">
+            <a th:href="|/loadPage|">Fast Soccer</a>
+        </h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+
+
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto active" th:href="|/loadPage|">Trang chủ</a></li>
+                <li><a class="nav-link scrollto" href="#order">Đặt sân</a></li>
+                <li><a class="nav-link scrollto" th:href="|/showformRegisterPitch|">Đăng kí sân</a></li>
+                <!--<li class="dropdown"><a href="#"><span>Chủ sân</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                    <li><a th:href="|/showformRegisterPitch|">Đăng ký sân</a></li>
+                    <li><a th:href="|/loadmanagerown|">Trang quản lý cho chủ sân</a></li>
+                </ul>-->
+                <li><a class="nav-link scrollto " th:href="|/loadMatching|">Tìm đối</a></li>
+                <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
+                <li class="dropdown"><a href="#"><span>Tài khoản</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li sec:authorize="isAuthenticated()">
+                            Xin chào: <b id="nameUser1"> <span sec:authentication="name"></span></b></li>
+                        <li id="loginF" ><a th:href="|/loadFormLogin|">Đăng nhập</a></li>
+                        <li id="regisF" ><a th:href="|/loadFormRegister|">Đăng ký</a></li>
+                        <li id="logoutF"><a th:href="|/logout|">Đăng xuất</a></li>
+                        <li id="myBooking"><a th:href="|/myBooking|">Sân đã đặt</a></li>
+                    </ul>
+                </li>
+
+                <script type="text/javascript">
+                    window.onload = code;
+                    //nếu chưa đăng nhập thì chỉ hiển thị login
+                    //còn nếu đăng nhập rồi thì hiển thị logout và đơn đặt sân
+                    function code() {
+                        if (document.getElementById("nameUser1") == null) {
+                            document.getElementById("loginF").hidden = false;
+                            document.getElementById("regisF").hidden = false;
+                            document.getElementById("logoutF").hidden = true;
+                            document.getElementById("myBooking").hidden = true;
+                        } else {
+                            document.getElementById("loginF").hidden = true;
+                            document.getElementById("regisF").hidden = true;
+                            document.getElementById("logoutF").hidden = false;
+                            document.getElementById("myBooking").hidden = false;
+                        }
+                    }
+
+                </script>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+    </div>
+</header><!-- End Header -->
+
+<!-- Wrapper -->
+<div class="wrapper">
+    <!-- Sidebar -->
+    <!-- End sidebar -->
+    <!-- Dark overlay -->
+    <div class="overlay"></div>
+
+    <!-- Content -->
+    <div class="content">
+
+        <!-- Section 5 -->
+        <div class="section-5-container section-container mt-5 py-5" id="section-5">
+            <div class="container bootstrap snippet min-vh-50">
+                <h1 id="form-title" class="text-center mt-5 pt-5 ">Thông tin tài khoản</h1>
+                <ul class="nav nav-tabs">
+                   <!-- <li class="active"><a data-toggle="tab" href="#profile"
+                                          onclick="$('#form-title').text('Thông tin tài khoản')">Tài khoản</a></li>-->
+                    <li class="active"><a data-toggle="tab" href="#history" onclick="$('#form-title').text('Lịch sử đặt sân')">Lịch
+                        đặt</a></li>
+                    <li><a data-toggle="tab" href="#notify" onclick="$('#form-title').text('Bài viết')">Bài viết</a></li>
+                    <li><a data-toggle="tab" href="#change-password"
+                           onclick="$('#form-title').text('Thay đổi mật khẩu')">Mật khẩu</a></li>
+                </ul>
+                <hr/>
+                <div class="tab-content pt-5">
+                    <!--<div class="tab-pane active" id="profile">
+                        <form id="form-profile" class="form" action="##" method="post">
+                            <div class="row">
+                                <div class="col-sm-3">&lt;!&ndash;left col&ndash;&gt;
+                                    <div id="avata-frame" class="text-center position-relative">
+                                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                                             class="avatar position-absolute image-circle image-thumbnail "
+                                             alt="avatar">
+                                        <label for="image-change">Sửa</label>
+                                        <span class="image-change-overlay"></span>
+                                        <input id="image-change" type="file"
+                                               name="avatar"
+                                               class="text-center center-block file-upload">
+                                    </div>
+                                </div>&lt;!&ndash;/col-3&ndash;&gt;
+                                <div class="col-sm-9">
+                                    <div class="form-group text-left">
+                                        <div class="col-xs-12">
+                                            <label><h4 class="text-dark">Tên đăng nhập: User1</h4></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <div class="col-xs-6 " style="height: 6.5em">
+                                            <label for="fullname"><h4 class="text-dark m-0">Họ Tên</h4></label>
+                                            <input id="fullname" type="text" class="form-control" name="fullname"
+                                                   placeholder="Vd: Nguyễn Văn A"/>
+                                            <div class="input-error-message"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group text-left">
+                                        <div class="col-xs-6" style="height: 6.5em">
+                                            <label for="phone"><h4 class="text-dark m-0">Số điện thoại</h4></label>
+                                            <input type="text" class="form-control" name="phone" id="phone"
+                                                   placeholder="098x xxx xxx"
+                                                   title="Số điện thoại gồm 10 số và bắt đầu bằng 09, 08, ..."/>
+                                            <div class="input-error-message"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <div class="col-xs-6" style="height: 6.5em">
+                                            <label for="email"><h4 class="text-dark m-0">Email:</h4></label>
+                                            <input type="email" class="form-control" name="email" id="email"
+                                                   placeholder="example@example.com"
+                                                   title="example@example.com"/>
+                                            <div class="input-error-message"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <div class="col-xs-6" style="height: 6.5em">
+                                            <label for="address"><h4 class="text-dark m-0">Địa chỉ:</h4></label>
+                                            <input type="text" class="form-control" name="address" id="address"
+                                                   placeholder="Vd: Đại học FPT, Thạch Hòa, Thạch Thất, Hà Nội"
+                                                   title="Hãy nhập địa chỉ của bạn."/>
+                                            <div class="input-error-message"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-left">
+
+                                        <div class="col-xs-6" style="height: 6.5em">
+                                            <label for="province"><h4 class="text-dark m-0">Tỉnh/Thành phố:</h4></label>
+                                            <select id="province" name="province" class="form-control form-control-lg">
+                                                <option>Hà Nội</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <div class="col-xs-6" style="height: 6.5em">
+                                            <label for="district"><h4 class="text-dark m-0">Quận/Huyện:</h4></label>
+                                            <select id="district" name="district" class="form-control form-control-lg">
+                                                <option value="01">Cầu Giấy</option>
+                                                <option value="01">Hoàng Mai</option>
+                                                <option value="01">Thanh Xuân</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <div class="col-xs-6" style="height: 6.5em">
+                                            <label for="birthdate"><h4 class="text-dark m-0">Ngày sinh:</h4></label>
+                                            <input type="date" class="form-control" name="birthdate" id="birthdate"
+                                                   placeholder="dd/mm/yyyy"
+                                                   title="Nhập ngày sinh của bạn."/>
+                                            <div class="input-error-message"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <div class="col-xs-6" style="height: 6.5em">
+                                            <label><h4 class="text-dark m-0">Giới tính:</h4></label>
+                                            <div class="form-control border-0 shadow-none">
+                                                <div class="form-check form-check-inline mr-5">
+                                                    <input class="form-check-input" type="radio" name="gender"
+                                                           id="male" value="male" checked>
+                                                    <label class="form-check-label" for="male">Nam</label>
+                                                </div>
+                                                <div class="form-check form-check-inline mr-5">
+                                                    <input class="form-check-input" type="radio" name="gender"
+                                                           id="female" value="female">
+                                                    <label class="form-check-label" for="female">Nữ</label>
+                                                </div>
+                                                <div class="form-check form-check-inline mr-5">
+                                                    <input class="form-check-input" type="radio" name="gender"
+                                                           id="other" value="other">
+                                                    <label class="form-check-label" for="other">Khác</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <div class="col-xs-12">
+                                            <br>
+                                            <button id="profile-submit" class="btn btn-lg btn-success" type="submit"><i
+                                                    class="glyphicon glyphicon-ok-sign"></i> Cập nhật
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>--><!--/tab-pane-->
+                    <div class="tab-pane active" id="history">
+                        <div class="table-responsive">
+                            <table class="table table-borderless table-hover">
+                                <thead>
+                                <tr class="bg-light">
+                                    <th scope="col" width="10%" class="text-center">Tên sân bóng</th>
+                                    <th scope="col" width="25%" class="text-center">Ngày đặt</th>
+                                    <th scope="col" width="10%" class="text-center">Khung giờ đặt</th>
+                                    <th scope="col" width="20%" class="text-center">Vị trí sân</th>
+                                    <th scope="col" width="15%" class="text-center">Giá tiền</th>
+                                    <th scope="col" width="15%" class="text-center">Trạng thái</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="cursor-pointer">
+                                <tr class="cursor-pointer" th:each="booking : ${bookingList}">
+                                    <th  class="py-4 text-center" th:text="${booking.getPriceYardID().getYardId().getOwnPitch().getNamePitch()}"></th>
+                                    <td  class="py-4 text-center" th:text="${booking.getDateBooking()}"></td>
+                                    <td  class="py-4 text-center" th:text="${booking.getPriceYardID().getStartTime()}+'-'+${booking.getPriceYardID().getEndTime()}"></td>
+                                    <td  class="py-4 text-center" th:text="${booking.getPriceYardID().getYardId().getName()}"></td>
+                                    <td  class="py-4 text-center" th:text="${booking.getPriceYardID().getPrice()}"></td>
+                                    <td class="py-4 text-center"><i class="fa fa-check-circle-o green"></i><span
+                                            class="ms-1">Đã thanh toán</span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!--/tab-pane-->
+                    <div class="tab-pane " id="notify">
+                        <!--/notify-->
+                        <div class="content-wrapper">
+                            <div class="email-wrapper wrapper">
+                                <div class="row align-items-stretch">
+                                    <table class="table table-hover tm-table-small tm-product-table">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Địa chỉ</th>
+                                            <th scope="col">Bài viết</th>
+                                            <th scope="col">Ngày đăng</th>
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="post : ${postList}">
+                                            <td class="tm-product-name" th:text="${post.getDistrictEntity().name}"></td>
+                                            <td class="tm-product-name" th:text="${post.getContent()}"></td>
+                                            <td  th:text="${post.getPublicationTime()}"></td>
+                                            <td>
+                                                <a th:href="|/deletePost?id=${post.getId()}|" class="tm-product-delete-link">
+                                                    <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="#" class="tm-product-delete-link">
+                                                    <i class="far fa-edit tm-product-img-edit"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/end notify-->
+                    </div>
+                    <div class="tab-pane" id="change-password">
+                        <div class="col-md-6 offset-md-3 mb-5">
+                            <form id="form-password" class="form" role="form" autocomplete="off">
+                                <div class="form-group text-left">
+                                    <a for="inputPasswordOld" class="font-weight-normal" th:href="|/sendOTPChangePassword|">Gửi mã OTP</a>
+                                    <input type="text" class="form-control" id="inputPasswordOld" placeholder="Nhập mã OTP"/>
+                                    <div class="input-error-message"></div>
+                                </div>
+
+                                <div class="form-group text-left ">
+                                    <label for="inputPasswordNew" class="font-weight-normal">Mật khẩu mới</label>
+                                    <input type="password" class="form-control " id="inputPasswordNew"/>
+                                    <div class="input-error-message"></div>
+                                </div>
+                                <div class="form-group text-left">
+                                    <label for="inputPasswordNewVerify" class="font-weight-normal">Nhập lại mật khẩu
+                                        mới:</label>
+                                    <input type="password" name="password" class="form-control" id="inputPasswordNewVerify" />
+                                    <div class="input-error-message"></div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-success btn-lg float-left">Xác nhận</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div><!--/tab-pane-->
+            </div><!--/tab-content-->
+        </div>
+    </div>
+    <!-- Section 1 -->
+
+</div>
+
+<!-- Section 3 -->
+</div>
+<!-- End content -->
+<!-- End wrapper -->
+<!-- Footer -->
+<footer id="footer">
+    <div class="footer-top mt-5" style="background: url('assets/img/banner.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h3>Fast Soccer</h3>
+                    <p>
+                        Đại học FPT <br>
+                        Khu CNC Hòa Lạc<br>
+                        Hà Nội <br><br>
+                        <strong>Số điện thoại:</strong><br>
+                        <strong>Email:</strong><br>
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Về Fast Soccer</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Giới thiệu Fast Soccer</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Điều khoản sử dụng</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Chính sách bảo mật</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Đóng góp ý kiến</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Thanh toán</h4>
+                    <ul>
+                        <li><a><img style="height: 25px; margin-bottom: 10px"
+                                    src="https://static.mservice.io/img/logo-momo.png"> Momo:</a></li>
+                        <li><a><img style="height: 25px; margin-bottom: 10px"
+                                    src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png"> Tiền
+                            mặt</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Tài khoản mạng xã hội</h4>
+                    <div class="social-links mt-3">
+                        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                        <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</footer><!-- End Footer -->
+<!--<div id="preloader"></div>-->
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+<!-- Javascript -->
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
+<script src="/assets/js/jquery-migrate-3.0.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="/assets/js/jquery.backstretch.min.js"></script>
+<script src="/assets/js/wow.min.js"></script>
+<script src="/assets/js/jquery.waypoints.min.js"></script>
+<script src="/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/assets/js/scripts.js"></script>
+<script src="/assets/js/main.js"></script>
+<script>
+    Validator({
+        form: '#form-profile',
+        rules: [
+            Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn.'),
+            Validator.isName('#fullname', 'Tên không hợp lệ.'),
+            Validator.isRequired('#email', 'Vui lòng nhập địa chỉ email của bạn.'),
+            Validator.isEmail('#email'),
+            Validator.isRequired('#phone', 'Vui lòng nhập số điện thoại liên lạc của bạn.'),
+            Validator.isPhone('#phone', 'Số điện thoại không hợp lệ.'),
+            Validator.isRequired('#address', 'Địa chỉ không được để trống.'),
+            Validator.isRequired('#birthdate', 'Vui lòng nhập ngày sinh của bạn.'),
+        ]
+    });
+
+    Validator({
+        form: '#form-password',
+        rules: [
+            Validator.isRequired('#inputPasswordOld', 'Vui lòng nhập mật khẩu hiện tại.'),
+            Validator.isRequired('#inputPasswordNew', 'Vui lòng nhập mật khẩu mới.'),
+            Validator.isPassword('#inputPasswordNew', 'Mật khẩu không hợp lệ. Độ dài 6-20 ký tự và có chứa chữ hoa, chữ thường và số.'),
+            Validator.isRequired('#inputPasswordNewVerify', 'Vui lòng nhập lại mật khẩu mới.'),
+            Validator.isMatch('#inputPasswordNewVerify', function (){
+                return $('#form-password #inputPasswordNew').val();
+            }, 'Mật khẩu xác nhận không trùng khớp.')
+        ]
+    });
+</script>
+</body>
+
+</html>

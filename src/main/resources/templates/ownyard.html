@@ -97,13 +97,13 @@
                             <td class="tm-product-name" th:text="${yard.name}"></td>
                             <td th:text="${yard.detail}"></td>
                             <td>
-                                <a href="#" class="tm-product-delete-link">
+                                <a th:href="|/deleteYard?id=${yard.getId()}|" class="tm-product-delete-link">
                                     <i class="far fa-trash-alt tm-product-delete-icon"></i>
                                 </a>
                             </td>
                             <td>
                                 <a href="#" class="tm-product-delete-link">
-                                    <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                    <i class="far fa-edit tm-product-img-edit"></i>
                                 </a>
                             </td>
                         </tr>
@@ -165,7 +165,7 @@
     function getIdYard() {
         var idyard = document.getElementById("yard");
         var strUser = idyard.value;
-        $.ajax('/yard/getTime/' + strUser,   // request url
+        $.ajax('/yard/' + strUser,   // request url
             {
                 success: function (data, status, xhr) {// success callback function
                     console.log(data);
@@ -176,7 +176,7 @@
 
                         <td class="tm-product-name"> ${p.startTime} - ${p.endTime} : ${p.price} </td>
                             <td class="text-center">
-                                <a href="#" class="tm-product-delete-link">
+                                <a th:href="|/deletePrice?id=${p.id}|" class="tm-product-delete-link">
                                     <i class="far fa-trash-alt tm-product-delete-icon"></i>
                                 </a>
                             </td>

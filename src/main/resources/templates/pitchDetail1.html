@@ -187,10 +187,10 @@
                             </div>
                             <form id="booking-form" th:action="@{/booking}" method="post">
                                 <label>Chọn lịch</label>
-                                <input type="date" name="dateBooking">
+                                <input type="date" name="dateBooking" th:onchange="selectTime()" id="timeBooking">
                                 <div class="row">
 
-                                    <label>Khung giờ</label>
+                                    <label>Khung giờ trống</label>
                                     <div data-toggle="buttons">
                                         <div class="row" id="getTimeAndPrice">
 
@@ -348,6 +348,31 @@
 <script>
     var strUser = "";
 
+    function selectTime(){
+        var idyard = document.getElementById("yard").value;
+        var timeBooking = document.getElementById("timeBooking").value;
+        $.ajax('/getBooking/' + timeBooking + '/' + idyard,   // request url
+            {
+                success: function (data, status, xhr) {// success callback function
+                    console.log(data);
+                    if (data.length > 0){
+                        $("#getTimeAndPrice").empty();
+                        data.map(p => $("#getTimeAndPrice").append(`
+                                            <div class="col-md-3" onclick="getPrice(${p.price})">
+                                                <label class="btn btn-block btn-outline-dark" >
+                                                    <input name="id" value="${p.id}" type="radio" checked autocomplete="off" style="display: none"  >${p.startTime} - ${p.endTime}
+                                                </label>
+                                            </div>
+                                            `))
+                    }else {
+                        getIdYard();
+                    }
+
+                }
+            });
+        ;
+    }
+
     function getIdYard() {
         var idyard = document.getElementById("yard");
         var strUser = idyard.value;
@@ -356,7 +381,7 @@
                 success: function (data, status, xhr) {// success callback function
                     console.log(data);
                     $("#getTimeAndPrice").empty();
-                    data.priceYardList.map(p => $("#getTimeAndPrice").append(`
+                    data.map(p => $("#getTimeAndPrice").append(`
                                             <div class="col-md-3" onclick="getPrice(${p.price})">
                                                 <label class="btn btn-block btn-outline-dark" >
                                                     <input name="id" value="${p.id}" type="radio" checked autocomplete="off" style="display: none"  >${p.startTime} - ${p.endTime}
@@ -370,7 +395,7 @@
     };
 
     $(document).ready(function () {
-        getIdYard()
+        getIdYard();
     })
 
     function getPrice(value) {

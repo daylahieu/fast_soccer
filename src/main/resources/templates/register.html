@@ -28,7 +28,7 @@
             <h2>Đã có tài khoản? <a href="login.html">Đăng nhập</a></h2>
             <div class="login-form">
                 <form  th:action="@{/process_register}" th:object="${user}" method="post" onsubmit="return formValidation()">
-                    <input id="username" th:field="*{username}" type="text" placeholder="Tên đăng nhập">
+                    <input id="username" th:field="*{username}" type="text" placeholder="Số điện thoại">
                     <input id="password" th:field="*{password}" type="password" placeholder="Mật khẩu">
                     <input id="re-password" type="password" placeholder="Nhập lại mật khẩu">
                     <button type="submit">Đăng ký</button>
@@ -43,9 +43,11 @@
     function formValidation() {
         var username = document.getElementById('username').value,
             errors = [];
-        if (username.length < 6) {
-            errors.push("Tên đăng nhập lớn hơn 6 ký tự");
+        if (username.length !=10) {
+            errors.push("Sai định dạng số điện thoại");
         }
+
+
         var pass = document.getElementById('password').value,
             errors = [];
         if (pass.length < 8) {

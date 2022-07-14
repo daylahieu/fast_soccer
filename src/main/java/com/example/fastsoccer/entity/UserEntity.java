@@ -23,8 +23,10 @@ public class UserEntity {
 
     private String role;
     private Long idOwn;// id chủ sân
-    @Enumerated(EnumType.STRING)
-    private Provider provider;
-    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+ /*   @Enumerated(EnumType.STRING)
+    private Provider provider;*/
+    @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)
     private List<Booking> bookingList;
+    @OneToMany(mappedBy = "userEntity", fetch = FetchType.LAZY)
+    private List<Post> postList;
 }
