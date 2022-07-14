@@ -34,6 +34,8 @@ import static org.thymeleaf.util.StringUtils.substring;
 //trang home
 @Controller
 public class HomeController {
+    private final static String ACCOUNT_SID = "ACb451dd21c4c07f810dd8d7d3351678bf";
+    private final static String AUTH_ID = "78291a4460246323349d348c30ec9e5f";
     @Autowired
     OwnPitchRepository ownPitchRepository;
     @Autowired
@@ -48,8 +50,7 @@ public class HomeController {
     PriceYardRepository priceYardRepository;
     @Autowired
     PostRepository postRepository;
-    private final static String ACCOUNT_SID = "ACb451dd21c4c07f810dd8d7d3351678bf";
-    private final static String AUTH_ID = "";
+
     @GetMapping("/loadPage")
     public String loadPage(Model model) {
         List<OwnPitch> ownPitchListOk = ownPitchRepository.findOwnPitchSuccess(); //hiển thị sân đã xác nhận
@@ -82,7 +83,12 @@ public class HomeController {
     }
 
     @PostMapping("/process_register")
-    public String processRegister(UserEntity user) {
+    public String processRegister(UserEntity user,HttpSession session) {
+        List<String> listUsername = userRepository.getListUsername();
+        if (listUsername.contains(user.getUsername())){
+            session.setAttribute("userExit", "SDT đã tồn tại");
+            return "redirect:/loadFormRegister";
+        }else {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
@@ -93,6 +99,7 @@ public class HomeController {
         String truePhone = substring(user.getUsername(), 1);
         Message.creator(new PhoneNumber("+84" + truePhone),
                 new PhoneNumber("+14845099386"), "Fast soccer chúc mừng bạn đăng kí thành công 📞").create();
+        }
         return "thankyou";
     }
 
@@ -302,6 +309,7 @@ public class HomeController {
         model.addAttribute("postList", postList);
         return "matching";
     }
+
     @GetMapping("/loadUserProfile")
     public String loadUserProfile(HttpSession session, Model model) {
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
@@ -318,32 +326,38 @@ public class HomeController {
 
         }
     }
+
     @GetMapping("/sendOTPChangePassword")
     public String sendOTPChangePassword(HttpSession session, Model model) {
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
         if (userEntity == null) {
             return "redirect:/loadFormLogin";
         } else {
-            int otp = (int) (Math.random() * 1000);
-            userEntity.setToken(String.valueOf(otp));
+            int otp = (int) (Math.random() * 10000);
+            userEntity.setToken(otp);
             userRepository.save(userEntity);
             String message = "OTP của bạn là: " + otp;
             //gưi tinh nhắn thông báo đến user
-            Twilio.init(ACCOUNT_SID, AUTH_ID);
+       /*     Twilio.init(ACCOUNT_SID, AUTH_ID);
             String truePhone = substring(userEntity.getUsername(), 1);
             Message.creator(new PhoneNumber("+84" + truePhone),
-                    new PhoneNumber("+14845099386"), message).create();
-
-            return "redirect:/loadUserProfile";
+                    new PhoneNumber("+14845099386"), message).create();*/
+            model.addAttribute("otp", otp);
+            return "changePassword";
         }
     }
+
     @PostMapping("/changePassword")
-    public String changePassword(@ModelAttribute("password") String password,@ModelAttribute("otp") int otp, HttpSession session) {
+    public String changePassword(@RequestParam("password") String password, @RequestParam("otp") Integer otp, HttpSession session) {
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
-        if (userEntity.getToken() == null) {
-            return "redirect:/loadFormLogin";
-        } else if(userEntity.getToken().equals(String.valueOf(otp))) {
-            userEntity.setPassword(password);
+        if (!otp.equals(userEntity.getToken()) ) {
+            session.setAttribute("OTPchangePassword", "sai OTP");
+            return "changePassword";
+        } else if (userEntity.getToken().equals(otp)) {
+
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            String encodedPassword = passwordEncoder.encode(password);
+            userEntity.setPassword(encodedPassword);
             userEntity.setToken(null);
             userRepository.save(userEntity);
             return "redirect:/loadUserProfile";
@@ -351,5 +365,6 @@ public class HomeController {
             return "redirect:/loadUserProfile";
         }
     }
+
 }
 

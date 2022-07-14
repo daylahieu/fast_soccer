@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity
@@ -19,7 +18,7 @@ public class UserEntity {
     private Long id;
     private String username;
     private String password;
-    private String token;
+    private Integer token;
 
     private String role;
     private Long idOwn;// id chủ sân

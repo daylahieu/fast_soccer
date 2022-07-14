@@ -29,7 +29,7 @@
                 <form th:action="@{/login}" method="POST">
                     <input name="username" id="username" type="text" placeholder="Số điện thoại">
                     <input name="password" id="password" type="password" placeholder="Mật khẩu">
-
+                    <p style="color: red" class="text-danger" th:if="${param.loginError}" th:text="'Sai mật khẩu hoặc số điện thoại'"></p>
                    <!-- <div class="remember-form">
                         <input type="checkbox">
                         <span>Remember me</span>

@@ -310,7 +310,7 @@
                         <!--/end notify-->
                     </div>
                     <div class="tab-pane" id="change-password">
-                        <div class="col-md-6 offset-md-3 mb-5">
+                       <!-- <div class="col-md-6 offset-md-3 mb-5">
                             <form id="form-password" class="form" role="form" autocomplete="off">
                                 <div class="form-group text-left">
                                     <a for="inputPasswordOld" class="font-weight-normal" th:href="|/sendOTPChangePassword|">Gửi mã OTP</a>
@@ -333,7 +333,8 @@
                                     <button class="btn btn-success btn-lg float-left">Xác nhận</button>
                                 </div>
                             </form>
-                        </div>
+                        </div>-->
+                        <a th:href="@{/sendOTPChangePassword}">Đổi mật khẩu</a>
                     </div>
                 </div><!--/tab-pane-->
             </div><!--/tab-content-->
